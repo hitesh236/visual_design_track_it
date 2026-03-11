@@ -1,0 +1,422 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&family=Merriweather:wght@400;700&family=Montserrat:wght@700&family=Nunito:wght@400;600&family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Global box-model reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+@layer base {
+
+  :root,
+  [data-mood="nature"] {
+    --background: 40 33% 97%;
+    /* warm cream */
+    --foreground: 20 15% 25%;
+    --card: 40 33% 99%;
+    --card-foreground: 20 15% 25%;
+    --popover: 40 33% 99%;
+    --popover-foreground: 20 15% 25%;
+    --primary: 74 38% 30%;
+    /* earthy green */
+    --primary-foreground: 60 93% 98%;
+    --secondary: 74 20% 80%;
+    --secondary-foreground: 74 38% 30%;
+    --muted: 74 10% 90%;
+    --muted-foreground: 20 10% 50%;
+    --accent: 74 38% 44%;
+    --accent-foreground: 60 93% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 20% 90%;
+    --input: 30 20% 85%;
+    --ring: 74 38% 44%;
+    --radius: 12px;
+    --font-heading: 'Merriweather', serif;
+    --font-body: 'Open Sans', sans-serif;
+    --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --spacing-section: 3rem;
+    --surface: hsl(40, 33%, 94%);
+    /* Slightly darker cream for bg sections */
+  }
+
+  [data-mood="luxury"] {
+    --background: 240 10% 15%;
+    /* deep charcoal */
+    --foreground: 240 10% 95%;
+    --card: 240 10% 20%;
+    --card-foreground: 240 10% 95%;
+    --popover: 240 10% 20%;
+    --popover-foreground: 240 10% 95%;
+    --primary: 42 56% 54%;
+    /* gold */
+    --primary-foreground: 42 100% 10%;
+    --secondary: 240 10% 25%;
+    --secondary-foreground: 240 10% 95%;
+    --muted: 240 10% 30%;
+    --muted-foreground: 240 5% 70%;
+    --accent: 42 56% 64%;
+    --accent-foreground: 42 100% 10%;
+    --border: 42 56% 44%;
+    --input: 240 10% 25%;
+    --ring: 42 56% 54%;
+    --radius: 4px;
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --shadow-card: 0 0 0 1px hsl(var(--border));
+    --spacing-section: 4rem;
+    --surface: hsl(240, 10%, 18%);
+  }
+
+  [data-mood="adventure"] {
+    --background: 36 29% 96%;
+    /* stone white */
+    --foreground: 20 15% 15%;
+    --card: 36 29% 100%;
+    --card-foreground: 20 15% 15%;
+    --popover: 36 29% 100%;
+    --popover-foreground: 20 15% 15%;
+    --primary: 19 80% 51%;
+    /* energetic orange */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 34 80% 85%;
+    --secondary-foreground: 19 80% 21%;
+    --muted: 36 20% 92%;
+    --muted-foreground: 20 10% 40%;
+    --accent: 34 98% 60%;
+    --accent-foreground: 19 80% 21%;
+    --border: 19 80% 51%;
+    --input: 36 20% 90%;
+    --ring: 19 80% 51%;
+    --radius: 2px;
+    --shadow-card: 4px 0 0 0 hsl(var(--primary));
+    --spacing-section: 2.5rem;
+    --surface: hsl(36, 20%, 94%);
+  }
+
+  [data-mood="modern"] {
+    --background: 0 0% 100%;
+    /* pure white */
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 221 72% 53%;
+    /* corporate blue */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 210 40% 90%;
+    --accent-foreground: 222 47% 11%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 72% 53%;
+    --radius: 8px;
+    --font-heading: 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --shadow-card: 0 0 0 1px hsl(var(--border));
+    --spacing-section: 3rem;
+    --surface: hsl(210, 40%, 98%);
+  }
+
+  [data-mood="spiritual"] {
+    --background: 257 27% 96%;
+    /* misty lavender */
+    --foreground: 260 20% 25%;
+    --card: 0 0% 100%;
+    --card-foreground: 260 20% 25%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 260 20% 25%;
+    --primary: 261 17% 42%;
+    /* soulful purple */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 261 27% 86%;
+    --secondary-foreground: 261 17% 32%;
+    --muted: 261 20% 92%;
+    --muted-foreground: 260 10% 50%;
+    --accent: 261 40% 70%;
+    --accent-foreground: 0 0% 100%;
+    --border: 0 0% 100% / 0.2;
+    --input: 0 0% 100% / 0.6;
+    --ring: 261 40% 70%;
+    --radius: 20px;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Nunito', sans-serif;
+    --shadow-card: inset 0 0 0 1px hsl(var(--border)), 0px 8px 32px 0px rgba(31, 38, 135, 0.1);
+    --spacing-section: 3.5rem;
+    --surface: hsl(257, 27%, 94%);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-slate-100 text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+
+  [data-mood="spiritual"] body {
+    background-image: linear-gradient(to top, #d2c6e0 0%, #e5d9f2 100%);
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: hsl(var(--card) / 0.5);
+    box-shadow: var(--shadow-card);
+    border: 1px solid hsl(var(--border) / 0.18);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+
+  .prose {
+    @apply max-w-none text-foreground;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply pl-4;
+  }
+
+  .prose li {
+    @apply mb-2;
+  }
+
+  .prose p {
+    @apply mb-4;
+  }
+
+  /* Note content normalization */
+  .note-content-container,
+  .note-content-container * {
+    font-style: inherit !important;
+
+  }
+
+  .note-content-container p {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .note-content-container {
+    font-size: clamp(.7rem, 1.5vw, .75rem);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+  }
+
+  /* Day Note Style (Peach Box from image) */
+  .day-note-box {
+    line-height: 1.6;
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+
+  .day-note-box h4 {
+    margin: 0 0 6px 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #431407;
+    line-height: 1.2;
+    font-family: var(--font-heading);
+  }
+
+  .day-note-box strong,
+  .day-note-box b {
+    color: #431407;
+    font-weight: 700;
+  }
+
+  /* Standard Note Bar */
+  .standard-note-bar {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    font-style: normal;
+    margin-top: auto;
+    font-size: clamp(0.8rem, 1.5vw, 0.9375rem);
+    color: #92400e;
+    background-color: #fff7ed;
+    padding: 10px 16px;
+    line-height: 1.7;
+    font-family: var(--font-body);
+    width: 100%;
+    border-radius: 0 0 var(--radius-card) var(--radius-card);
+  }
+
+  .standard-note-bar {
+    color: #92400e;
+    font-size: 11px;
+    line-height: inherit;
+  }
+
+  .standard-note-bar strong {
+    font-style: normal !important;
+    color: #ea580c;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+  }
+
+  /* Responsive Grid Helper */
+  .responsive-card-grid {
+    display: grid;
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media (max-width: 639px) {
+    .responsive-card-grid {
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+    }
+
+    .mobile-stack {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+
+    .mobile-hide {
+      display: none !important;
+    }
+
+    /* ── STRICT MOBILE TYPOGRAPHY OVERRIDES ── */
+    /* Force day card title to 18px max */
+    .day-heading-override {
+      font-size: 18px !important;
+    }
+
+    /* Force card titles (hotels, flights, etc) to 16px max */
+    .card-title-override {
+      font-size: 16px !important;
+    }
+
+    /* Force time locations (departure, arrival, checkin, checkout) to 13px */
+    .time-location-override {
+      font-size: 13px !important;
+    }
+  }
+}
+
+/* ── Note Styling Overrides ── */
+.standard-note-bar {
+  display: block;
+  /* Ensure it is not flex, allowing text flow */
+  margin-top: 12px;
+  padding: 8px 12px;
+  background-color: var(--color-bg);
+  border-left: 1px solid var(--color-primary);
+  border-radius: 4px;
+}
+
+.standard-note-bar strong {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  color: var(--color-primary) !important;
+  margin-right: 6px;
+}
+
+.note-content-container,
+.note-content-container * {
+  display: inline !important;
+  /* Keep content inline with the Note label */
+  /* font-size: 10px !important; */
+  color: var(--color-text) !important;
+  line-height: 1.5 !important;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  .no-print,
+  .switcher-panel-root,
+  button[title="Customize appearance"] {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Reset shell constraint for print */
+  main>div {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+  }
+
+  /* Force Accordion content to be visible */
+  .accordion-content-wrapper {
+    max-height: none !important;
+    display: block !important;
+    opacity: 1 !important;
+  }
+
+  /* Force show Chevron as open or hide it */
+  .accordion-trigger svg {
+    display: none !important;
+  }
+
+  /* Typography adjustments for print */
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+    color: #000 !important;
+  }
+
+  p,
+  span,
+  div {
+    color: #333 !important;
+  }
+
+  /* Avoid breaking cards across pages where possible */
+  .day-card-inner {
+    page-break-inside: avoid;
+    margin-bottom: 20px !important;
+    border: 1px solid #eee !important;
+  }
+
+  /* Ensure background colors and images print if possible */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
