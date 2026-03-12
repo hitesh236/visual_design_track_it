@@ -174,7 +174,7 @@ export function ExecutiveCard({ executive, id }: ExecutiveCardProps) {
         .exec-btn {
           display:         flex;
           align-items:     center;
-          justify-content: center;
+          justifyContent:  center;
           gap:             8px;
           padding:         10px 20px;
           border-radius:   var(--radius-badge);

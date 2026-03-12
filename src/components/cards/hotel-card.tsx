@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useTheme } from '@/context/theme-context';
@@ -41,18 +40,6 @@ function formatTime(val?: string | null): string {
   } catch {
     return val;
   }
-}
-
-// ─── Formatting ──────────────────────────────────────────────────
-function formatPrice(val?: number | string) {
-  if (!val) return '';
-  const n = typeof val === 'string' ? parseFloat(val) : val;
-  if (isNaN(n) || n === 0) return '';
-  return new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
-    maximumFractionDigits: 0,
-  }).format(n);
 }
 
 // ─── Badge ────────────────────────────────────────────────────────
@@ -156,8 +143,7 @@ function HotelImage({
 function HotelCardFull(props: HotelCardProps) {
   const {
     name, rating, location, city_name, state_name, mealPlan,
-    images, showImages, roomConfigurations, notes, checkIn, checkOut,
-    roomType, numberOfRooms, otherCharges
+    images, showImages, roomConfigurations, notes, checkIn, checkOut
   } = props;
   const firstImage = images?.[0];
 
@@ -174,7 +160,7 @@ function HotelCardFull(props: HotelCardProps) {
       }}
     >
       {showImages && (
-        <HotelImage src={firstImage} name={name} rating={rating} className="w-full h-[180px] rounded-t-[var(--radius-card)]" />
+        <HotelImage src={firstImage} name={name} rating={rating} className="w-full h-[180px]" />
       )}
 
       <div style={{ padding: 'var(--spacing-md)' }}>
