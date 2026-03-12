@@ -21,13 +21,6 @@ const STORAGE_KEY_CSS    = 'ti:customCss';
 
 const DEFAULT_LAYOUT: LayoutPreset = 'stacked';
 
-// ─── SSR-safe localStorage reader ────────────────────────────────
-
-function readStorage(key: string, fallback: string): string {
-  if (typeof window === 'undefined') return fallback;
-  return localStorage.getItem(key) ?? fallback;
-}
-
 // ─── Context Shape ───────────────────────────────────────────────
 
 type ThemeContextValue = {
@@ -46,21 +39,29 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 // ─── Provider ────────────────────────────────────────────────────
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [activeMoodId, setActiveMoodId] = useState<string>(
-    () => readStorage(STORAGE_KEY_MOOD, 'nature')
-  );
+  // Initialize with static defaults to ensure server/client match on first pass
+  const [activeMoodId, setActiveMoodId] = useState<string>('nature');
+  const [layout, setLayoutState] = useState<LayoutPreset>(DEFAULT_LAYOUT);
+  const [theme, setThemeState] = useState<ItineraryTheme>(getMoodPreset('nature').theme);
+  const [customCss, setCustomCssState] = useState<string>('');
 
-  const [layout, setLayoutState] = useState<LayoutPreset>(
-    () => readStorage(STORAGE_KEY_LAYOUT, DEFAULT_LAYOUT) as LayoutPreset
-  );
+  // Load from localStorage ONLY after mounting to prevent hydration errors
+  useEffect(() => {
+    const savedMood = localStorage.getItem(STORAGE_KEY_MOOD);
+    const savedLayout = localStorage.getItem(STORAGE_KEY_LAYOUT);
+    const savedCss = localStorage.getItem(STORAGE_KEY_CSS);
 
-  const [theme, setThemeState] = useState<ItineraryTheme>(
-    () => getMoodPreset(readStorage(STORAGE_KEY_MOOD, 'nature')).theme
-  );
-
-  const [customCss, setCustomCssState] = useState<string>(
-    () => readStorage(STORAGE_KEY_CSS, '')
-  );
+    if (savedMood) {
+      setActiveMoodId(savedMood);
+      setThemeState(getMoodPreset(savedMood).theme);
+    }
+    if (savedLayout) {
+      setLayoutState(savedLayout as LayoutPreset);
+    }
+    if (savedCss) {
+      setCustomCssState(savedCss);
+    }
+  }, []);
 
   // Inject CSS vars into <html>
   useEffect(() => {

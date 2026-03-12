@@ -20,13 +20,29 @@ export type DayData = {
 
 function useMobile() {
   const [isMobile, setIsMobile] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
+
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 640);
+    setHasMounted(true);
+    const check = () => {
+      // For hydration safety, check for window and forced mobile frame
+      if (typeof window === 'undefined') return;
+      const frameMobile = document.querySelector('.itinerary-shell[data-forced-mobile="true"]');
+      setIsMobile(window.innerWidth < 640 || !!frameMobile);
+    };
     check();
     window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
+    // Poll briefly to catch the transition from desktop to mobile preview frame
+    const interval = setInterval(check, 500);
+    return () => {
+      window.removeEventListener('resize', check);
+      clearInterval(interval);
+    };
   }, []);
-  return isMobile;
+
+  // During hydration, always return false to match server output.
+  // The layout will "snap" to the correct state immediately after mount.
+  return hasMounted ? isMobile : false;
 }
 
 // ─── Day number pill ──────────────────────────────────────────────
@@ -270,49 +286,6 @@ export function DayCard({
               ...featuredExtras,
             }}
         >
-          {/* Featured banner — only shown when isFeatured */}
-          {isFeatured && (
-            <div
-              style={{
-                display:         'flex',
-                alignItems:      'center',
-                justifyContent:  'center',
-                gap:             '6px',
-                padding:         '6px var(--spacing-lg)',
-                backgroundColor: 'var(--color-primary)',
-                color:           'var(--color-text-on-primary)',
-                fontFamily:      'var(--font-body)',
-                fontSize:        '11px',
-                fontWeight:      700,
-                letterSpacing:   '0.08em',
-                textTransform:   'uppercase',
-                // Negative margin to bleed to card edges
-                margin:          isCompact
-                                  ? 'calc(-1 * var(--spacing-sm)) calc(-1 * var(--spacing-md)) var(--spacing-sm)'
-                                  : 'calc(-1 * var(--spacing-lg)) calc(-1 * var(--spacing-lg)) var(--spacing-md)',
-                borderRadius:    `var(--radius-card) var(--radius-card) 0 0`,
-              }}
-            >
-              {/* Star icon */}
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="var(--color-text-on-primary)"
-              >
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-              </svg>
-              Key Highlight
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="var(--color-text-on-primary)"
-              >
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-              </svg>
-            </div>
-          )}
           {/* Left column */}
           <div
             style={{
@@ -384,20 +357,6 @@ export function DayCard({
             gridTemplateColumns: '1fr',
             gap: isCompact ? '6px' : layout === 'timeline' ? '0' : 'var(--spacing-md)',
           }}>
-            {/* The continuous vertical line for Timeline layout (Desktop only) */}
-            {layout === 'timeline' && (
-               <div className="mobile-hide" style={{
-                 position: 'absolute',
-                 left: '15%',
-                 transform: 'translateX(15px)', // 5% col width is roughly 32px, center of that is 16px. Also account for gap padding.
-                 top: 0,
-                 bottom: 0,
-                 width: '2px',
-                 backgroundColor: 'var(--color-border)',
-                 zIndex: 0
-               }} />
-            )}
-
             <ComponentRenderer
               components={
                 layoutConfig.dayCard.direction === 'row' && !isMobile

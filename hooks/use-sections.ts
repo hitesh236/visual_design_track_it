@@ -27,10 +27,11 @@ const DEFAULT_SECTIONS: Section[] = [
 const STORAGE_KEY = 'ti:sections';
 
 export function useSections() {
-  const [sections, setSections] = useState<Section[]>(() => {
-    if (typeof window === 'undefined') return DEFAULT_SECTIONS;
+  const [sections, setSections] = useState<Section[]>(DEFAULT_SECTIONS);
+
+  useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved) return DEFAULT_SECTIONS;
+    if (!saved) return;
     try {
       const parsed = JSON.parse(saved) as Section[];
       
@@ -49,11 +50,11 @@ export function useSections() {
 
       const missing = DEFAULT_SECTIONS.filter(d => !merged.find(m => m.id === d.id));
       
-      return [...merged, ...missing];
-    } catch {
-      return DEFAULT_SECTIONS;
+      setSections([...merged, ...missing]);
+    } catch (e) {
+      console.warn('Failed to parse sections from storage', e);
     }
-  });
+  }, []);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(sections));

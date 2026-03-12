@@ -30,21 +30,22 @@ const DEFAULTS: ExecutiveData = {
 
 const STORAGE_KEY = 'ti:executive';
 
-function readFromStorage(): ExecutiveData {
-  if (typeof window === 'undefined') return DEFAULTS;
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return DEFAULTS;
-    return { ...DEFAULTS, ...JSON.parse(raw) };
-  } catch {
-    return DEFAULTS;
-  }
-}
-
 // ─── Hook ────────────────────────────────────────────────────────
 
 export function useExecutive() {
-  const [executive, setExecutiveState] = useState<ExecutiveData>(readFromStorage);
+  const [executive, setExecutiveState] = useState<ExecutiveData>(DEFAULTS);
+
+  useEffect(() => {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      try {
+        const parsed = JSON.parse(raw);
+        setExecutiveState({ ...DEFAULTS, ...parsed });
+      } catch (e) {
+        console.warn('Failed to parse executive data from storage', e);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(executive));

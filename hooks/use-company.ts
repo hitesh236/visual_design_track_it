@@ -26,21 +26,23 @@ const DEFAULTS: CompanyData = {
 
 const STORAGE_KEY = 'ti:company';
 
-function readFromStorage(): CompanyData {
-  if (typeof window === 'undefined') return DEFAULTS;
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return DEFAULTS;
-    return { ...DEFAULTS, ...JSON.parse(raw) };
-  } catch {
-    return DEFAULTS;
-  }
-}
-
 // ─── Hook ────────────────────────────────────────────────────────
 
 export function useCompany() {
-  const [company, setCompanyState] = useState<CompanyData>(readFromStorage);
+  const [company, setCompanyState] = useState<CompanyData>(DEFAULTS);
+
+  // Load from localStorage only after mount
+  useEffect(() => {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      try {
+        const parsed = JSON.parse(raw);
+        setCompanyState({ ...DEFAULTS, ...parsed });
+      } catch (e) {
+        console.warn('Failed to parse company data from storage', e);
+      }
+    }
+  }, []);
 
   // Persist to localStorage on every change
   useEffect(() => {
