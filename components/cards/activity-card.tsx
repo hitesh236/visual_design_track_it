@@ -4,25 +4,27 @@ type ActivityCardProps = {
   name: string;
   description?: string;
   images?: string[];
-  displayMode: 'card' | 'row';
+  displayMode: 'card' | 'row' | 'horizontal-card';
   showImages?: boolean;
   showDescriptions?: boolean;
 };
 
 // ─── Image with fallback ──────────────────────────────────────────
 
-function ActivityImage({ src, name }: { src?: string; name: string }) {
+function ActivityImage({ src, name, size = '160px', horizontal = false }: { src?: string; name: string; size?: string; horizontal?: boolean }) {
   if (!src) {
     return (
       <div
         style={{
-          width: '100%',
-          height: '160px',
-          borderRadius: 'var(--radius-badge)',
+          width: horizontal ? '180px' : '100%',
+          height: horizontal ? '100%' : size,
+          minHeight: horizontal ? '140px' : 'auto',
+          borderRadius: horizontal ? '0' : 'var(--radius-badge)',
           background: 'linear-gradient(135deg, var(--color-activity), var(--color-primary-light))',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          flexShrink: 0,
         }}
       >
         {/* Camera / activity ticket icon */}
@@ -37,10 +39,12 @@ function ActivityImage({ src, name }: { src?: string; name: string }) {
   return (
     <div
       style={{
-        width: '100%',
-        height: '160px',
-        borderRadius: 'var(--radius-badge)',
+        width: horizontal ? '180px' : '100%',
+        height: horizontal ? '100%' : size,
+        minHeight: horizontal ? '140px' : 'auto',
+        borderRadius: horizontal ? '0' : 'var(--radius-badge)',
         overflow: 'clip',
+        flexShrink: 0,
       }}
     >
       <img
@@ -155,6 +159,76 @@ function ActivityCardFull({
   );
 }
 
+// ─── Horizontal variant (for Mini-Compact) ────────────────────────
+
+function ActivityCardHorizontal({
+  name,
+  description,
+  images,
+  showImages,
+  showDescriptions,
+}: ActivityCardProps) {
+  const firstImage = images?.[0];
+
+  return (
+    <div
+      style={{
+        borderRadius: 'var(--radius-card)',
+        border: '1px solid var(--color-border)',
+        overflow: 'hidden',
+        backgroundColor: 'var(--color-surface)',
+        display: 'flex',
+        minHeight: '140px',
+        boxShadow: 'var(--shadow-card)',
+      }}
+    >
+      {/* Image on Left */}
+      {showImages && (
+        <ActivityImage src={firstImage} name={name} horizontal />
+      )}
+
+      {/* Content on Right */}
+      <div style={{ padding: 'var(--spacing-md)', flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', marginBottom: '8px' }}>
+          <h3 style={{
+            fontFamily: 'var(--font-heading)',
+            fontSize: '1rem',
+            fontWeight: 700,
+            color: 'var(--color-text)',
+            lineHeight: 1.3,
+            margin: 0,
+          }}>
+            {name}
+          </h3>
+          <span style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '4px',
+            padding: '2px 8px',
+            borderRadius: '999px',
+            backgroundColor: 'var(--color-activity)',
+            color: '#ffffff',
+            fontSize: '9px',
+            fontWeight: 700,
+            textTransform: 'uppercase',
+            whiteSpace: 'nowrap',
+          }}>
+            Activity
+          </span>
+        </div>
+
+        {showDescriptions && description && (
+          <div
+            className="note-content-container"
+            style={{ fontSize: '0.75rem', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: '4', WebkitBoxOrient: 'vertical' }}
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ─── Row variant (compact) ────────────────────────────────────────
 // Shows only the activity name — no description, no images.
 
@@ -216,6 +290,9 @@ function ActivityRow({ name }: ActivityCardProps) {
 export function ActivityCard(props: ActivityCardProps) {
   if (props.displayMode === 'row') {
     return <ActivityRow {...props} />;
+  }
+  if (props.displayMode === 'horizontal-card') {
+    return <ActivityCardHorizontal {...props} />;
   }
   return <ActivityCardFull {...props} />;
 }

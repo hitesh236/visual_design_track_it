@@ -11,8 +11,6 @@ import { BusCard } from '@/components/cards/bus-row';
 import { FlightCard } from '@/components/cards/flight-card';
 
 // ─── Placeholder components ───────────────────────────────────────
-// These will be replaced one by one in T23–T28.
-// Each returns a minimal labelled box so the layout is visible now.
 
 function PlaceholderCard({
   type,
@@ -92,8 +90,6 @@ function isKnownType(t: string): t is ComponentType {
 }
 
 // ─── Single component renderer ────────────────────────────────────
-// Reads layoutConfig to decide card vs row display.
-// Each case will be replaced with a real component in T23–T28.
 
 function SingleComponent({
   component,
@@ -102,7 +98,7 @@ function SingleComponent({
   showDescriptions,
 }: {
   component: any;
-  displayMode: 'card' | 'row' | 'boarding-pass' | 'box' | 'inline';
+  displayMode: 'card' | 'row' | 'boarding-pass' | 'box' | 'inline' | 'horizontal-card';
   showImages: boolean;
   showDescriptions: boolean;
 }) {
@@ -110,7 +106,6 @@ function SingleComponent({
     ? component.component_type
     : 'Note';
 
-  // T23–T28 will replace these placeholders:
   switch (type) {
     case 'Note':
       return (
@@ -137,7 +132,7 @@ function SingleComponent({
           otherCharges={component.details?.otherCharges}
           price={component.price}
           images={(component.images ?? []).map((img: any) => img.url)}
-          displayMode={displayMode as 'card' | 'row'}
+          displayMode={displayMode as 'card' | 'row' | 'horizontal-card'}
           showImages={showImages}
           showDescriptions={showDescriptions}
           notes={component.description}
@@ -151,7 +146,7 @@ function SingleComponent({
           name={component.name ?? 'Activity'}
           description={component.description}
           images={(component.images ?? []).map((img: any) => img.url)}
-          displayMode={displayMode as 'card' | 'row'}
+          displayMode={displayMode as 'card' | 'row' | 'horizontal-card'}
           showImages={showImages}
           showDescriptions={showDescriptions}
         />
@@ -168,7 +163,7 @@ function SingleComponent({
         <FlightCard
           airlineName={c.details?.airline_name}
           segments={segs.length > 0 ? segs : [{}]}
-          passengerName={c.details?.passenger_name ?? 'Manvinder'}
+          passengerName={c.details?.passenger_name ?? 'Guest'}
           price={c.price}
           fareType={c.details?.fareType ?? 'Refundable'}
           status={c.details?.status ?? 'Confirmed'}

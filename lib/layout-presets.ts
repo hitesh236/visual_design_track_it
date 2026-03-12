@@ -25,8 +25,8 @@ export type LayoutConfig = {
 
   // Component cards inside each day
   componentDisplay: {
-    hotel: 'card' | 'row';             // card = image + details, row = single line
-    activity: 'card' | 'row';
+    hotel: 'card' | 'row' | 'horizontal-card';             // card = image + details, row = single line
+    activity: 'card' | 'row' | 'horizontal-card';
     transport: 'row';                   // always a row, never a card
     flight: 'boarding-pass' | 'row';   // compact uses simple row
     note: 'box' | 'inline';            // inline = no background box
@@ -105,11 +105,11 @@ export const LAYOUT_PRESETS: LayoutConfig[] = [
   {
     id: 'mini-compact',
     label: 'Mini-Compact',
-    description: 'Minimalist single-column view for efficiency.',
+    description: 'Detailed horizontal view. Space efficient but complete.',
     dayCard: {
       direction:          'column',
-      showImages:         false,
-      showDescriptions:   false,
+      showImages:         true,
+      showDescriptions:   true,
       componentColumns:   1,
     },
     timeline: {
@@ -117,11 +117,11 @@ export const LAYOUT_PRESETS: LayoutConfig[] = [
       style: 'none',
     },
     componentDisplay: {
-      hotel:     'row',
-      activity:  'row',
+      hotel:     'horizontal-card',
+      activity:  'horizontal-card',
       transport: 'row',
       flight:    'row',
-      note:      'inline',
+      note:      'box',
     },
   },
 ];
