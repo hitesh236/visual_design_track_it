@@ -69,9 +69,10 @@
   .note-content-container,
   .note-content-container * {
     font-style: inherit !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
   }
 
   .note-content-container p {
