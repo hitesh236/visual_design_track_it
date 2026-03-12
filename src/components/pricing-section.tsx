@@ -56,7 +56,7 @@ function SectionHeader() {
       className="pricing-header"
       style={{
         display:               'grid',
-        gridTemplateColumns:   '60px 1fr 100px 90px',
+        gridTemplateColumns:   '60px minmax(0, 1fr) 100px 90px',
         gap:                   'var(--spacing-sm)',
         padding:               'var(--spacing-sm) var(--spacing-md)',
         borderRadius:          'var(--radius-badge)',
@@ -102,7 +102,7 @@ function PricingRow({
       className="pricing-row"
       style={{
         display:             'grid',
-        gridTemplateColumns: '60px 1fr 100px 90px',
+        gridTemplateColumns: '60px minmax(0, 1fr) 100px 90px',
         gap:                 'var(--spacing-sm)',
         padding:             'var(--spacing-sm) var(--spacing-md)',
         borderBottom:        isLast
@@ -348,7 +348,7 @@ export function PricingSection({ items, totalPrice }: PricingSectionProps) {
           }
           .pricing-row {
             display: grid !important;
-            grid-template-columns: auto 1fr !important;
+            grid-template-columns: auto minmax(0, 1fr) !important;
             grid-template-areas: 
               "day name"
               "type price" !important;

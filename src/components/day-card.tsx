@@ -373,12 +373,15 @@ export function DayCard({
             }} />
           )}
 
-          {/* Right column — components (always single column full-width) */}
+          {/* Right column — components */}
           <div style={{
             flex: 1,
             position: 'relative',
             display: 'grid',
-            gridTemplateColumns: '1fr',
+            // Crucial fix: minmax(0, 1fr) ensures the column can shrink
+            gridTemplateColumns: (layoutConfig.dayCard.componentColumns === 2 && !isMobile) 
+              ? 'repeat(2, minmax(0, 1fr))' 
+              : 'minmax(0, 1fr)',
             gap: isCompact ? '6px' : layout === 'timeline' ? '0' : 'var(--spacing-md)',
             minWidth: 0,
             maxWidth: '100%',
