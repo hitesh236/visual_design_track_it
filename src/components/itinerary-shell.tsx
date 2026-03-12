@@ -1,7 +1,19 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, createContext, useContext } from 'react';
 import { useTheme } from '@/context/theme-context';
+
+// ─── Shell Context ───────────────────────────────────────────────
+
+type ShellContextValue = {
+  forcedMobile: boolean;
+};
+
+const ShellContext = createContext<ShellContextValue>({ forcedMobile: false });
+
+export function useShell() {
+  return useContext(ShellContext);
+}
 
 // ─── Google Fonts Loader ─────────────────────────────────────────
 
@@ -37,42 +49,40 @@ export function ItineraryShell({ children, forcedMobile = false }: ItineraryShel
   useGoogleFonts(theme.headingFont, theme.bodyFont);
 
   return (
-    <main
-      className="itinerary-shell"
-      data-forced-mobile={forcedMobile ? "true" : "false"}
-      style={{
-        backgroundColor: 'var(--color-bg)',
-        color:            'var(--color-text)',
-        fontFamily:       'var(--font-body)',
-        minHeight:        '100vh',
-        width:            '100%',
-        maxWidth:         '100%',
-        backgroundImage: `radial-gradient(
-      var(--color-border) 1px,
-      transparent 1px
-    )`,
-        backgroundSize:  '24px 24px',
-        boxSizing:       'border-box',
-        overflowX:       'hidden',
-      }}
-    >
-      <div
-        className="itinerary-inner-wrapper"
+    <ShellContext.Provider value={{ forcedMobile }}>
+      <main
+        className="itinerary-shell"
+        data-forced-mobile={forcedMobile ? "true" : "false"}
         style={{
-          maxWidth:        forcedMobile ? '100%' : '860px',
-          width:           '100%',
-          margin:          '0 auto',
-          padding:         forcedMobile ? '0' : '0 var(--spacing-md)',
           backgroundColor: 'var(--color-bg)',
-          minHeight:       '100vh',
-          boxShadow:       forcedMobile ? 'none' : 'var(--shadow-elevated)',
+          color:            'var(--color-text)',
+          fontFamily:       'var(--font-body)',
+          minHeight:        '100vh',
+          width:            '100%',
+          backgroundImage: `radial-gradient(var(--color-border) 1px, transparent 1px)`,
+          backgroundSize:  '24px 24px',
           boxSizing:       'border-box',
           overflowX:       'hidden',
-          position:        'relative',
         }}
       >
-        {children}
-      </div>
-    </main>
+        <div
+          className="itinerary-inner-wrapper"
+          style={{
+            maxWidth:        forcedMobile ? '100%' : '860px',
+            width:           '100%',
+            margin:          '0 auto',
+            padding:         forcedMobile ? '0' : '0 var(--spacing-md)',
+            backgroundColor: 'var(--color-bg)',
+            minHeight:       '100vh',
+            boxShadow:       forcedMobile ? 'none' : 'var(--shadow-elevated)',
+            boxSizing:       'border-box',
+            overflowX:       'hidden',
+            position:        'relative',
+          }}
+        >
+          {children}
+        </div>
+      </main>
+    </ShellContext.Provider>
   );
 }

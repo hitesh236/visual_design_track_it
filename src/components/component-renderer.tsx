@@ -10,6 +10,7 @@ import { TransportCard } from '@/components/cards/transport-row';
 import { TrainCard } from '@/components/cards/train-row';
 import { BusCard } from '@/components/cards/bus-row';
 import { FlightCard } from '@/components/cards/flight-card';
+import { useShell } from '@/components/itinerary-shell';
 
 // ─── Placeholder component ───────────────────────────────────────
 
@@ -87,6 +88,7 @@ export function ComponentRenderer({
   dayNumber,
 }: ComponentRendererProps) {
   const { layout } = useTheme();
+  const { forcedMobile } = useShell();
   const layoutConfig = getLayoutConfig(layout);
   const isTimeline = layout === 'timeline';
 
@@ -163,12 +165,15 @@ export function ComponentRenderer({
               .timeline-desktop-time, .timeline-desktop-node { display: none; }
               .timeline-desktop-content { display: block; position: relative; width: 100%; box-sizing: border-box; }
               .timeline-mobile-header { display: flex; width: 100%; box-sizing: border-box; }
+              
+              /* Use (min-width: 640px) AND not forced-mobile */
               @media (min-width: 640px) {
-                .timeline-item-layout[data-key="${component.id ?? i}"] { flex-direction: row; gap: 0; align-items: flex-start; }
-                .timeline-desktop-time { display: block; width: 134px; padding-right: 24px; flex-shrink: 0; box-sizing: border-box; text-align: right; font-size: 14px; font-weight: 600; color: var(--color-primary); font-family: var(--font-heading); white-space: pre-line; line-height: 20px; }
-                .timeline-desktop-node { display: block; position: absolute; left: 134px; top: 0; bottom: -24px; width: 2px; background-color: ${i === components.length - 1 ? 'transparent' : 'var(--color-border)'}; z-index: 0; }
-                .timeline-desktop-content { flex: 1; padding-left: 32px; min-width: 0; }
-                .timeline-mobile-header, .timeline-mobile-connector { display: none; }
+                .itinerary-shell:not([data-forced-mobile="true"]) .timeline-item-layout[data-key="${component.id ?? i}"] { flex-direction: row; gap: 0; align-items: flex-start; }
+                .itinerary-shell:not([data-forced-mobile="true"]) .timeline-desktop-time { display: block; width: 134px; padding-right: 24px; flex-shrink: 0; box-sizing: border-box; text-align: right; font-size: 14px; font-weight: 600; color: var(--color-primary); font-family: var(--font-heading); white-space: pre-line; line-height: 20px; }
+                .itinerary-shell:not([data-forced-mobile="true"]) .timeline-desktop-node { display: block; position: absolute; left: 134px; top: 0; bottom: -24px; width: 2px; background-color: ${i === components.length - 1 ? 'transparent' : 'var(--color-border)'}; z-index: 0; }
+                .itinerary-shell:not([data-forced-mobile="true"]) .timeline-desktop-content { flex: 1; padding-left: 32px; min-width: 0; }
+                .itinerary-shell:not([data-forced-mobile="true"]) .timeline-mobile-header, 
+                .itinerary-shell:not([data-forced-mobile="true"]) .timeline-mobile-connector { display: none; }
               }
             `}</style>
             <div className="timeline-item-layout" data-key={component.id ?? i}>
