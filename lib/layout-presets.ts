@@ -33,7 +33,7 @@ export type LayoutConfig = {
   };
 };
 
-// ─── 3 Layout Presets ────────────────────────────────────────────
+// ─── 4 Layout Presets ────────────────────────────────────────────
 
 export const LAYOUT_PRESETS: LayoutConfig[] = [
   {
@@ -89,6 +89,28 @@ export const LAYOUT_PRESETS: LayoutConfig[] = [
       showImages:         false,
       showDescriptions:   false,
       componentColumns:   2,
+    },
+    timeline: {
+      show:  false,
+      style: 'none',
+    },
+    componentDisplay: {
+      hotel:     'row',
+      activity:  'row',
+      transport: 'row',
+      flight:    'row',
+      note:      'inline',
+    },
+  },
+  {
+    id: 'mini-compact',
+    label: 'Mini-Compact',
+    description: 'Minimalist single-column view for efficiency.',
+    dayCard: {
+      direction:          'column',
+      showImages:         false,
+      showDescriptions:   false,
+      componentColumns:   1,
     },
     timeline: {
       show:  false,

@@ -1,4 +1,4 @@
-export type LayoutPreset = 'stacked' | 'timeline' | 'compact';
+export type LayoutPreset = 'stacked' | 'timeline' | 'compact' | 'mini-compact';
 
 export type ItineraryTheme = {
   primaryColor: string;
