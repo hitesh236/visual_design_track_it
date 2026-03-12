@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { useTheme } from '@/context/theme-context';
 import { getLayoutConfig } from '@/lib/layout-presets';
 import { NoteCard } from '@/components/cards/note-card';
@@ -148,7 +149,7 @@ export function ComponentRenderer({
         if (!componentEl) return null;
 
         if (!isTimeline) {
-          return componentEl;
+          return <React.Fragment key={component.id ?? i}>{componentEl}</React.Fragment>;
         }
 
         return (
