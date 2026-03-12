@@ -23,11 +23,6 @@
     --border: 210 30% 85%;
     --input: 210 30% 85%;
     --ring: 210 50% 40%;
-    --chart-1: 210 50% 40%;
-    --chart-2: 180 64% 55%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
   .dark {
@@ -65,7 +60,7 @@
 }
 
 @layer components {
-  /* Note content normalization and safety */
+  /* Strict width constraints for all content containers */
   .note-content-container,
   .note-content-container * {
     font-style: inherit !important;
