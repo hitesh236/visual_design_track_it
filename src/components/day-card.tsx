@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -21,8 +20,13 @@ export type DayData = {
 
 function useMobile() {
   const [isMobile, setIsMobile] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
+
   useEffect(() => {
+    setHasMounted(true);
     const check = () => {
+      // For hydration safety, check for window and forced mobile frame
+      if (typeof window === 'undefined') return;
       const frameMobile = document.querySelector('.itinerary-shell[data-forced-mobile="true"]');
       setIsMobile(window.innerWidth < 640 || !!frameMobile);
     };
@@ -35,7 +39,10 @@ function useMobile() {
       clearInterval(interval);
     };
   }, []);
-  return isMobile;
+
+  // During hydration, always return false to match server output.
+  // The layout will "snap" to the correct state immediately after mount.
+  return hasMounted ? isMobile : false;
 }
 
 // ─── Day number pill ──────────────────────────────────────────────
@@ -93,8 +100,11 @@ function DayHeader({
           paddingBottom:   'var(--spacing-sm)',
           marginBottom:    'var(--spacing-sm)',
           borderBottom:    '1px solid var(--color-border)',
+          width:           '100%',
+          boxSizing:       'border-box',
         }}
       >
+        {/* Day label */}
         <span
           style={{
             display:         'inline-flex',
@@ -112,6 +122,7 @@ function DayHeader({
           DAY {dayNumber}
         </span>
 
+        {/* Title only — no date in compact mode */}
         <span
           style={{
             fontFamily:   'var(--font-body)',
@@ -119,6 +130,10 @@ function DayHeader({
             fontWeight:   600,
             color:        'var(--color-primary)',
             flex:         1,
+            minWidth:     0,
+            overflow:     'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace:   'nowrap',
           }}
         >
           {cleanTitle}
@@ -127,6 +142,7 @@ function DayHeader({
     );
   }
 
+  // ── Default: pill + stacked title (stacked + split layouts) ──────
   return (
     <div
       style={{
@@ -134,20 +150,23 @@ function DayHeader({
         alignItems:   'center',
         gap:          '12px',
         marginBottom: 'var(--spacing-md)',
+        width:        '100%',
+        boxSizing:    'border-box',
       }}
     >
       <DayPill number={dayNumber} />
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, minWidth: 0 }}>
         <h2
           className="day-heading-override"
           style={{
             fontFamily:   'var(--font-heading)',
-            fontSize:     'clamp(1.1rem, 2.5vw, 1.125rem)',
+            fontSize:     'clamp(1.1rem, 2.5vw, 1.125rem)', // Max 18px
             fontWeight:   700,
             color:        'var(--color-primary)',
             lineHeight:   1.2,
             marginBottom: '4px',
             margin:       0,
+            wordBreak:    'break-word',
           }}
         >
           {cleanTitle}
@@ -178,8 +197,8 @@ function TimelineConnector({ style: lineStyle }: { style: 'line' | 'dotted' | 'n
       className="day-timeline-connector"
       style={{
         position:        'absolute',
-        left:            'calc(var(--spacing-lg) + 19px)',
-        top:             'calc(var(--spacing-lg) + 40px)',
+        left:            'calc(var(--spacing-lg) + 19px)', // accounts for card padding
+        top:             'calc(var(--spacing-lg) + 40px)', // accounts for card padding
         bottom:          `calc(-1 * var(--spacing-section))`,
         width:           '2px',
         backgroundColor: lineStyle === 'dotted'
@@ -217,6 +236,17 @@ export function DayCard({
 
   const isFeatured = day.isFeatured ?? false;
 
+  // Featured card gets a primary color top border + glow
+  const featuredExtras: React.CSSProperties = isFeatured
+    ? {
+        borderColor: 'var(--color-primary)',
+        boxShadow:   `
+          0 0 0 1px var(--color-primary),
+          var(--shadow-elevated)
+        `,
+      }
+    : {};
+
   const isCompact = layoutConfig.dayCard.direction === 'column'
                && !layoutConfig.dayCard.showImages;
 
@@ -243,6 +273,8 @@ export function DayCard({
         style={{
           position:     'relative',
           marginBottom: isLast ? 0 : 'var(--spacing-section)',
+          maxWidth:     '100%',
+          boxSizing:    'border-box',
         }}
       >
         {!isLast && <TimelineConnector style={layoutConfig.timeline.style} />}
@@ -255,21 +287,24 @@ export function DayCard({
               backgroundColor:      isGlass ? 'rgba(255,255,255,0.45)' : 'var(--color-surface)',
               backdropFilter:       isGlass ? 'blur(12px)' : undefined,
               WebkitBackdropFilter: isGlass ? 'blur(12px)' : undefined,
-              borderRadius:         layout === 'timeline' ? '0' : 'var(--radius-card)',
+              borderRadius:         layout === 'timeline' ? '0' : 'var(--radius-card)', // timeline uses full width flow
               border:               layout === 'timeline' ? 'none' : '1px solid var(--color-border)',
               boxShadow:            layout === 'timeline' ? 'none' : 'var(--shadow-card)',
               padding:              isCompact
                                       ? 'var(--spacing-sm) var(--spacing-md)'
                                       : layout === 'timeline'
-                                        ? 'var(--spacing-lg) 0'
+                                        ? 'var(--spacing-lg) 0' // remove horizontal padding for timeline grid to flush left/right
                                         : 'var(--spacing-lg)',
               display:              layoutConfig.dayCard.direction === 'row' && !isMobile ? 'flex' : 'block',
               gap:                  layoutConfig.dayCard.direction === 'row' && !isMobile
                                       ? 'var(--spacing-md)'
                                       : undefined,
               alignItems:           'flex-start',
-              maxWidth:             layout === 'timeline' ? '794px' : 'none',
+              maxWidth:             '100%',
+              width:                layout === 'timeline' ? '794px' : '100%',
               margin:               layout === 'timeline' ? '0 auto' : '0',
+              boxSizing:            'border-box',
+              ...featuredExtras,
             }}
         >
           {/* Left column */}
@@ -283,6 +318,8 @@ export function DayCard({
               top:       '80px',
               alignSelf: 'flex-start',
               padding:   layout === 'timeline' ? '0 16px' : '0',
+              boxSizing: 'border-box',
+              minWidth:  0,
             }}
           >
             <DayHeader dayNumber={day.day_number} title={day.title} date={date} compact={isCompact} />
@@ -299,11 +336,30 @@ export function DayCard({
                   fontFamily: 'var(--font-body)',
                   margin:     '0',
                   paddingTop: 'var(--spacing-sm)',
+                  wordBreak:  'break-word',
                 }}>
                   {plainText}
                 </p>
               );
             })()}
+
+            {layoutConfig.dayCard.direction === 'row' && !isMobile && (
+              <div style={{
+                marginTop:       'var(--spacing-sm)',
+                display:         'inline-flex',
+                alignItems:      'center',
+                gap:             '4px',
+                padding:         '3px 10px',
+                borderRadius:    '999px',
+                backgroundColor: 'var(--color-primary-muted)',
+                color:           'var(--color-primary-dark)',
+                fontSize:        'clamp(0.65rem, 1.1vw, 0.75rem)',
+                fontWeight:      600,
+                fontFamily:      'var(--font-body)',
+              }}>
+                {day.components.filter(c => c.component_type !== 'Note').length} stops
+              </div>
+            )}
           </div>
 
           {/* Divider */}
@@ -317,13 +373,15 @@ export function DayCard({
             }} />
           )}
 
-          {/* Right column */}
+          {/* Right column — components (always single column full-width) */}
           <div style={{
             flex: 1,
             position: 'relative',
             display: 'grid',
             gridTemplateColumns: '1fr',
             gap: isCompact ? '6px' : layout === 'timeline' ? '0' : 'var(--spacing-md)',
+            minWidth: 0,
+            maxWidth: '100%',
           }}>
             <ComponentRenderer
               components={

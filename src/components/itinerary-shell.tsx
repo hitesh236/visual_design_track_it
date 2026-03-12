@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useEffect } from 'react';
@@ -47,11 +46,14 @@ export function ItineraryShell({ children, forcedMobile = false }: ItineraryShel
         fontFamily:       'var(--font-body)',
         minHeight:        '100vh',
         width:            '100%',
+        maxWidth:         '100%',
         backgroundImage: `radial-gradient(
       var(--color-border) 1px,
       transparent 1px
     )`,
         backgroundSize:  '24px 24px',
+        boxSizing:       'border-box',
+        overflowX:       'hidden',
       }}
     >
       <div
@@ -66,6 +68,7 @@ export function ItineraryShell({ children, forcedMobile = false }: ItineraryShel
           boxShadow:       forcedMobile ? 'none' : 'var(--shadow-elevated)',
           boxSizing:       'border-box',
           overflowX:       'hidden',
+          position:        'relative',
         }}
       >
         {children}
