@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -58,7 +57,6 @@ export default function Page() {
     };
   };
 
-  // Group all visible info sections together to render under a single header
   const visibleSections = sections.filter(s => s.isVisible);
   const firstVisibleInfoId = visibleSections.find(s => s.id.startsWith('info_'))?.id;
 
@@ -66,7 +64,7 @@ export default function Page() {
     'info_inclusions': 'inclus',
     'info_exclusions': 'exclus',
     'info_terms': 'term',
-    'info_refund': 'refund', // also maps to 'cancel' internally
+    'info_refund': 'refund',
     'info_payment': 'payment',
     'info_amendment': 'amend',
     'info_why': 'why',
@@ -90,7 +88,7 @@ export default function Page() {
 
         switch (section.id) {
           case 'company':
-            return <div key="company" id="section-company"><CompanyHeader company={company} /></div>;
+            return <CompanyHeader key="company" id="section-company" company={company} />;
           case 'hero':
             return (
               <HeroSection
@@ -106,23 +104,16 @@ export default function Page() {
                 components={d.components}
               />
             );
-          
           case 'greeting':
             return d.greeting_message ? <GreetingSection key="greeting" html={d.greeting_message} /> : null;
-
           case 'days':
-            return (
-              <div key="days" style={{ position: 'relative' }}>
-                {days.map((day, i) => (
-                  <DayCard
-                    key={day.day_number}
-                    day={day}
-                    isLast={i === days.length - 1}
-                  />
-                ))}
-              </div>
-            );
-
+            return days.map((day, i) => (
+              <DayCard
+                key={day.day_number}
+                day={day}
+                isLast={i === days.length - 1}
+              />
+            ));
           case 'pricing':
             return (
               <PricingSection
@@ -139,7 +130,6 @@ export default function Page() {
                 totalPrice={d.final_price}
               />
             );
-
           case 'info_inclusions':
           case 'info_exclusions':
           case 'info_terms':
@@ -151,10 +141,8 @@ export default function Page() {
               return <InfoSections key="info_group" sections={collectedInfoSections} />;
             }
             return null;
-
           case 'executive':
-            return <div key="executive" id="section-executive"><ExecutiveCard executive={executive} /></div>;
-
+            return <ExecutiveCard key="executive" id="section-executive" executive={executive} />;
           default:
             return null;
         }
@@ -164,124 +152,52 @@ export default function Page() {
   );
 
   return (
-    <>
+    <div className="flex-root">
       <style>{`
-        .flex-root {
-          display: flex;
-          min-height: 100vh;
-        }
-
-        /* ── Desktop layout ── */
-        .preview-area {
-          flex: 1;
-          overflow-y: auto;
-          transition: margin-right 0.3s ease;
-          background: var(--color-bg);
-        }
-        :root[data-sidebar-open="true"] .preview-area {
-          margin-right: 320px;
-        }
-
-        /* ── Mobile preview wrapper ── */
-        .mobile-preview-bg {
-          flex: 1;
-          overflow-y: auto;
-          background: #e2e8f0;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 32px 16px 60px;
-          transition: margin-right 0.3s ease;
-        }
-        :root[data-sidebar-open="true"] .mobile-preview-bg {
-          margin-right: 320px;
-        }
-        .mobile-device-frame {
-          width: 375px;
-          max-width: 100%;
-          background: #ffffff;
-          border-radius: 40px;
-          box-shadow:
-            0 0 0 8px #1e293b,
-            0 0 0 10px #334155,
-            0 30px 60px rgba(0,0,0,0.4);
-          overflow: hidden;
-          position: relative;
-        }
-        /* Notch */
-        .mobile-device-frame::before {
-          content: '';
-          display: block;
-          width: 120px;
-          height: 28px;
-          background: #1e293b;
-          border-radius: 0 0 18px 18px;
-          margin: 0 auto;
-          position: relative;
-          z-index: 2;
-        }
-        .mobile-scroll-area {
-          height: 780px;
-          overflow-y: auto;
-          overscroll-behavior: contain;
-        }
-        /* Home indicator */
-        .mobile-device-frame::after {
-          content: '';
-          display: block;
-          width: 100px;
-          height: 4px;
-          background: #1e293b;
-          border-radius: 4px;
-          margin: 12px auto;
-        }
-        .mobile-label {
-          margin-top: 16px;
-          font-size: 11px;
-          font-weight: 600;
-          color: #64748b;
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          font-family: var(--font-body, sans-serif);
-        }
+        .flex-root { display: flex; min-height: 100vh; }
+        .preview-area { flex: 1; overflow-y: auto; transition: margin-right 0.3s ease; background: var(--color-bg); }
+        :root[data-sidebar-open="true"] .preview-area { margin-right: 320px; }
+        .mobile-preview-bg { flex: 1; overflow-y: auto; background: #e2e8f0; display: flex; flex-direction: column; align-items: center; padding: 32px 16px 60px; transition: margin-right 0.3s ease; }
+        :root[data-sidebar-open="true"] .mobile-preview-bg { margin-right: 320px; }
+        .mobile-device-frame { width: 375px; max-width: 100%; background: #ffffff; border-radius: 40px; box-shadow: 0 0 0 8px #1e293b, 0 0 0 10px #334155, 0 30px 60px rgba(0,0,0,0.4); overflow: hidden; position: relative; }
+        .mobile-device-frame::before { content: ''; display: block; width: 120px; height: 28px; background: #1e293b; border-radius: 0 0 18px 18px; margin: 0 auto; position: relative; z-index: 2; }
+        .mobile-scroll-area { height: 780px; overflow-y: auto; overscroll-behavior: contain; }
+        .mobile-device-frame::after { content: ''; display: block; width: 100px; height: 4px; background: #1e293b; border-radius: 4px; margin: 12px auto; }
+        .mobile-label { margin-top: 16px; font-size: 11px; font-weight: 600; color: #64748b; letter-spacing: 0.04em; text-transform: uppercase; }
       `}</style>
 
-      <div className="flex-root">
-        <Sidebar
-          company={company}
-          updateField={updateField}
-          setCompany={setCompany}
-          executive={executive}
-          updateExecutiveField={updateExecutiveField}
-          setExecutive={setExecutive}
-          sections={sections}
-          toggleVisibility={toggleVisibility}
-          reorderSections={reorderSections}
-          previewMode={previewMode}
-          setPreviewMode={setPreviewMode}
-        />
+      <Sidebar
+        company={company}
+        updateField={updateField}
+        setCompany={setCompany}
+        executive={executive}
+        updateExecutiveField={updateExecutiveField}
+        setExecutive={setExecutive}
+        sections={sections}
+        toggleVisibility={toggleVisibility}
+        reorderSections={reorderSections}
+        previewMode={previewMode}
+        setPreviewMode={setPreviewMode}
+      />
 
-        {previewMode === 'desktop' ? (
-          // ── Desktop View ──
-          <div className="preview-area itinerary-container">
-            <ItineraryShell forcedMobile={false}>
-              {itineraryContent}
-            </ItineraryShell>
-          </div>
-        ) : (
-          // ── Mobile View ──
-          <div className="mobile-preview-bg itinerary-container">
-            <div className="mobile-device-frame">
-              <div className="mobile-scroll-area">
-                <ItineraryShell forcedMobile={true}>
-                  {itineraryContent}
-                </ItineraryShell>
-              </div>
+      {previewMode === 'desktop' ? (
+        <div className="preview-area itinerary-container">
+          <ItineraryShell forcedMobile={false}>
+            {itineraryContent}
+          </ItineraryShell>
+        </div>
+      ) : (
+        <div className="mobile-preview-bg itinerary-container">
+          <div className="mobile-device-frame">
+            <div className="mobile-scroll-area">
+              <ItineraryShell forcedMobile={true}>
+                {itineraryContent}
+              </ItineraryShell>
             </div>
-            <p className="mobile-label">Mobile Preview (375px)</p>
           </div>
-        )}
-      </div>
-    </>
+          <p className="mobile-label">Mobile Preview (375px)</p>
+        </div>
+      )}
+    </div>
   );
 }
