@@ -1,0 +1,28 @@
+{
+  "placeholderImages": [
+    {
+      "id": "logo",
+      "description": "Company Logo",
+      "imageUrl": "https://picsum.photos/seed/logo/150/50",
+      "imageHint": "company logo"
+    },
+    {
+      "id": "geneva",
+      "description": "View of Lake Geneva",
+      "imageUrl": "https://picsum.photos/seed/geneva/600/400",
+      "imageHint": "lake mountain"
+    },
+    {
+      "id": "chamonix",
+      "description": "Mont Blanc massif",
+      "imageUrl": "https://picsum.photos/seed/chamonix/600/400",
+      "imageHint": "mountain snow"
+    },
+    {
+      "id": "hiking",
+      "description": "Hiking trail in the alps",
+      "imageUrl": "https://picsum.photos/seed/hiking/600/400",
+      "imageHint": "hiking trail"
+    }
+  ]
+}
