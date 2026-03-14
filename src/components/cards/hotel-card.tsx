@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useShell } from '@/components/itinerary-shell';
 
 type HotelCardProps = {
   name: string;
@@ -71,9 +72,9 @@ function HotelCardFull(props: HotelCardProps) {
   const { name, rating, location, city_name, state_name, mealPlan, images, showImages, roomConfigurations, notes, checkIn, checkOut } = props;
   const firstImage = images?.[0];
   return (
-    <div className="hotel-card-full" style={{ borderRadius: 'var(--radius-card)', border: '1px solid var(--color-border)', overflow: 'clip', boxShadow: 'var(--shadow-sm)', width: '100%', backgroundColor: 'var(--color-surface)' }}>
+    <div className="hotel-card-full" style={{ borderRadius: 'var(--radius-card)', border: '1px solid var(--color-border)', overflow: 'clip', boxShadow: 'var(--shadow-sm)', width: '100%', backgroundColor: 'var(--color-surface)', boxSizing: 'border-box' }}>
       {showImages && <HotelImage src={firstImage} name={name} rating={rating} className="w-full h-[180px]" />}
-      <div className="hotel-card-body" style={{ padding: 'var(--spacing-md)' }}>
+      <div className="hotel-card-body" style={{ padding: 'var(--spacing-md)', boxSizing: 'border-box' }}>
         <div style={{ marginBottom: '8px' }}>
           <h3 className="card-title-override" style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(0.9rem, 1.8vw, 1rem)', fontWeight: 700, color: 'var(--color-text)', lineHeight: 1.3, margin: 0 }}>{name}</h3>
           {rating > 0 && <div style={{ fontSize: '12px', color: 'var(--color-primary)', fontWeight: 600 }}>{rating} Star Hotel</div>}
@@ -95,7 +96,12 @@ function HotelCardFull(props: HotelCardProps) {
           <div><div style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>Check-Out</div><div className="time-location-override" style={{ fontSize: '13px', fontWeight: 600 }}>{formatTime(checkOut)}</div></div>
         </div>
       </div>
-      {notes && <div className="standard-note-bar"><strong>Note:</strong><span className="note-content-container" dangerouslySetInnerHTML={{ __html: notes }} /></div>}
+      {notes && (
+        <div className="standard-note-bar">
+          <strong>Note:</strong>
+          <span className="note-content-container" dangerouslySetInnerHTML={{ __html: notes }} />
+        </div>
+      )}
     </div>
   );
 }
@@ -116,12 +122,13 @@ function HotelCardHorizontal(props: HotelCardProps) {
         boxShadow: 'var(--shadow-card)',
         width: '100%',
         minHeight: '180px',
+        boxSizing: 'border-box',
       }}
     >
       {showImages && (
         <HotelImage src={firstImage} name={name} rating={rating} className="horizontal-card-image hotel-h-image" />
       )}
-      <div className="hotel-h-content" style={{ padding: 'var(--spacing-md)', flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column' }}>
+      <div className="hotel-h-content" style={{ padding: 'var(--spacing-md)', flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', boxSizing: 'border-box' }}>
         <div style={{ marginBottom: '10px' }}>
           <h3 className="card-title-override" style={{ fontFamily: 'var(--font-heading)', fontSize: '1rem', fontWeight: 700, color: 'var(--color-text)', lineHeight: 1.3, margin: 0 }}>{name}</h3>
           {displayLocation && <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>{displayLocation}</div>}
@@ -142,7 +149,22 @@ function HotelCardHorizontal(props: HotelCardProps) {
             </div>
           </div>
         </div>
-        {notes && <div className="hotel-h-footer" style={{ marginTop: 'auto', paddingTop: '8px', borderTop: '1px dashed var(--color-border)', fontSize: '0.7rem', color: 'var(--color-text-muted)', fontStyle: 'italic' }}>{notes.replace(/<[^>]+>/g, '').substring(0, 100)}...</div>}
+        {notes && (
+          <div 
+            className="hotel-h-footer note-content-container" 
+            style={{ 
+              marginTop: 'auto', 
+              paddingTop: '8px', 
+              borderTop: '1px dashed var(--color-border)', 
+              color: 'var(--color-text-muted)', 
+              fontStyle: 'italic',
+              width: '100%',
+              boxSizing: 'border-box'
+            }}
+          >
+            {notes.replace(/<[^>]+>/g, '').substring(0, 100)}...
+          </div>
+        )}
       </div>
     </div>
   );
@@ -152,8 +174,8 @@ function HotelRow(props: HotelCardProps) {
   const { name, rating, location, city_name, state_name, mealPlan, notes, checkIn, checkOut, roomType, numberOfRooms } = props;
   const displayLocation = [location, city_name, state_name].filter(Boolean).join(', ');
   return (
-    <div className="hotel-card-row" style={{ borderRadius: 'var(--radius-card)', backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column', width: '100%' }}>
-      <div style={{ padding: '14px 16px' }}>
+    <div className="hotel-card-row" style={{ borderRadius: 'var(--radius-card)', backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column', width: '100%', boxSizing: 'border-box' }}>
+      <div style={{ padding: '14px 16px', boxSizing: 'border-box' }}>
         <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', marginBottom: '6px' }}>
           <div className="hotel-icon-bg" style={{ width: '40px', height: '40px', borderRadius: '10px', backgroundColor: 'var(--color-hotel)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M4 22V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14" /><path d="M8 22v-4h8v4" /><path d="M12 2v4" /><path d="M8 10h.01M16 10h.01M8 14h.01M16 14h.01" strokeWidth="3" strokeLinecap="round" /></svg>
@@ -165,11 +187,16 @@ function HotelRow(props: HotelCardProps) {
           </div>
         </div>
       </div>
-      <div className="hotel-row-footer" style={{ borderTop: '1px solid var(--color-border)', padding: '10px 16px', paddingLeft: '68px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <div className="hotel-row-footer" style={{ borderTop: '1px solid var(--color-border)', padding: '10px 16px', paddingLeft: '68px', display: 'flex', alignItems: 'center', gap: '8px', boxSizing: 'border-box' }}>
         <div style={{ flex: 1 }}><div style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: '3px' }}>Check-In</div><div className="time-location-override" style={{ fontSize: '0.875rem', fontWeight: 700 }}>{formatTime(checkIn)}</div></div>
         <div style={{ flex: 1 }}><div style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: '3px' }}>Check-Out</div><div className="time-location-override" style={{ fontSize: '0.875rem', fontWeight: 700 }}>{formatTime(checkOut)}</div></div>
       </div>
-      {notes && <div className="standard-note-bar"><strong>Note:</strong><span className="note-content-container" dangerouslySetInnerHTML={{ __html: notes }} /></div>}
+      {notes && (
+        <div className="standard-note-bar">
+          <strong>Note:</strong>
+          <span className="note-content-container" dangerouslySetInnerHTML={{ __html: notes }} />
+        </div>
+      )}
     </div>
   );
 }

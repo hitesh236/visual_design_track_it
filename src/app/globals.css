@@ -60,32 +60,52 @@
 }
 
 @layer components {
-  /* Strict width and overflow constraints */
+  /* ── Unified Text Size Standard ── */
+  .greeting-html-content,
+  .greeting-html-content *,
   .note-content-container,
-  .note-content-container * {
-    font-style: inherit !important;
+  .note-content-container *,
+  .day-note-box,
+  .day-note-box * {
+    font-size: clamp(0.875rem, 1.5vw, 1rem) !important;
+    line-height: 1.7 !important;
     overflow-wrap: break-word !important;
     word-wrap: break-word !important;
     word-break: break-word !important;
     max-width: 100% !important;
   }
 
-  .note-content-container p {
-    margin: 0 !important;
+  .greeting-html-content p,
+  .note-content-container p,
+  .day-note-box p {
+    margin: 0 0 12px 0 !important;
     padding: 0 !important;
   }
 
-  .note-content-container {
-    font-size: clamp(0.875rem, 1.5vw, 1rem);
-    line-height: 1.7;
-    color: var(--color-text-muted);
-    font-family: var(--font-body);
+  .greeting-html-content p:last-child,
+  .note-content-container p:last-child,
+  .day-note-box p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  .greeting-html-content strong,
+  .note-content-container strong,
+  .day-note-box strong {
+    font-weight: 700;
+    color: var(--color-primary);
   }
 
   .day-note-box {
-    line-height: 1.6;
     border-radius: 8px;
     padding: 12px 16px;
+  }
+
+  /* Specific heading inside note box (if any) */
+  .day-note-box h4 {
+    margin: 0 0 8px 0 !important;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    color: var(--color-text);
   }
 
   .standard-note-bar {
