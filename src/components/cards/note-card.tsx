@@ -18,13 +18,12 @@ function NoteBox({
   const hasTitle = name && name.toLowerCase() !== 'note';
 
   return (
-    <div className="note-content-container day-note-box">
+    <div className="note-card-root day-note-box">
       {hasTitle && (
         <h4>{name}</h4>
       )}
       <div 
-        className="note-body" 
-        style={{ display: 'contents' }} 
+        className="note-content-container" 
         dangerouslySetInnerHTML={{ __html: description }} 
       />
     </div>
@@ -40,9 +39,9 @@ function NoteInline({
   if (!showDescriptions) return null;
 
   return (
-    <p className="note-content-container">
+    <div className="note-content-container">
       {description}
-    </p>
+    </div>
   );
 }
 

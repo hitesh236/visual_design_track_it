@@ -11,6 +11,7 @@ export function GreetingSection({ html }: GreetingSectionProps) {
 
   return (
     <section 
+        className="greeting-section-root"
         style={{ 
             marginBottom: 'var(--spacing-section)',
             padding: 'var(--spacing-lg)',

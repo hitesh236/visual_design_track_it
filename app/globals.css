@@ -223,7 +223,7 @@ video {
   }
 
   .note-content-container {
-    font-size: clamp(.7rem, 1.5vw, .75rem);
+    font-size: clamp(0.8rem, 1.5vw, 0.9375rem);
     line-height: 1.7;
     color: var(--color-text-muted);
     font-family: var(--font-body);
@@ -233,7 +233,6 @@ video {
   .day-note-box {
     line-height: 1.6;
     border-radius: 8px;
-    padding: 12px 16px;
   }
 
   .day-note-box h4 {
@@ -243,6 +242,7 @@ video {
     color: #431407;
     line-height: 1.2;
     font-family: var(--font-heading);
+    display:block !important;
   }
 
   .day-note-box strong,
