@@ -67,7 +67,7 @@ const LAYOUT_OPTIONS: { id: LayoutPreset; label: string; icon: React.ReactNode }
 // ─── Component ───────────────────────────────────────────────────
 
 export function AppearanceSection() {
-  const { activeMoodId, applyMood, layout, setLayout, customCss, setCustomCss } = useTheme();
+  const { activeMoodId, applyMood, layout, setLayout } = useTheme();
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -234,50 +234,6 @@ export function AppearanceSection() {
           Primary Branding Color
         </span>
         <BrandColorPicker />
-      </div>
-
-      {/* ── Custom CSS ── */}
-      <div 
-        style={{ 
-          borderTop: '1px solid var(--color-border)', 
-          paddingTop: '16px', 
-          marginTop: '16px' 
-        }}
-        className="identity-custom-css"
-      >
-        <span
-          style={{
-            fontSize:      '10px',
-            fontWeight:    700,
-            color:         'var(--color-primary)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.04em',
-            marginBottom:  '10px',
-            display:       'block',
-          }}
-        >
-          Custom CSS Settings
-        </span>
-        <textarea
-          value={customCss}
-          onChange={(e) => setCustomCss(e.target.value)}
-          placeholder="/* Target elements with CSS here */&#10;.header-company-name { color: red; }"
-          style={{
-            width: '100%',
-            height: '120px',
-            backgroundColor: 'var(--color-bg)',
-            border: '1px solid var(--color-border)',
-            borderRadius: '6px',
-            padding: '8px',
-            fontSize: '11px',
-            fontFamily: 'monospace',
-            color: 'var(--color-text)',
-            resize: 'vertical',
-          }}
-        />
-        <div style={{ fontSize: '10px', color: 'var(--color-text-muted)', marginTop: '4px' }}>
-          Real-time CSS overrides. Use specific classes like <code>.header-company-name</code>.
-        </div>
       </div>
     </div>
   );

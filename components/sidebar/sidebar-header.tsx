@@ -6,6 +6,7 @@ type SidebarHeaderProps = {
   onUndo:           () => void;
   canUndo:          boolean;
   onReset:          () => void;
+  onSettingsToggle: () => void;
   previewMode:      'desktop' | 'mobile';
   setPreviewMode:   (mode: 'desktop' | 'mobile') => void;
 };
@@ -16,6 +17,7 @@ export function SidebarHeader({
   onUndo,
   canUndo,
   onReset,
+  onSettingsToggle,
   previewMode = 'desktop',
   setPreviewMode,
 }: SidebarHeaderProps) {
@@ -34,23 +36,7 @@ export function SidebarHeader({
         flexShrink:      0,
       }}
     >
-      {/* Brand */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <h2
-          style={{
-            fontSize:      '13px',
-            fontWeight:    800,
-            fontFamily:    'var(--font-heading)',
-            color:         'var(--color-primary)',
-            letterSpacing: '0.02em',
-            margin:        0,
-          }}
-        >
-          TrackItinerary
-        </h2>
-      </div>
-
-      {/* Middle: Device Preview Switcher */}
+      {/* Middle: Device Preview Switcher (Now at the start) */}
       <div
         style={{
           display:         'flex',
@@ -77,7 +63,6 @@ export function SidebarHeader({
             boxShadow:       previewMode === 'desktop' ? '0 1px 2px rgba(0,0,0,0.1)' : 'none',
           }}
         >
-          {/* Desktop monitor — bezel + stand + base */}
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <rect x="2" y="3" width="20" height="13" rx="2"/>
             <path d="M8 21h8M12 17v4"/>
@@ -101,7 +86,6 @@ export function SidebarHeader({
             boxShadow:       previewMode === 'mobile' ? '0 1px 2px rgba(0,0,0,0.1)' : 'none',
           }}
         >
-          {/* Smartphone — camera dot + rounded frame + home bar */}
           <svg width="13" height="15" viewBox="0 0 18 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <rect x="1" y="1" width="16" height="22" rx="3"/>
             <circle cx="9" cy="3.5" r="0.8" fill="currentColor"/>
@@ -112,7 +96,6 @@ export function SidebarHeader({
 
       {/* Actions */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-        {/* Undo button */}
         <button
           onClick={onUndo}
           disabled={!canUndo}
@@ -130,24 +113,16 @@ export function SidebarHeader({
             transition:      'all 0.2s ease',
             opacity:         canUndo ? 1 : 0.5,
           }}
-          onMouseEnter={e => {
-            if (canUndo) e.currentTarget.style.backgroundColor = 'var(--color-bg)';
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.backgroundColor = 'transparent';
-          }}
         >
-          {/* Undo — sharp curved arrow with clear direction */}
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M3 7h10a5 5 0 0 1 5 5v0a5 5 0 0 1-5 5H6" />
             <polyline points="7 3 3 7 7 11" />
           </svg>
         </button>
 
-        {/* Reset to Default button */}
         <button
           onClick={onReset}
-          title="Reset to default layout &amp; theme"
+          title="Reset to default layout & theme"
           style={{
             padding:         '6px',
             borderRadius:    '6px',
@@ -160,23 +135,36 @@ export function SidebarHeader({
             justifyContent:  'center',
             transition:      'all 0.2s ease',
           }}
-          onMouseEnter={e => {
-            e.currentTarget.style.backgroundColor = 'var(--color-bg)';
-            e.currentTarget.style.color = 'hsl(0,70%,50%)';
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.backgroundColor = 'transparent';
-            e.currentTarget.style.color = 'var(--color-text-muted)';
-          }}
         >
-          {/* Reset — two circular arrows forming a circle */}
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
             <path d="M3 3v5h5" />
           </svg>
         </button>
 
-        {/* Collapse button */}
+        {/* Settings button */}
+        <button
+          onClick={onSettingsToggle}
+          title="Advanced Settings"
+          style={{
+            padding:         '6px',
+            borderRadius:    '6px',
+            border:          'none',
+            backgroundColor: 'transparent',
+            color:           'var(--color-text)',
+            cursor:          'pointer',
+            display:         'flex',
+            alignItems:      'center',
+            justifyContent:  'center',
+            transition:      'all 0.2s ease',
+          }}
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+
         <button
           onClick={onToggle}
           title={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
@@ -192,14 +180,7 @@ export function SidebarHeader({
             justifyContent:  'center',
             transition:      'all 0.2s ease',
           }}
-          onMouseEnter={e => {
-            e.currentTarget.style.backgroundColor = 'var(--color-bg)';
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.backgroundColor = 'transparent';
-          }}
         >
-          {/* Panel toggle icon */}
           <svg
             width="15"
             height="15"

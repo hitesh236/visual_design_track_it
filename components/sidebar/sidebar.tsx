@@ -54,10 +54,11 @@ export function Sidebar({
   previewMode,
   setPreviewMode,
 }: SidebarProps) {
-  const { activeMoodId, applyMood, layout, setLayout, theme, setTheme } = useTheme();
+  const { activeMoodId, applyMood, layout, setLayout, theme, setTheme, customCss, setCustomCss } = useTheme();
   
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState<string | null>('appearance');
+  const [showSettings, setShowSettings] = useState(false);
 
   const currentSnapshot = useMemo((): EditorState => ({
     moodId:       activeMoodId,
@@ -68,7 +69,6 @@ export function Sidebar({
     sections:     [...sections],
   }), [activeMoodId, theme.primaryColor, layout, company, executive, sections]);
 
-  // Undo setup
   const onUndoRevert = useCallback((state: EditorState) => {
     applyMood(getMoodPreset(state.moodId));
     setTimeout(() => {
@@ -82,12 +82,10 @@ export function Sidebar({
 
   const { push, undo, canUndo } = useUndo<EditorState>(currentSnapshot, onUndoRevert);
 
-  // Reset to defaults
   const handleReset = useCallback(() => {
     const defaultPreset = getMoodPreset('nature');
     applyMood(defaultPreset);
     setLayout('stacked');
-    // Clear any custom brand color override by applying the preset color
     setTimeout(() => {
       setTheme({ ...defaultPreset.theme });
     }, 0);
@@ -116,10 +114,7 @@ export function Sidebar({
     document.documentElement.setAttribute('data-sidebar-open', (!isCollapsed).toString());
   }, [isCollapsed]);
 
-  // ─── Scroll-to-Section Logic ────────────────────────────────────
-
   const scrollToSection = useCallback((id: string) => {
-    // Find the element by ID
     const target = document.getElementById(id === 'top' ? 'section-company' : 'section-executive');
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -127,10 +122,10 @@ export function Sidebar({
   }, []);
 
   useEffect(() => {
-    if (activeAccordion === 'identity') {
+    if (activeAccordion === 'identity' && !showSettings) {
       scrollToSection('top');
     }
-  }, [activeAccordion, scrollToSection]);
+  }, [activeAccordion, scrollToSection, showSettings]);
 
   return (
     <>
@@ -153,8 +148,6 @@ export function Sidebar({
         .sidebar-collapsed {
           transform: translateX(100%);
         }
-
-        /* ── Overlay backdrop (mobile only) ── */
         .sidebar-backdrop {
           display: none;
         }
@@ -168,13 +161,10 @@ export function Sidebar({
             backdrop-filter: blur(2px);
           }
         }
-
-        /* ── Desktop layout: push content ── */
         :root[data-sidebar-open="true"] .preview-area,
         :root[data-sidebar-open="true"] .mobile-preview-bg {
           margin-right: 320px;
         }
-        /* ── Tablet/Mobile: sidebar overlays, NO margin ── */
         @media (max-width: 768px) {
           .sidebar-root {
             width: 300px;
@@ -189,7 +179,6 @@ export function Sidebar({
             margin-right: 0 !important;
           }
         }
-
         .sidebar-tab {
           position: fixed;
           right: 0;
@@ -209,8 +198,6 @@ export function Sidebar({
           z-index: 999;
           transition: all 0.3s ease;
         }
-
-
       `}</style>
 
       {isCollapsed && (
@@ -221,7 +208,6 @@ export function Sidebar({
         </div>
       )}
 
-      {/* Mobile backdrop — tap to close */}
       {!isCollapsed && (
         <div
           className="sidebar-backdrop"
@@ -237,55 +223,117 @@ export function Sidebar({
           onUndo={undo}
           canUndo={canUndo}
           onReset={handleReset}
+          onSettingsToggle={() => setShowSettings(true)}
           previewMode={previewMode}
           setPreviewMode={setPreviewMode}
         />
 
         <div style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden' }}>
+          {showSettings ? (
+            <div style={{ padding: '16px 12px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--color-border)', paddingBottom: '12px', marginBottom: '4px' }}>
+                <h2 style={{ fontSize: '14px', fontWeight: 700, margin: 0, fontFamily: 'var(--font-heading)' }}>Sidebar Settings</h2>
+                <button 
+                  onClick={() => setShowSettings(false)} 
+                  style={{ 
+                    background: 'var(--color-bg)', 
+                    border: '1px solid var(--color-border)', 
+                    borderRadius: '4px', 
+                    cursor: 'pointer', 
+                    padding: '4px 8px',
+                    fontSize: '11px',
+                    fontWeight: 600,
+                    color: 'var(--color-text)'
+                  }}
+                >
+                  Close
+                </button>
+              </div>
 
-          <SidebarAccordion
-            id="appearance"
-            title="Appearance"
-            isActive={activeAccordion === 'appearance'}
-            onToggle={() => toggleAccordion('appearance')}
-            icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>}
-            headerSuffix={`${activeMoodId.charAt(0).toUpperCase() + activeMoodId.slice(1)} · ${layout}`}
-          >
-             <AppearanceSection />
-          </SidebarAccordion>
+              {/* Moved Custom CSS Settings here */}
+              <div className="identity-custom-css">
+                <span
+                  style={{
+                    fontSize:      '10px',
+                    fontWeight:    700,
+                    color:         'var(--color-primary)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.04em',
+                    marginBottom:  '10px',
+                    display:       'block',
+                  }}
+                >
+                  Custom CSS Settings
+                </span>
+                <textarea
+                  value={customCss}
+                  onChange={(e) => setCustomCss(e.target.value)}
+                  placeholder="/* Target elements with CSS here */&#10;.header-company-name { color: red; }"
+                  style={{
+                    width: '100%',
+                    height: '240px',
+                    backgroundColor: 'var(--color-bg)',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: '6px',
+                    padding: '8px',
+                    fontSize: '11px',
+                    fontFamily: 'monospace',
+                    color: 'var(--color-text)',
+                    resize: 'vertical',
+                  }}
+                />
+                <div style={{ fontSize: '10px', color: 'var(--color-text-muted)', marginTop: '4px', lineHeight: 1.4 }}>
+                  Real-time CSS overrides. Use specific classes to target individual elements.
+                </div>
+              </div>
+            </div>
+          ) : (
+            <>
+              <SidebarAccordion
+                id="appearance"
+                title="Appearance"
+                isActive={activeAccordion === 'appearance'}
+                onToggle={() => toggleAccordion('appearance')}
+                icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>}
+                headerSuffix={`${activeMoodId.charAt(0).toUpperCase() + activeMoodId.slice(1)} · ${layout}`}
+              >
+                 <AppearanceSection />
+              </SidebarAccordion>
 
-          <SidebarAccordion
-            id="content"
-            title="Content"
-            isActive={activeAccordion === 'content'}
-            onToggle={() => toggleAccordion('content')}
-            icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>}
-            headerSuffix={`${sections.filter(s => s.isVisible).length} visible`}
-          >
-            <ContentSection 
-              sections={sections}
-              toggleVisibility={toggleVisibility}
-              reorderSections={reorderSections}
-            />
-          </SidebarAccordion>
+              <SidebarAccordion
+                id="content"
+                title="Content"
+                isActive={activeAccordion === 'content'}
+                onToggle={() => toggleAccordion('content')}
+                icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>}
+                headerSuffix={`${sections.filter(s => s.isVisible).length} visible`}
+              >
+                <ContentSection 
+                  sections={sections}
+                  toggleVisibility={toggleVisibility}
+                  reorderSections={reorderSections}
+                />
+              </SidebarAccordion>
 
-          <SidebarAccordion
-            id="identity"
-            title="Identity"
-            isActive={activeAccordion === 'identity'}
-            onToggle={() => toggleAccordion('identity')}
-            icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>}
-            headerSuffix={company.name || 'Not configured'}
-          >
-            <IdentitySection 
-              company={company} 
-              updateField={updateField} 
-              executive={executive} 
-              updateExecutiveField={updateExecutiveField} 
-              onFocusCompany={() => scrollToSection('top')}
-              onFocusExecutive={() => scrollToSection('bottom')}
-            />
-          </SidebarAccordion>
+              <SidebarAccordion
+                id="identity"
+                title="Identity"
+                isActive={activeAccordion === 'identity'}
+                onToggle={() => toggleAccordion('identity')}
+                icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>}
+                headerSuffix={company.name || 'Not configured'}
+              >
+                <IdentitySection 
+                  company={company} 
+                  updateField={updateField} 
+                  executive={executive} 
+                  updateExecutiveField={updateExecutiveField} 
+                  onFocusCompany={() => scrollToSection('top')}
+                  onFocusExecutive={() => scrollToSection('bottom')}
+                />
+              </SidebarAccordion>
+            </>
+          )}
         </div>
       </div>
     </>
