@@ -258,7 +258,16 @@ export function DayCard({ day, isLast = false }: { day: DayData; isLast?: boolea
             if (!note?.description) return null;
             const plainText = note.description.replace(/<[^>]+>/g, '');
             return (
-              <p style={{ fontSize: 'clamp(0.7rem, 1.2vw, 0.8125rem)', lineHeight: 1.6, color: 'var(--color-text-muted)', fontFamily: 'var(--font-body)', margin: '0', paddingTop: 'var(--spacing-sm)', wordBreak: 'break-word' }}>
+              <p 
+                className="note-content-container"
+                style={{ 
+                  color: 'var(--color-text-muted)', 
+                  fontFamily: 'var(--font-body)', 
+                  margin: '0', 
+                  paddingTop: 'var(--spacing-sm)', 
+                  wordBreak: 'break-word' 
+                }}
+              >
                 {plainText}
               </p>
             );

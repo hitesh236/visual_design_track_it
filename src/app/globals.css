@@ -24,6 +24,9 @@
     --input: 210 30% 85%;
     --ring: 210 50% 40%;
     --radius: 0.5rem;
+    
+    /* Central source of truth for content font size, managed by JS */
+    --itinerary-content-font-size: 16px;
   }
   .dark {
     --background: 210 50% 10%;
@@ -61,13 +64,14 @@
 
 @layer components {
   /* ── Unified Text Size Standard ── */
+  /* All content areas now strictly follow the JS-calculated variable */
   .greeting-html-content,
   .greeting-html-content *,
   .note-content-container,
   .note-content-container *,
   .day-note-box,
   .day-note-box * {
-    font-size: clamp(0.875rem, 1.5vw, 1rem) !important;
+    font-size: var(--itinerary-content-font-size) !important;
     line-height: 1.7 !important;
     overflow-wrap: break-word !important;
     word-wrap: break-word !important;
@@ -100,7 +104,6 @@
     padding: 12px 16px;
   }
 
-  /* Specific heading inside note box (if any) */
   .day-note-box h4 {
     margin: 0 0 8px 0 !important;
     font-weight: 700;
