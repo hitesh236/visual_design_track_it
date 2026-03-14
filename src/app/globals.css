@@ -64,16 +64,23 @@
 
 @layer components {
   /* ── Unified Text Size Standard ── */
-  /* This block forces all content areas to use the exact same JS-calculated size */
-  .greeting-html-content,
-  .greeting-html-content *,
+  /* Updated to use the requested clamp value for perfect consistency across all content types */
+  .greeting-html-content p,
+  .greeting-html-content span,
+  .greeting-html-content strong,
   .note-content-container,
-  .note-content-container *,
+  .note-content-container p,
+  .note-content-container span,
+  .note-content-container strong,
   .day-note-box,
-  .day-note-box *,
+  .day-note-box p,
+  .day-note-box span,
+  .day-note-box strong,
   .info-html-content,
-  .info-html-content * {
-    font-size: var(--itinerary-content-font-size) !important;
+  .info-html-content p,
+  .info-html-content span,
+  .info-html-content strong {
+    font-size: clamp(0.8rem, 1.5vw, 0.92rem) !important;
     line-height: 1.7 !important;
     overflow-wrap: break-word !important;
     word-wrap: break-word !important;
