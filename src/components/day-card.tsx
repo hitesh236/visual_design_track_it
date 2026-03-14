@@ -201,7 +201,6 @@ export function DayCard({ day, isLast = false }: { day: DayData; isLast?: boolea
 
   const isCompact = layoutConfig.dayCard.direction === 'column' && !layoutConfig.dayCard.showImages;
 
-  // Use flex for row-based desktop view, block for vertical mobile view
   const isRowDirection = layoutConfig.dayCard.direction === 'row' && !isMobile;
 
   return (
@@ -237,7 +236,7 @@ export function DayCard({ day, isLast = false }: { day: DayData; isLast?: boolea
           ...featuredExtras,
         }}
       >
-        {/* Left Col (Header + Note) */}
+        {/* Left Column (Day Header & Optional Row Note) */}
         <div
           className="day-card-left"
           style={{
@@ -280,12 +279,12 @@ export function DayCard({ day, isLast = false }: { day: DayData; isLast?: boolea
           )}
         </div>
 
-        {/* Divider (Desktop Split only) */}
+        {/* Divider */}
         {isRowDirection && (
           <div style={{ width: '1px', alignSelf: 'stretch', backgroundColor: 'var(--color-border)', flexShrink: 0, margin: '0 var(--spacing-sm)' }} />
         )}
 
-        {/* Right Col (Components) */}
+        {/* Right Column (Components) */}
         <div 
           className="day-card-right"
           style={{

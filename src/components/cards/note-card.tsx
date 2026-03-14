@@ -1,14 +1,12 @@
 'use client';
 
-import { useTheme } from '@/context/theme-context';
-
 type NoteCardProps = {
   name?: string;
   description: string;
   showDescriptions?: boolean;
 };
 
-// ─── Box variant (stacked + split layouts) ────────────────────────
+// ─── Box variant ──────────────────────────────────────────────────
 
 function NoteBox({
   name,
@@ -24,16 +22,16 @@ function NoteBox({
       {hasTitle && (
         <h4>{name}</h4>
       )}
-      {hasTitle ? (
-        <div className="note-body" dangerouslySetInnerHTML={{ __html: description }} />
-      ) : (
-        <div dangerouslySetInnerHTML={{ __html: description }} style={{ display: 'contents' }} />
-      )}
+      <div 
+        className="note-body" 
+        style={{ display: 'contents' }} 
+        dangerouslySetInnerHTML={{ __html: description }} 
+      />
     </div>
   );
 }
 
-// ─── Inline variant (split layout left column preview) ────────────
+// ─── Inline variant ───────────────────────────────────────────────
 
 function NoteInline({
   description,

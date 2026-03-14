@@ -25,7 +25,7 @@
     --ring: 210 50% 40%;
     --radius: 0.5rem;
     
-    /* Central source of truth for content font size, managed by JS */
+    /* Central source of truth for content font size, managed by JS in ItineraryShell */
     --itinerary-content-font-size: 16px;
   }
   .dark {

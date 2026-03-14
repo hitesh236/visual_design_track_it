@@ -49,23 +49,17 @@ export function ItineraryShell({ children, forcedMobile = false }: ItineraryShel
   useGoogleFonts(theme.headingFont, theme.bodyFont);
 
   // ── Typography Harmonizer ──
-  // Ensures the greeting and note descriptions have exactly the same size
-  // and scale correctly according to the actual screen width.
+  // Ensures all description text across all sections (Greeting, Day Notes, etc.)
+  // share the EXACT same font size and scale identically.
   useEffect(() => {
     const harmonizeTypography = () => {
-      // Calculate a harmonic font size based on current viewport width
       const width = window.innerWidth;
-      let baseSize = 16; // Standard desktop
+      let baseSize = 16; // Default Desktop
       
-      if (width < 480) {
-        baseSize = 14; // Compact mobile
+      if (forcedMobile || width < 480) {
+        baseSize = 14; // Small Mobile
       } else if (width < 768) {
-        baseSize = 15; // Tablet / Large Mobile
-      }
-      
-      // If we are in forced mobile mode, always use the mobile base
-      if (forcedMobile) {
-        baseSize = 14;
+        baseSize = 15; // Tablet
       }
 
       document.documentElement.style.setProperty('--itinerary-content-font-size', `${baseSize}px`);
