@@ -60,7 +60,7 @@
 }
 
 @layer components {
-  /* Strict width constraints for all content containers */
+  /* Strict width and overflow constraints */
   .note-content-container,
   .note-content-container * {
     font-style: inherit !important;
@@ -106,5 +106,34 @@
     color: var(--color-primary) !important;
     margin-right: 6px;
     text-transform: uppercase;
+  }
+
+  /* Responsive Horizontal Card Stacking */
+  .horizontal-card-root {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .horizontal-card-image {
+    width: 220px;
+    height: auto;
+  }
+
+  @media (max-width: 639px) {
+    .horizontal-card-root {
+      flex-direction: column !important;
+    }
+    .horizontal-card-image {
+      width: 100% !important;
+      height: 180px !important;
+    }
+  }
+
+  .itinerary-shell[data-forced-mobile="true"] .horizontal-card-root {
+    flex-direction: column !important;
+  }
+  .itinerary-shell[data-forced-mobile="true"] .horizontal-card-image {
+    width: 100% !important;
+    height: 180px !important;
   }
 }
