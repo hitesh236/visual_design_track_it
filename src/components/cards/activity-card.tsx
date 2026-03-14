@@ -70,7 +70,7 @@ function ActivityCardHorizontal(props: ActivityCardProps) {
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '2px 8px', borderRadius: '999px', backgroundColor: 'var(--color-activity)', color: '#ffffff', fontSize: '9px', fontWeight: 700, textTransform: 'uppercase', whiteSpace: 'nowrap' }}>Activity</span>
         </div>
         {showDescriptions && description && (
-          <div className="note-content-container" style={{ fontSize: '0.75rem', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: '4', WebkitBoxOrient: 'vertical' }} dangerouslySetInnerHTML={{ __html: description }} />
+          <div className="note-content-container" style={{ overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: '4', WebkitBoxOrient: 'vertical' }} dangerouslySetInnerHTML={{ __html: description }} />
         )}
       </div>
     </div>
