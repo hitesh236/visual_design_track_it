@@ -64,13 +64,15 @@
 
 @layer components {
   /* ── Unified Text Size Standard ── */
-  /* All content areas now strictly follow the JS-calculated variable */
+  /* This block forces all content areas to use the exact same JS-calculated size */
   .greeting-html-content,
   .greeting-html-content *,
   .note-content-container,
   .note-content-container *,
   .day-note-box,
-  .day-note-box * {
+  .day-note-box *,
+  .info-html-content,
+  .info-html-content * {
     font-size: var(--itinerary-content-font-size) !important;
     line-height: 1.7 !important;
     overflow-wrap: break-word !important;
@@ -81,20 +83,23 @@
 
   .greeting-html-content p,
   .note-content-container p,
-  .day-note-box p {
+  .day-note-box p,
+  .info-html-content p {
     margin: 0 0 12px 0 !important;
     padding: 0 !important;
   }
 
   .greeting-html-content p:last-child,
   .note-content-container p:last-child,
-  .day-note-box p:last-child {
+  .day-note-box p:last-child,
+  .info-html-content p:last-child {
     margin-bottom: 0 !important;
   }
 
   .greeting-html-content strong,
   .note-content-container strong,
-  .day-note-box strong {
+  .day-note-box strong,
+  .info-html-content strong {
     font-weight: 700;
     color: var(--color-primary);
   }
