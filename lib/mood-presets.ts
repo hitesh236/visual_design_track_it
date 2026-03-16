@@ -1,3 +1,4 @@
+
 import type { MoodPreset } from '@/types/itinerary-theme';
 
 export const MOOD_PRESETS: MoodPreset[] = [
@@ -14,6 +15,7 @@ export const MOOD_PRESETS: MoodPreset[] = [
       bodyFont:        'Open Sans',
       cardRadius:      12,
       sectionSpacing:  'comfortable',
+      scaleMode:       'normal',
     },
   },
   {
@@ -29,6 +31,7 @@ export const MOOD_PRESETS: MoodPreset[] = [
       bodyFont:        'DM Sans',
       cardRadius:      4,
       sectionSpacing:  'spacious',
+      scaleMode:       'normal',
     },
   },
   {
@@ -44,6 +47,7 @@ export const MOOD_PRESETS: MoodPreset[] = [
       bodyFont:        'Lato',
       cardRadius:      4,
       sectionSpacing:  'comfortable',
+      scaleMode:       'normal',
     },
   },
   {
@@ -59,6 +63,7 @@ export const MOOD_PRESETS: MoodPreset[] = [
       bodyFont:        'Inter',
       cardRadius:      6,
       sectionSpacing:  'compact',
+      scaleMode:       'normal',
     },
   },
   {
@@ -74,11 +79,11 @@ export const MOOD_PRESETS: MoodPreset[] = [
       bodyFont:        'Nunito',
       cardRadius:      20,
       sectionSpacing:  'spacious',
+      scaleMode:       'normal',
     },
   },
 ];
 
-// Helper — get a preset by id, fallback to nature
 export function getMoodPreset(id: string): MoodPreset {
   return MOOD_PRESETS.find(p => p.id === id) ?? MOOD_PRESETS[0];
 }

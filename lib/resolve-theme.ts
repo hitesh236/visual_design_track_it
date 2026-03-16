@@ -1,4 +1,5 @@
-import type { ItineraryTheme } from '@/types/itinerary-theme';
+
+import type { ItineraryTheme, ScaleMode } from '@/types/itinerary-theme';
 
 // ─── HSL Helpers ────────────────────────────────────────────────
 
@@ -25,14 +26,18 @@ function hsl(h: number, s: number, l: number): string {
   return `hsl(${h}, ${s}%, ${l}%)`;
 }
 
-// ─── Contrast Guard (WhatsApp / high-glare readability) ──────────
-// If primary color is too light (L > 65%) in light mode,
-// auto-switch button text to dark charcoal instead of white.
-
 function resolveButtonTextColor(l: number, colorMode: string): string {
   if (colorMode === 'light' && l > 65) return '#1a1a1a';
   return '#ffffff';
 }
+
+// ─── Scale Mapping ───────────────────────────────────────────────
+
+const SCALE_FACTORS: Record<ScaleMode, string> = {
+  small: '0.9',
+  normal: '1.0',
+  large: '1.15',
+};
 
 // ─── Spacing Scale ───────────────────────────────────────────────
 
@@ -48,11 +53,14 @@ export function resolveThemeToCSSVars(
   theme: ItineraryTheme
 ): Record<string, string> {
   const [h, s, l] = hexToHsl(theme.primaryColor);
-
   const spacing = spacingScale[theme.sectionSpacing];
+  const scale = SCALE_FACTORS[theme.scaleMode || 'normal'];
 
   return {
-    // Colors — primary scale (auto-generated from single hex)
+    // Scaling Factor
+    '--itinerary-scale':     scale,
+
+    // Colors — primary scale
     '--color-primary':       hsl(h, s, l),
     '--color-primary-light': hsl(h, s, Math.min(l + 20, 95)),
     '--color-primary-dark':  hsl(h, s, Math.max(l - 20, 10)),
@@ -72,7 +80,7 @@ export function resolveThemeToCSSVars(
                                : hsl(h, 10, 45),
     '--color-text-on-primary': resolveButtonTextColor(l, theme.colorMode),
 
-    // Colors — semantic (badges, tags)
+    // Colors — semantic
     '--color-hotel':         'hsl(210, 80%, 50%)',
     '--color-flight':        'hsl(270, 70%, 55%)',
     '--color-transport':     'hsl(25, 90%, 52%)',
@@ -80,7 +88,7 @@ export function resolveThemeToCSSVars(
     '--color-train':         'hsl(235, 65%, 50%)',
     '--color-bus':           'hsl(175, 60%, 38%)',
 
-    // Accent (complementary hue, 180° opposite)
+    // Accent
     '--color-accent':        hsl((h + 180) % 360, s, l),
 
     // Typography
@@ -107,17 +115,3 @@ export function resolveThemeToCSSVars(
     '--spacing-section':     spacing.section,
   };
 }
-
-// ─── Fluid type scale (reference) ────────────────────────────────
-// Use these clamp values directly in component fontSize styles.
-// Do not hardcode px values for any heading or display text.
-
-export const TYPE_SCALE = {
-  display:  'clamp(1.6rem, 4vw,  2.8rem)',   // hero title
-  h1:       'clamp(1.3rem, 3vw,  2rem)',      // section heading
-  h2:       'clamp(1.1rem, 2.5vw, 1.6rem)',   // day card title
-  h3:       'clamp(0.95rem, 2vw, 1.25rem)',   // card heading
-  body:     'clamp(0.8rem, 1.5vw, 0.9375rem)', // 13–15px
-  small:    'clamp(0.7rem, 1.2vw, 0.8125rem)', // 11–13px
-  micro:    'clamp(0.6rem, 1vw,  0.75rem)',   // 10–12px labels
-} as const;

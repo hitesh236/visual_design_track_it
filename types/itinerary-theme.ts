@@ -1,4 +1,6 @@
+
 export type LayoutPreset = 'stacked' | 'timeline' | 'compact' | 'mini-compact';
+export type ScaleMode = 'small' | 'normal' | 'large';
 
 export type ItineraryTheme = {
   primaryColor: string;
@@ -10,6 +12,7 @@ export type ItineraryTheme = {
   headingFont: string;
   bodyFont: string;
   cardRadius: number;
+  scaleMode: ScaleMode;
 };
 
 export type MoodPreset = {

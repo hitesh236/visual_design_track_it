@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -9,7 +10,7 @@ import {
   type ReactNode,
 } from 'react';
 
-import type { ItineraryTheme, MoodPreset, LayoutPreset } from '@/types/itinerary-theme';
+import type { ItineraryTheme, MoodPreset, LayoutPreset, ScaleMode } from '@/types/itinerary-theme';
 import { resolveThemeToCSSVars } from '@/lib/resolve-theme';
 import { getMoodPreset } from '@/lib/mood-presets';
 
@@ -18,6 +19,7 @@ import { getMoodPreset } from '@/lib/mood-presets';
 const STORAGE_KEY_MOOD   = 'ti:activeMoodId';
 const STORAGE_KEY_LAYOUT = 'ti:layout';
 const STORAGE_KEY_CSS    = 'ti:customCss';
+const STORAGE_KEY_SCALE  = 'ti:scaleMode';
 
 const DEFAULT_LAYOUT: LayoutPreset = 'stacked';
 
@@ -32,6 +34,7 @@ type ThemeContextValue = {
   applyMood: (preset: MoodPreset) => void;
   setLayout: (layout: LayoutPreset) => void;
   setCustomCss: (css: string) => void;
+  setScaleMode: (mode: ScaleMode) => void;
 };
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
@@ -39,21 +42,21 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 // ─── Provider ────────────────────────────────────────────────────
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  // Initialize with static defaults to ensure server/client match on first pass
   const [activeMoodId, setActiveMoodId] = useState<string>('nature');
   const [layout, setLayoutState] = useState<LayoutPreset>(DEFAULT_LAYOUT);
   const [theme, setThemeState] = useState<ItineraryTheme>(getMoodPreset('nature').theme);
   const [customCss, setCustomCssState] = useState<string>('');
 
-  // Load from localStorage ONLY after mounting to prevent hydration errors
   useEffect(() => {
     const savedMood = localStorage.getItem(STORAGE_KEY_MOOD);
     const savedLayout = localStorage.getItem(STORAGE_KEY_LAYOUT);
     const savedCss = localStorage.getItem(STORAGE_KEY_CSS);
+    const savedScale = localStorage.getItem(STORAGE_KEY_SCALE) as ScaleMode | null;
 
+    let baseTheme = getMoodPreset(savedMood || 'nature').theme;
+    
     if (savedMood) {
       setActiveMoodId(savedMood);
-      setThemeState(getMoodPreset(savedMood).theme);
     }
     if (savedLayout) {
       setLayoutState(savedLayout as LayoutPreset);
@@ -61,9 +64,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     if (savedCss) {
       setCustomCssState(savedCss);
     }
+    
+    setThemeState({
+      ...baseTheme,
+      scaleMode: savedScale || 'normal'
+    });
   }, []);
 
-  // Inject CSS vars into <html>
   useEffect(() => {
     const vars = resolveThemeToCSSVars(theme);
     const root = document.documentElement;
@@ -72,29 +79,33 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     });
   }, [theme]);
 
-  // Persist + set data-mood
   useEffect(() => {
     document.documentElement.setAttribute('data-mood', activeMoodId);
     localStorage.setItem(STORAGE_KEY_MOOD, activeMoodId);
   }, [activeMoodId]);
 
-  // Persist + set data-layout
   useEffect(() => {
     document.documentElement.setAttribute('data-layout', layout);
     localStorage.setItem(STORAGE_KEY_LAYOUT, layout);
   }, [layout]);
 
-  // Persist custom CSS
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY_CSS, customCss);
   }, [customCss]);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_SCALE, theme.scaleMode);
+  }, [theme.scaleMode]);
 
   const setTheme = useCallback((newTheme: ItineraryTheme) => {
     setThemeState(newTheme);
   }, []);
 
   const applyMood = useCallback((preset: MoodPreset) => {
-    setThemeState(preset.theme);
+    setThemeState(prev => ({
+      ...preset.theme,
+      scaleMode: prev.scaleMode
+    }));
     setActiveMoodId(preset.id);
   }, []);
 
@@ -104,6 +115,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   const setCustomCss = useCallback((css: string) => {
     setCustomCssState(css);
+  }, []);
+
+  const setScaleMode = useCallback((mode: ScaleMode) => {
+    setThemeState(prev => ({ ...prev, scaleMode: mode }));
   }, []);
 
   return (
@@ -116,15 +131,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       applyMood,
       setLayout,
       setCustomCss,
+      setScaleMode,
     }}>
       {children}
-      {/* Inject custom CSS globally */}
       <style suppressHydrationWarning>{customCss}</style>
     </ThemeContext.Provider>
   );
 }
-
-// ─── Hook ────────────────────────────────────────────────────────
 
 export function useTheme(): ThemeContextValue {
   const ctx = useContext(ThemeContext);

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useCallback, useEffect, useMemo } from 'react';
@@ -13,6 +14,7 @@ import type { ExecutiveData } from '@/hooks/use-executive';
 import type { Section } from '@/hooks/use-sections';
 import { useTheme } from '@/context/theme-context';
 import { getMoodPreset } from '@/lib/mood-presets';
+import type { ScaleMode } from '@/types/itinerary-theme';
 
 // ─── Global Editor State Type (for Undo) ─────────────────────────
 
@@ -23,6 +25,7 @@ type EditorState = {
   company:      CompanyData;
   executive:    ExecutiveData;
   sections:     Section[];
+  scaleMode:    ScaleMode;
 };
 
 // ─── Component ───────────────────────────────────────────────────
@@ -54,7 +57,7 @@ export function Sidebar({
   previewMode,
   setPreviewMode,
 }: SidebarProps) {
-  const { activeMoodId, applyMood, layout, setLayout, theme, setTheme, customCss, setCustomCss } = useTheme();
+  const { activeMoodId, applyMood, layout, setLayout, theme, setTheme, customCss, setCustomCss, setScaleMode } = useTheme();
   
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState<string | null>('appearance');
@@ -67,12 +70,17 @@ export function Sidebar({
     company:      { ...company },
     executive:    { ...executive },
     sections:     [...sections],
-  }), [activeMoodId, theme.primaryColor, layout, company, executive, sections]);
+    scaleMode:    theme.scaleMode,
+  }), [activeMoodId, theme.primaryColor, layout, company, executive, sections, theme.scaleMode]);
 
   const onUndoRevert = useCallback((state: EditorState) => {
     applyMood(getMoodPreset(state.moodId));
     setTimeout(() => {
-       setTheme({ ...getMoodPreset(state.moodId).theme, primaryColor: state.primaryColor });
+       setTheme({ 
+         ...getMoodPreset(state.moodId).theme, 
+         primaryColor: state.primaryColor,
+         scaleMode: state.scaleMode 
+       });
     }, 0);
     setLayout(state.layout as any);
     setCompany(state.company);
@@ -86,10 +94,11 @@ export function Sidebar({
     const defaultPreset = getMoodPreset('nature');
     applyMood(defaultPreset);
     setLayout('stacked');
+    setScaleMode('normal');
     setTimeout(() => {
-      setTheme({ ...defaultPreset.theme });
+      setTheme({ ...defaultPreset.theme, scaleMode: 'normal' });
     }, 0);
-  }, [applyMood, setLayout, setTheme]);
+  }, [applyMood, setLayout, setTheme, setScaleMode]);
 
   const [lastPushed, setLastPushed] = useState<EditorState>(currentSnapshot);
 
@@ -98,6 +107,7 @@ export function Sidebar({
       if (currentSnapshot.primaryColor !== lastPushed.primaryColor || 
           currentSnapshot.moodId !== lastPushed.moodId ||
           currentSnapshot.layout !== lastPushed.layout ||
+          currentSnapshot.scaleMode !== lastPushed.scaleMode ||
           JSON.stringify(currentSnapshot) !== JSON.stringify(lastPushed)) {
         push(currentSnapshot);
         setLastPushed(currentSnapshot);
@@ -130,208 +140,68 @@ export function Sidebar({
   return (
     <>
       <style>{`
-        .sidebar-root {
-          width: 320px;
-          height: 100vh;
-          position: fixed;
-          top: 0;
-          right: 0;
-          background: var(--color-surface);
-          border-left: 1px solid var(--color-border);
-          box-shadow: -4px 0 16px rgba(0,0,0,0.08);
-          z-index: 1000;
-          transition: transform 0.3s ease;
-          display: flex;
-          flex-direction: column;
-          overflow: hidden;
-        }
-        .sidebar-collapsed {
-          transform: translateX(100%);
-        }
-        .sidebar-backdrop {
-          display: none;
-        }
-        @media (max-width: 768px) {
-          .sidebar-backdrop {
-            display: block;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.4);
-            z-index: 999;
-            backdrop-filter: blur(2px);
-          }
-        }
-        :root[data-sidebar-open="true"] .preview-area,
-        :root[data-sidebar-open="true"] .mobile-preview-bg {
-          margin-right: 320px;
-        }
-        @media (max-width: 768px) {
-          .sidebar-root {
-            width: 300px;
-            transform: translateX(100%);
-            z-index: 1001;
-          }
-          .sidebar-root:not(.sidebar-collapsed) {
-            transform: translateX(0);
-          }
-          :root[data-sidebar-open="true"] .preview-area,
-          :root[data-sidebar-open="true"] .mobile-preview-bg {
-            margin-right: 0 !important;
-          }
-        }
-        .sidebar-tab {
-          position: fixed;
-          right: 0;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 32px;
-          height: 64px;
-          background: var(--color-primary);
-          color: white;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          border-top-left-radius: 8px;
-          border-bottom-left-radius: 8px;
-          box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-          z-index: 999;
-          transition: all 0.3s ease;
-        }
+        .sidebar-root { width: 320px; height: 100vh; position: fixed; top: 0; right: 0; background: var(--color-surface); border-left: 1px solid var(--color-border); box-shadow: -4px 0 16px rgba(0,0,0,0.08); z-index: 1000; transition: transform 0.3s ease; display: flex; flex-direction: column; overflow: hidden; }
+        .sidebar-collapsed { transform: translateX(100%); }
+        .sidebar-backdrop { display: none; }
+        @media (max-width: 768px) { .sidebar-backdrop { display: block; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 999; backdrop-filter: blur(2px); } }
+        :root[data-sidebar-open="true"] .preview-area, :root[data-sidebar-open="true"] .mobile-preview-bg { margin-right: 320px; }
+        @media (max-width: 768px) { .sidebar-root { width: 300px; transform: translateX(100%); z-index: 1001; } .sidebar-root:not(.sidebar-collapsed) { transform: translateX(0); } :root[data-sidebar-open="true"] .preview-area, :root[data-sidebar-open="true"] .mobile-preview-bg { margin-right: 0 !important; } }
+        .sidebar-tab { position: fixed; right: 0; top: 50%; transform: translateY(-50%); width: 32px; height: 64px; background: var(--color-primary); color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; border-top-left-radius: 8px; border-bottom-left-radius: 8px; box-shadow: -2px 0 8px rgba(0,0,0,0.1); z-index: 999; transition: all 0.3s ease; }
+        .scale-btn { flex: 1; padding: 8px; border: 1px solid var(--color-border); background: var(--color-surface); cursor: pointer; font-size: 11px; font-weight: 600; color: var(--color-text); transition: all 0.2s; }
+        .scale-btn-active { background: var(--color-primary); color: var(--color-text-on-primary); border-color: var(--color-primary); }
+        .scale-btn:first-child { border-radius: 6px 0 0 6px; }
+        .scale-btn:last-child { border-radius: 0 6px 6px 0; }
       `}</style>
 
       {isCollapsed && (
         <div className="sidebar-tab" onClick={() => setIsCollapsed(false)}>
-           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 8 6.5 8 8 8.67 8 9.5 7.33 11 6.5 11zm3-4C8.67 7 8 6.33 8 5.5S8.67 4 9.5 4s1.5.67 1.5 1.5S10.33 7 9.5 7zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 4 14.5 4s1.5.67 1.5 1.5S15.33 7 14.5 7zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 8 17.5 8s1.5.67 1.5 1.5S18.33 11 17.5 11z"/>
-          </svg>
+           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 8 6.5 8 8 8.67 8 9.5 7.33 11 6.5 11zm3-4C8.67 7 8 6.33 8 5.5S8.67 4 9.5 4s1.5.67 1.5 1.5S10.33 7 9.5 7zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 4 14.5 4s1.5.67 1.5 1.5S15.33 7 14.5 7zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 8 17.5 8s1.5.67 1.5 1.5S18.33 11 17.5 11z"/></svg>
         </div>
       )}
 
-      {!isCollapsed && (
-        <div
-          className="sidebar-backdrop"
-          onClick={() => setIsCollapsed(true)}
-          aria-label="Close sidebar"
-        />
-      )}
+      {!isCollapsed && <div className="sidebar-backdrop" onClick={() => setIsCollapsed(true)} />}
 
       <div className={`sidebar-root ${isCollapsed ? 'sidebar-collapsed' : ''}`}>
-        <SidebarHeader 
-          isCollapsed={isCollapsed} 
-          onToggle={() => setIsCollapsed(prev => !prev)}
-          onUndo={undo}
-          canUndo={canUndo}
-          onReset={handleReset}
-          onSettingsToggle={() => setShowSettings(true)}
-          previewMode={previewMode}
-          setPreviewMode={setPreviewMode}
-        />
+        <SidebarHeader isCollapsed={isCollapsed} onToggle={() => setIsCollapsed(prev => !prev)} onUndo={undo} canUndo={canUndo} onReset={handleReset} onSettingsToggle={() => setShowSettings(true)} previewMode={previewMode} setPreviewMode={setPreviewMode} />
 
         <div style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden' }}>
           {showSettings ? (
-            <div style={{ padding: '16px 12px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ padding: '16px 12px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--color-border)', paddingBottom: '12px', marginBottom: '4px' }}>
                 <h2 style={{ fontSize: '14px', fontWeight: 700, margin: 0, fontFamily: 'var(--font-heading)' }}>Sidebar Settings</h2>
-                <button 
-                  onClick={() => setShowSettings(false)} 
-                  style={{ 
-                    background: 'var(--color-bg)', 
-                    border: '1px solid var(--color-border)', 
-                    borderRadius: '4px', 
-                    cursor: 'pointer', 
-                    padding: '4px 8px',
-                    fontSize: '11px',
-                    fontWeight: 600,
-                    color: 'var(--color-text)'
-                  }}
-                >
-                  Close
-                </button>
+                <button onClick={() => setShowSettings(false)} style={{ background: 'var(--color-bg)', border: '1px solid var(--color-border)', borderRadius: '4px', cursor: 'pointer', padding: '4px 8px', fontSize: '11px', fontWeight: 600, color: 'var(--color-text)' }}>Close</button>
               </div>
 
-              {/* Moved Custom CSS Settings here */}
-              <div className="identity-custom-css">
-                <span
-                  style={{
-                    fontSize:      '10px',
-                    fontWeight:    700,
-                    color:         'var(--color-primary)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.04em',
-                    marginBottom:  '10px',
-                    display:       'block',
-                  }}
-                >
-                  Custom CSS Settings
-                </span>
-                <textarea
-                  value={customCss}
-                  onChange={(e) => setCustomCss(e.target.value)}
-                  placeholder="/* Target elements with CSS here */&#10;.header-company-name { color: red; }"
-                  style={{
-                    width: '100%',
-                    height: '240px',
-                    backgroundColor: 'var(--color-bg)',
-                    border: '1px solid var(--color-border)',
-                    borderRadius: '6px',
-                    padding: '8px',
-                    fontSize: '11px',
-                    fontFamily: 'monospace',
-                    color: 'var(--color-text)',
-                    resize: 'vertical',
-                  }}
-                />
-                <div style={{ fontSize: '10px', color: 'var(--color-text-muted)', marginTop: '4px', lineHeight: 1.4 }}>
-                  Real-time CSS overrides. Use specific classes to target individual elements.
+              {/* Global Scale Control */}
+              <div>
+                <span style={{ fontSize: '10px', fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '10px', display: 'block' }}>Global Scale</span>
+                <div style={{ display: 'flex', width: '100%' }}>
+                  {(['small', 'normal', 'large'] as ScaleMode[]).map((mode) => (
+                    <button
+                      key={mode}
+                      onClick={() => setScaleMode(mode)}
+                      className={`scale-btn ${theme.scaleMode === mode ? 'scale-btn-active' : ''}`}
+                    >
+                      {mode.charAt(0).toUpperCase() + mode.slice(1)}
+                    </button>
+                  ))}
                 </div>
+                <div style={{ fontSize: '10px', color: 'var(--color-text-muted)', marginTop: '6px', fontStyle: 'italic' }}>
+                  Adjust the proportional size of the entire itinerary.
+                </div>
+              </div>
+
+              {/* Custom CSS Settings */}
+              <div className="identity-custom-css">
+                <span style={{ fontSize: '10px', fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '10px', display: 'block' }}>Custom CSS Settings</span>
+                <textarea value={customCss} onChange={(e) => setCustomCss(e.target.value)} placeholder="/* Target elements with CSS here */" style={{ width: '100%', height: '240px', backgroundColor: 'var(--color-bg)', border: '1px solid var(--color-border)', borderRadius: '6px', padding: '8px', fontSize: '11px', fontFamily: 'monospace', color: 'var(--color-text)', resize: 'vertical' }} />
               </div>
             </div>
           ) : (
             <>
-              <SidebarAccordion
-                id="appearance"
-                title="Appearance"
-                isActive={activeAccordion === 'appearance'}
-                onToggle={() => toggleAccordion('appearance')}
-                icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>}
-                headerSuffix={`${activeMoodId.charAt(0).toUpperCase() + activeMoodId.slice(1)} · ${layout}`}
-              >
-                 <AppearanceSection />
-              </SidebarAccordion>
-
-              <SidebarAccordion
-                id="content"
-                title="Content"
-                isActive={activeAccordion === 'content'}
-                onToggle={() => toggleAccordion('content')}
-                icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>}
-                headerSuffix={`${sections.filter(s => s.isVisible).length} visible`}
-              >
-                <ContentSection 
-                  sections={sections}
-                  toggleVisibility={toggleVisibility}
-                  reorderSections={reorderSections}
-                />
-              </SidebarAccordion>
-
-              <SidebarAccordion
-                id="identity"
-                title="Identity"
-                isActive={activeAccordion === 'identity'}
-                onToggle={() => toggleAccordion('identity')}
-                icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>}
-                headerSuffix={company.name || 'Not configured'}
-              >
-                <IdentitySection 
-                  company={company} 
-                  updateField={updateField} 
-                  executive={executive} 
-                  updateExecutiveField={updateExecutiveField} 
-                  onFocusCompany={() => scrollToSection('top')}
-                  onFocusExecutive={() => scrollToSection('bottom')}
-                />
-              </SidebarAccordion>
+              <SidebarAccordion id="appearance" title="Appearance" isActive={activeAccordion === 'appearance'} onToggle={() => toggleAccordion('appearance')} icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>} headerSuffix={`${activeMoodId.charAt(0).toUpperCase() + activeMoodId.slice(1)} · ${layout}`}><AppearanceSection /></SidebarAccordion>
+              <SidebarAccordion id="content" title="Content" isActive={activeAccordion === 'content'} onToggle={() => toggleAccordion('content')} icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>} headerSuffix={`${sections.filter(s => s.isVisible).length} visible`}><ContentSection sections={sections} toggleVisibility={toggleVisibility} reorderSections={reorderSections} /></SidebarAccordion>
+              <SidebarAccordion id="identity" title="Identity" isActive={activeAccordion === 'identity'} onToggle={() => toggleAccordion('identity')} icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>} headerSuffix={company.name || 'Not configured'}><IdentitySection company={company} updateField={updateField} executive={executive} updateExecutiveField={updateExecutiveField} onFocusCompany={() => scrollToSection('top')} onFocusExecutive={() => scrollToSection('bottom')} /></SidebarAccordion>
             </>
           )}
         </div>

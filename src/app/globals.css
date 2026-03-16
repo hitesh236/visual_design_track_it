@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,6 +25,9 @@
     --input: 210 30% 85%;
     --ring: 210 50% 40%;
     --radius: 0.5rem;
+    
+    /* Default Scale Multiplier */
+    --itinerary-scale: 1.0;
   }
   .dark {
     --background: 210 50% 10%;
@@ -56,13 +60,15 @@
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;
+    /* Apply global scale to base body font */
+    font-size: calc(16px * var(--itinerary-scale));
   }
 }
 
 @layer components {
-  /* ── Unified Typography Standard ── */
+  /* ── Scalable Typography ── */
   .note-content-container {
-    font-size: clamp(0.8rem, 1.5vw, 0.92rem) !important;
+    font-size: calc(clamp(0.8rem, 1.5vw, 0.92rem) * var(--itinerary-scale)) !important;
     line-height: 1.7 !important;
     color: var(--color-text);
     overflow-wrap: break-word;
@@ -71,16 +77,15 @@
   }
 
   .greeting-html-content p {
-    font-size: clamp(0.8rem, 1.5vw, 0.92rem) !important;
+    font-size: calc(clamp(0.8rem, 1.5vw, 0.92rem) * var(--itinerary-scale)) !important;
     line-height: 1.7 !important;
-    margin-bottom: 12px !important;
+    margin-bottom: calc(12px * var(--itinerary-scale)) !important;
   }
 
   .greeting-html-content p:last-child {
     margin-bottom: 0 !important;
   }
 
-  /* Support inheritance for common tags inside notes */
   .note-content-container p,
   .note-content-container span,
   .note-content-container li {
@@ -94,43 +99,44 @@
     color: var(--color-primary);
   }
 
-  /* ── Wrappers ── */
+  /* ── Scalable Wrappers ── */
   .day-note-box {
-    border-radius: 8px;
-    padding: 12px 16px;
+    border-radius: var(--radius-card);
+    padding: calc(12px * var(--itinerary-scale)) calc(16px * var(--itinerary-scale));
     background-color: var(--color-bg);
   }
 
   .day-note-box h4 {
-    margin: 0 0 8px 0 !important;
+    margin: 0 0 calc(8px * var(--itinerary-scale)) 0 !important;
     font-weight: 700;
     font-family: var(--font-heading);
     color: var(--color-text);
+    font-size: calc(14px * var(--itinerary-scale));
   }
 
-  /* Note Strip styling - matching Image 1 request */
+  /* Note Strip styling */
   .standard-note-bar {
     display: block;
-    margin-top: 12px;
-    padding: 10px 16px;
+    margin-top: calc(12px * var(--itinerary-scale));
+    padding: calc(10px * var(--itinerary-scale)) calc(16px * var(--itinerary-scale));
     background-color: var(--color-bg);
     border-top: 1px solid var(--color-border);
     width: 100%;
     box-sizing: border-box;
-    font-size: 10px !important;
+    font-size: calc(10px * var(--itinerary-scale)) !important;
   }
 
   .standard-note-bar strong {
-    font-size: 9px !important;
+    font-size: calc(9px * var(--itinerary-scale)) !important;
     font-weight: 700 !important;
     color: var(--color-primary) !important;
-    margin-right: 6px;
+    margin-right: calc(6px * var(--itinerary-scale));
     text-transform: uppercase;
   }
 
   .standard-note-bar .note-content-container,
   .standard-note-bar .note-content-container * {
-    font-size: 10px !important;
+    font-size: calc(10px * var(--itinerary-scale)) !important;
     color: var(--color-text-muted) !important;
   }
 
@@ -141,7 +147,7 @@
   }
 
   .horizontal-card-image {
-    width: 220px;
+    width: calc(220px * var(--itinerary-scale));
     height: auto;
   }
 
@@ -151,7 +157,7 @@
     }
     .horizontal-card-image {
       width: 100% !important;
-      height: 180px !important;
+      height: calc(180px * var(--itinerary-scale)) !important;
     }
   }
 
@@ -160,6 +166,6 @@
   }
   .itinerary-shell[data-forced-mobile="true"] .horizontal-card-image {
     width: 100% !important;
-    height: 180px !important;
+    height: calc(180px * var(--itinerary-scale)) !important;
   }
 }
