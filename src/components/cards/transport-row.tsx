@@ -106,7 +106,7 @@ function TransportCardItem({ item }: { item: TransportItem }) {
             </h3>
           </div>
 
-          {/* Header Badges (Matching Image 1 request) */}
+          {/* Header Badges */}
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
             {item.isAC !== false && <SummaryPill>AC</SummaryPill>}
             <SummaryPill>{vehicleCount} {vehicleCount === 1 ? 'Vehicle' : 'Vehicles'}</SummaryPill>
@@ -114,7 +114,7 @@ function TransportCardItem({ item }: { item: TransportItem }) {
           </div>
         </div>
 
-        {/* Unified Segment Box (Nesting Vehicle Details) */}
+        {/* Unified Segment Box (Vehicle breakdown nested inside) */}
         <div style={{
           border: '1px solid var(--color-border)',
           borderRadius: '10px',
@@ -150,7 +150,7 @@ function TransportCardItem({ item }: { item: TransportItem }) {
             </div>
           </div>
 
-          {/* Nested Vehicle Details Pills (Matching Image 1) */}
+          {/* Integrated Vehicle Details Pills */}
           <div style={{ 
             display: 'flex', 
             flexWrap: 'wrap', 
@@ -188,7 +188,7 @@ function TransportCardItem({ item }: { item: TransportItem }) {
           </div>
         </div>
 
-        {/* Refined Route Timeline */}
+        {/* Route Timeline */}
         {item.routeStops && item.routeStops.length > 2 && (
           <div style={{ marginTop: '14px', paddingTop: '12px', borderTop: '1px dashed var(--color-border)' }}>
              <div style={{
@@ -232,7 +232,7 @@ function TransportCardItem({ item }: { item: TransportItem }) {
         )}
       </div>
 
-      {/* Overhauled Note Strip (Full width bar with small text) */}
+      {/* Note Strip (Strictly small text) */}
       {item.notes && (
         <div 
           className="standard-note-bar" 
