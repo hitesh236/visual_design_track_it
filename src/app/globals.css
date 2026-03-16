@@ -108,23 +108,30 @@
     color: var(--color-text);
   }
 
+  /* Note Strip styling - matching Image 1 request */
   .standard-note-bar {
     display: block;
     margin-top: 12px;
-    padding: 8px 12px;
+    padding: 10px 16px;
     background-color: var(--color-bg);
-    border-left: 1px solid var(--color-primary);
-    border-radius: 4px;
+    border-top: 1px solid var(--color-border);
     width: 100%;
     box-sizing: border-box;
+    font-size: 10px !important;
   }
 
   .standard-note-bar strong {
-    font-size: 10px !important;
+    font-size: 9px !important;
     font-weight: 700 !important;
     color: var(--color-primary) !important;
     margin-right: 6px;
     text-transform: uppercase;
+  }
+
+  .standard-note-bar .note-content-container,
+  .standard-note-bar .note-content-container * {
+    font-size: 10px !important;
+    color: var(--color-text-muted) !important;
   }
 
   /* Responsive Horizontal Card Stacking */

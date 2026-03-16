@@ -379,14 +379,14 @@
                             {
                                 "id": "1773488535710 -0.8803903029977564",
                                 "category": "019c2225-53b3-73d3-8c5b-8f245d0b4d7a",
-                                "model": "019c2225-53b4-739a-b90b-7ec703710236",
+                                "model": "Tata Punch",
                                 "count": 2,
                                 "categoryName": "Luxury"
                             },
                             {
                                 "id": "1773488545315 -0.5045954736956596",
                                 "category": "019c2225-53b5-712f-b63a-b9af2cc640fd",
-                                "model": "019c2225-53b5-712f-b63a-b9af2d637a47",
+                                "model": "Tata Harrier",
                                 "count": 1,
                                 "categoryName": "Tempo Traveller"
                             }
@@ -4665,7 +4665,7 @@
                         "airline_name": "Akasa Air",
                         "tripType": "one-way",
                         "airline": "Akasa Air",
-                        "fareClass": "019c2225-4fb7-73b9-a56c-65b9a47945af",
+                        "fareClass": "Economy",
                         "supplier": null,
                         "segments": [
                             {
