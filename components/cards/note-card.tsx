@@ -6,6 +6,7 @@ type NoteCardProps = {
   name?: string;
   description: string;
   showDescriptions?: boolean;
+  hideTime?: boolean;
 };
 
 // ... existing icon code if any (InfoIcon is currently unused in this file but defined)
@@ -20,7 +21,7 @@ function NoteBox({
   if (!showDescriptions) return null;
 
   return (
-    <div className="note-content-container day-note-box">
+    <div className="day-note-box">
       {name && name.toLowerCase() !== 'note' && (
         <h4>{name}</h4>
       )}
@@ -38,7 +39,7 @@ function NoteInline({
   if (!showDescriptions) return null;
 
   return (
-    <p className="note-content-container">
+    <p className="day-note-content">
       {description}
     </p>
   );
@@ -51,11 +52,13 @@ export function NoteCard({
   description,
   displayMode,
   showDescriptions = true,
+  hideTime,
 }: {
   name?: string;
   description: string;
   displayMode: 'box' | 'inline';
   showDescriptions?: boolean;
+  hideTime?: boolean;
 }) {
   if (!description?.trim()) return null;
 

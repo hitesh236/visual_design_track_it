@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
+import COMPANY_INFO from '@/data/companyinfo.json';
 
 // ─── Types ───────────────────────────────────────────────────────
 
@@ -13,41 +14,35 @@ export type CompanyData = {
   logoUrl: string;
 };
 
-// ─── Defaults ────────────────────────────────────────────────────
+// ─── Seed from companyinfo.json ──────────────────────────────────
 
-const DEFAULTS: CompanyData = {
-  name:    'Eligocs Travels',
-  address: '123 Connaught Place, New Delhi, Delhi 110001, India',
-  phone:   '+91 98100 00000',
-  email:   'hello@eligocs.com',
-  website: 'www.eligocs.com',
-  logoUrl: '',
-};
+function seedFromJson(): CompanyData {
+  try {
+    const branch = (COMPANY_INFO as any).data?.data?.[0];
+    if (!branch) throw new Error('No branch data');
 
-const STORAGE_KEY = 'ti:company';
+    // The `data` field is a stringified JSON containing extra info
+    let extra: any = {};
+    try { extra = JSON.parse(branch.data ?? '{}').extra ?? {}; } catch { /* ignore */ }
+
+    const name    = branch.name ?? extra.name ?? '';
+    const address = (extra.address ?? branch.address ?? '').replace(/\r\n/g, ', ');
+    const email   = branch.email ?? (extra.emails?.[0] ?? '');
+    const phone   = extra.phones?.[0] ?? '';
+    const website = '';
+    const logoUrl = branch.logo?.medium_url ?? extra.logoUrl ?? '';
+
+    return { name, address, phone, email, website, logoUrl };
+  } catch {
+    return { name: '', address: '', phone: '', email: '', website: '', logoUrl: '' };
+  }
+}
 
 // ─── Hook ────────────────────────────────────────────────────────
 
 export function useCompany() {
-  const [company, setCompanyState] = useState<CompanyData>(DEFAULTS);
-
-  // Load from localStorage only after mount
-  useEffect(() => {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      try {
-        const parsed = JSON.parse(raw);
-        setCompanyState({ ...DEFAULTS, ...parsed });
-      } catch (e) {
-        console.warn('Failed to parse company data from storage', e);
-      }
-    }
-  }, []);
-
-  // Persist to localStorage on every change
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(company));
-  }, [company]);
+  // Always starts fresh from companyinfo.json — no localStorage
+  const [company, setCompanyState] = useState<CompanyData>(seedFromJson);
 
   const updateField = useCallback(<K extends keyof CompanyData>(
     field: K,
@@ -62,3 +57,4 @@ export function useCompany() {
 
   return { company, updateField, setCompany };
 }
+

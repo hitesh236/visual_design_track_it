@@ -72,12 +72,16 @@ function AccordionItem({ title, children, defaultOpen = false }: AccordionItemPr
   return (
     <>
       <style>{`
-        @media (max-width: 480px) {
-          .accordion-trigger {
-            padding: var(--spacing-sm) var(--spacing-md) !important;
-          }
-          .accordion-content {
-            padding: var(--spacing-sm) var(--spacing-md) !important;
+        /* 📱 1. MOBILE FIRST (Default Tighter Spacing) */
+        .accordion-trigger, .accordion-content {
+          padding: var(--spacing-sm) var(--spacing-md) !important;
+        }
+
+        /* 🧬 2. DESKTOP/PRINT ENHANCEMENTS */
+        @media (min-width: 1024px), print {
+          .itinerary-shell:not([data-forced-mobile="true"]) .accordion-trigger,
+          .itinerary-shell:not([data-forced-mobile="true"]) .accordion-content {
+            padding: var(--spacing-md) var(--spacing-lg) !important;
           }
         }
       `}</style>

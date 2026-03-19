@@ -8,50 +8,40 @@ import { BrandColorPicker } from '@/components/brand-color-picker';
 // ─── Constants ───────────────────────────────────────────────────
 
 const MOOD_INFO: Record<string, { desc: string }> = {
-  nature:    { desc: 'Warm' },
-  luxury:    { desc: 'Elite' },
+  nature: { desc: 'Warm' },
+  luxury: { desc: 'Elite' },
   adventure: { desc: 'Bold' },
-  modern:    { desc: 'Sleek' },
+  modern: { desc: 'Sleek' },
   spiritual: { desc: 'Serene' },
 };
 
 const LAYOUT_OPTIONS: { id: LayoutPreset; label: string; icon: React.ReactNode }[] = [
-  { 
-    id: 'stacked', 
-    label: 'Stacked', 
+  {
+    id: 'stacked',
+    label: 'Stacked',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <rect x="4" y="4" width="16" height="4" rx="1" />
         <rect x="4" y="10" width="16" height="4" rx="1" />
         <rect x="4" y="16" width="16" height="4" rx="1" />
       </svg>
-    ) 
+    )
   },
-  { 
-    id: 'timeline', 
-    label: 'Timeline', 
+  {
+    id: 'timeline',
+    label: 'Timeline',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <line x1="8" y1="2" x2="8" y2="22" />
         <circle cx="8" cy="6" r="3" fill="currentColor" />
         <circle cx="8" cy="18" r="3" fill="currentColor" />
       </svg>
-    ) 
+    )
   },
-  { 
-    id: 'compact', 
-    label: 'Compact', 
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <rect x="6" y="4" width="12" height="4" rx="1" opacity="0.4" />
-        <rect x="6" y="10" width="12" height="4" rx="1" />
-        <rect x="6" y="16" width="12" height="4" rx="1" />
-      </svg>
-    ) 
-  },
-  { 
-    id: 'mini-compact', 
-    label: 'Mini-Compact', 
+
+  {
+    id: 'mini-compact',
+    label: 'Mini-Compact',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <rect x="4" y="4" width="16" height="2" rx="0.5" />
@@ -60,7 +50,18 @@ const LAYOUT_OPTIONS: { id: LayoutPreset; label: string; icon: React.ReactNode }
         <rect x="4" y="16" width="16" height="2" rx="0.5" />
         <rect x="4" y="20" width="16" height="2" rx="0.5" />
       </svg>
-    ) 
+    )
+  },
+  {
+    id: 'compact',
+    label: 'Compact',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <rect x="6" y="4" width="12" height="4" rx="1" opacity="0.4" />
+        <rect x="6" y="10" width="12" height="4" rx="1" />
+        <rect x="6" y="16" width="12" height="4" rx="1" />
+      </svg>
+    )
   },
 ];
 
@@ -75,63 +76,63 @@ export function AppearanceSection() {
       <div>
         <span
           style={{
-            fontSize:   '10px',
+            fontSize: '10px',
             fontWeight: 700,
-            color:      'var(--color-primary)',
+            color: 'var(--color-primary)',
             textTransform: 'uppercase',
             letterSpacing: '0.04em',
-            marginBottom:  '8px',
-            display:       'block',
+            marginBottom: '8px',
+            display: 'block',
           }}
         >
           Mood Style
         </span>
         <div
           style={{
-            display:             'grid',
+            display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gap:                 '6px',
+            gap: '6px',
           }}
         >
           {MOOD_PRESETS.map((p) => {
             const isActive = activeMoodId === p.id;
             const info = MOOD_INFO[p.id];
-            
+
             return (
               <button
                 key={p.id}
                 onClick={() => applyMood(p)}
                 style={{
-                  display:         'flex',
-                  flexDirection:   'column',
-                  alignItems:      'center',
-                  justifyContent:  'center',
-                  gap:             '4px',
-                  padding:         '8px 4px',
-                  borderRadius:    '6px',
-                  border:          isActive ? '2px solid var(--color-primary)' : '1px solid var(--color-border)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '4px',
+                  padding: '8px 4px',
+                  borderRadius: '6px',
+                  border: isActive ? '2px solid var(--color-primary)' : '1px solid var(--color-border)',
                   backgroundColor: isActive ? 'var(--color-primary-muted)' : 'var(--color-surface)',
-                  cursor:          'pointer',
-                  transition:      'all 0.2s',
-                  height:          '60px',
-                  position:        'relative',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
+                  height: '60px',
+                  position: 'relative',
                 }}
               >
                 <div
                   style={{
-                    width:           '8px',
-                    height:          '8px',
+                    width: '8px',
+                    height: '8px',
                     backgroundColor: p.theme.primaryColor,
-                    borderRadius:    '50%',
-                    flexShrink:      0,
+                    borderRadius: '50%',
+                    flexShrink: 0,
                   }}
                 />
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0px' }}>
                   <span
                     style={{
-                      fontSize:   '11px',
+                      fontSize: '11px',
                       fontWeight: 700,
-                      color:      'var(--color-text)',
+                      color: 'var(--color-text)',
                       textAlign: 'center',
                     }}
                   >
@@ -139,9 +140,9 @@ export function AppearanceSection() {
                   </span>
                   <span
                     style={{
-                      fontSize:   '9px',
-                      color:      'var(--color-text-muted)',
-                      fontStyle:  'italic',
+                      fontSize: '9px',
+                      color: 'var(--color-text-muted)',
+                      fontStyle: 'italic',
                     }}
                   >
                     {info.desc}
@@ -157,22 +158,22 @@ export function AppearanceSection() {
       <div>
         <span
           style={{
-            fontSize:   '10px',
+            fontSize: '10px',
             fontWeight: 700,
-            color:      'var(--color-primary)',
+            color: 'var(--color-primary)',
             textTransform: 'uppercase',
             letterSpacing: '0.04em',
-            marginBottom:  '8px',
-            display:       'block',
+            marginBottom: '8px',
+            display: 'block',
           }}
         >
           Layout Strategy
         </span>
         <div
           style={{
-            display:             'grid',
+            display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
-            gap:                 '6px',
+            gap: '6px',
           }}
         >
           {LAYOUT_OPTIONS.map(opt => {
@@ -182,16 +183,16 @@ export function AppearanceSection() {
                 key={opt.id}
                 onClick={() => setLayout(opt.id)}
                 style={{
-                  display:         'flex',
-                  flexDirection:   'column',
-                  alignItems:      'center',
-                  gap:             '4px',
-                  padding:         '8px 4px',
-                  borderRadius:    '6px',
-                  border:          isActive ? '2px solid var(--color-primary)' : '1px solid var(--color-border)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '4px',
+                  padding: '8px 4px',
+                  borderRadius: '6px',
+                  border: isActive ? '2px solid var(--color-primary)' : '1px solid var(--color-border)',
                   backgroundColor: isActive ? 'var(--color-primary-muted)' : 'var(--color-surface)',
-                  cursor:          'pointer',
-                  transition:      'all 0.2s',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
                 }}
               >
                 <div style={{ color: isActive ? 'var(--color-primary)' : 'var(--color-text-muted)' }}>
@@ -199,9 +200,9 @@ export function AppearanceSection() {
                 </div>
                 <span
                   style={{
-                    fontSize:   '11px',
+                    fontSize: '11px',
                     fontWeight: 600,
-                    color:      'var(--color-text)',
+                    color: 'var(--color-text)',
                   }}
                 >
                   {opt.label}
@@ -213,22 +214,22 @@ export function AppearanceSection() {
       </div>
 
       {/* ── Brand Color ── */}
-      <div 
-        style={{ 
-          borderTop: '1px solid var(--color-border)', 
-          paddingTop: '16px', 
-          marginTop: '8px' 
+      <div
+        style={{
+          borderTop: '1px solid var(--color-border)',
+          paddingTop: '16px',
+          marginTop: '8px'
         }}
       >
         <span
           style={{
-            fontSize:      '10px',
-            fontWeight:    700,
-            color:         'var(--color-primary)',
+            fontSize: '10px',
+            fontWeight: 700,
+            color: 'var(--color-primary)',
             textTransform: 'uppercase',
             letterSpacing: '0.04em',
-            marginBottom:  '10px',
-            display:       'block',
+            marginBottom: '10px',
+            display: 'block',
           }}
         >
           Primary Branding Color

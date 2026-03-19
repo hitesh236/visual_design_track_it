@@ -18,7 +18,8 @@ type InfoSectionsProps = {
 // Scoped styles ensure lists, headings, and paragraphs
 // inside the accordion content match the active theme.
 
-function HtmlContent({ html }: { html: string }) {
+function HtmlContent({ html, className }: { html: string; className?: string }) {
+  const fullClassName = `info-html-content ${className || ''}`.trim();
   return (
     <>
       <style>{`
@@ -56,11 +57,11 @@ function HtmlContent({ html }: { html: string }) {
         }
       `}</style>
       <div
-        className="info-html-content"
+        className={fullClassName}
         dangerouslySetInnerHTML={{ __html: html }}
         style={{
-    maxWidth:   '680px',   // ← constrain long text lines for readability
-  }}
+          maxWidth: '680px',
+        }}
       />
     </>
   );
@@ -139,13 +140,22 @@ function SectionIcon({ title }: { title: string }) {
 export function InfoSections({ sections }: InfoSectionsProps) {
   if (!sections?.length) return null;
 
-  const accordionItems = sections.map((section, i) => ({
-    title:       section.title,
-    defaultOpen: i === 0,   // Inclusions open by default
-    content: (
-      <HtmlContent html={section.content} />
-    ),
-  }));
+  const accordionItems = sections.map((section, i) => {
+    // Generate a sluggified class name based on the title
+    const slug = section.title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+    const uniqueClass = `info-content-${slug}`;
+
+    return {
+      title:       section.title,
+      defaultOpen: i === 0,
+      content: (
+        <HtmlContent html={section.content} className={uniqueClass} />
+      ),
+    };
+  });
 
   return (
     <section

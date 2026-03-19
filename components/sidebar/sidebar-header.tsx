@@ -92,6 +92,31 @@ export function SidebarHeader({
             <line x1="6" y1="20.5" x2="12" y2="20.5" strokeWidth="2.5"/>
           </svg>
         </button>
+        {/* Print Button */}
+        <button
+          onClick={() => window.print()}
+          title="Print / Save as PDF"
+          style={{
+            padding:         '4px 6px',
+            borderRadius:    '4px',
+            border:          'none',
+            backgroundColor: 'transparent',
+            color:           'var(--color-text-muted)',
+            cursor:          'pointer',
+            display:         'flex',
+            alignItems:      'center',
+            justifyContent:  'center',
+            transition:      'all 0.2s',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-primary)')}
+          onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-text-muted)')}
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+        </button>
       </div>
 
       {/* Actions */}

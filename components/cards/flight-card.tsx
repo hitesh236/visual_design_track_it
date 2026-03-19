@@ -36,6 +36,7 @@ type FlightCardProps = {
   status?: string;
   description?: string;
   displayMode: 'widget' | 'row';
+  hideTime?: boolean;
 };
 
 // ─── Helpers ────────────────────────────────────────────────────────
@@ -117,7 +118,7 @@ export function SummaryPill({ children }: { children: React.ReactNode }) {
       padding: '5px 10px',
       borderRadius: '999px',
       fontSize: '12px',
-      color: 'var(--color-text-muted)',
+      color: 'var(--color-text)',
       fontFamily: 'var(--font-body)',
       whiteSpace: 'nowrap' as const,
     }}>
@@ -144,10 +145,11 @@ export function Tag({ children }: { children: React.ReactNode }) {
 }
 
 function AirportBlock({
-  code, city, fullName, time, align,
+  code, city, fullName, time, align, hideTime
 }: {
   code: string; city: string; fullName?: string;
   time: string; align: 'left' | 'right';
+  hideTime?: boolean;
 }) {
   return (
     <div style={{ textAlign: align, minWidth: 0 }}>
@@ -161,19 +163,22 @@ function AirportBlock({
       }}>
         {code}
       </div>
+      {!hideTime && (
+        <div style={{
+          fontSize: '14px',
+          fontWeight: 600,
+          color: 'var(--color-primary)',
+          marginBottom: '4px',
+          fontFamily: 'var(--font-body)',
+        }}>
+          {time}
+        </div>
+      )}
       <div style={{
         fontSize: '14px',
         fontWeight: 600,
-        color: 'var(--color-primary)',
-        marginBottom: '4px',
-        fontFamily: 'var(--font-body)',
-      }}>
-        {time}
-      </div>
-      <div style={{
-        fontSize: '12px',
         color: 'var(--color-text-muted)',
-        lineHeight: 1.4,
+        lineHeight: 1.3,
         fontFamily: 'var(--font-body)',
       }}>
         {fullName ?? city}
@@ -254,7 +259,7 @@ function LayoverStrip({
 
 // ─── Single segment card ─────────────────────────────────────────────
 
-function SegmentCard({ seg, isMobile }: { seg: Segment; isMobile: boolean }) {
+function SegmentCard({ seg, isMobile, hideTime }: { seg: Segment; isMobile: boolean; hideTime?: boolean }) {
   const fromCode = extractCode(seg.from_code, seg.from);
   const toCode = extractCode(seg.to_code, seg.to);
   const fromCity = extractCity(seg.from_city, seg.from);
@@ -283,6 +288,7 @@ function SegmentCard({ seg, isMobile }: { seg: Segment; isMobile: boolean }) {
           fullName={seg.from}
           time={fmt(seg.departure)}
           align="left"
+          hideTime={hideTime}
         />
         <CenterBlock duration={duration} flightType={flightType} />
         <AirportBlock
@@ -291,6 +297,7 @@ function SegmentCard({ seg, isMobile }: { seg: Segment; isMobile: boolean }) {
           fullName={seg.to}
           time={fmt(seg.arrival)}
           align={isMobile ? 'left' : 'right'}
+          hideTime={hideTime}
         />
       </div>
 
@@ -315,9 +322,7 @@ function SegmentCard({ seg, isMobile }: { seg: Segment; isMobile: boolean }) {
 
 // ─── Row variant (compact layout) ───────────────────────────────────
 
-function FlightRow({ segments, airlineName, price }: {
-  segments: Segment[]; airlineName?: string; price?: number | string;
-}) {
+function FlightRow({ segments, airlineName, price, hideTime }: { segments: Segment[], airlineName?: string, price?: number | string, hideTime?: boolean }) {
   const first = segments[0] ?? {};
   const last = segments[segments.length - 1] ?? {};
   const fromCode = extractCode(first.from_code, first.from);
@@ -359,14 +364,10 @@ function FlightRow({ segments, airlineName, price }: {
           {segments.length > 1 && <Tag>{segments.length - 1} stop{segments.length > 2 ? 's' : ''}</Tag>}
         </div>
         <div style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
-          {[airlineName, fmt(first.departure), fmt(last.arrival), duration].filter(Boolean).join(' · ')}
+          {[airlineName, !hideTime && fmt(first.departure), !hideTime && fmt(last.arrival), duration].filter(Boolean).join(' · ')}
         </div>
       </div>
-      {price && Number(price) > 0 && (
-        <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-primary)', flexShrink: 0 }}>
-          {formatINR(price)}
-        </div>
-      )}
+      {/* Price removed as per user request for mini-compact */}
     </div>
   );
 }
@@ -382,6 +383,7 @@ export function FlightCard({
   status = 'Confirmed',
   description,
   displayMode,
+  hideTime,
 }: FlightCardProps) {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -399,6 +401,7 @@ export function FlightCard({
         segments={segments}
         airlineName={airlineName}
         price={price}
+        hideTime={hideTime}
       />
     );
   }
@@ -449,8 +452,8 @@ export function FlightCard({
             flexShrink: 0,
           }}>
             {/* Premium airplane icon */}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff" stroke="none">
-              <path d="M22 16.21v-1.895l-9.5-5.525V3.1a1.5 1.5 0 0 0-3 0v5.69L0 14.315v1.895l9.5-2.79V19l-2 1.5v1.5l3-.875 3 .875V20.5L12 19v-5.58z"/>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3.5s-2.5 0-4 1.5L13.5 8.5 5.3 6.7c-.9-.2-1.6.1-1.8.6l-.3.5 8.4 4.3-1.8 1.8-3.4-1.3c-.6-.2-1.2 0-1.4.6l-.1.4a.6.6 0 0 0 .1.6l3.6 2.3 2.3 3.6c.1.2.3.3.6.1l.4-.1c.6-.2.8-.8.6-1.4l-1.3-3.4 1.8-1.8 4.3 8.4.5-.3c.5-.2.8-1 .6-1.8z" />
             </svg>
           </div>
           <h3 className="card-title-override" style={{
@@ -476,7 +479,7 @@ export function FlightCard({
       {/* Segments + Layovers */}
       {segments.map((seg, idx) => (
         <div key={idx}>
-          <SegmentCard seg={seg} isMobile={isMobile} />
+          <SegmentCard seg={seg} isMobile={isMobile} hideTime={hideTime} />
 
           {/* Layover between segments */}
           {idx < segments.length - 1 && (() => {
@@ -540,7 +543,7 @@ export function FlightCard({
         <div className="standard-note-bar">
           <strong>Note:</strong>
           <div
-            className="note-content-container"
+            className="flight-note-content"
             dangerouslySetInnerHTML={{ __html: description }}
           />
         </div>

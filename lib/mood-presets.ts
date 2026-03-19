@@ -6,7 +6,7 @@ export const MOOD_PRESETS: MoodPreset[] = [
     id: 'nature',
     label: 'Nature',
     theme: {
-      primaryColor:    '#4A7C59',
+      primaryColor:    '#437051',
       logoUrl:         null,
       backgroundColor: '#faf7f2',
       surfaceColor:    '#ffffff',
@@ -38,7 +38,7 @@ export const MOOD_PRESETS: MoodPreset[] = [
     id: 'adventure',
     label: 'Adventure',
     theme: {
-      primaryColor:    '#E85D04',
+      primaryColor:    '#B04402',
       logoUrl:         null,
       backgroundColor: '#f5f0eb',
       surfaceColor:    '#ffffff',

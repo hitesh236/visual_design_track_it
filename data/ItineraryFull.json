@@ -3,14 +3,14 @@
     "message": "Itinerary retrieved successfully",
     "data": {
         "data": {
-            "id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+            "id": "019cd922-971f-71ce-a102-0a9a997e0350",
             "inquiry_id": "019cc189-0b93-7184-814f-c48e8a2801d7",
-            "title": "Leh Nubra Pangong (Ex Leh) 5 Nights - 6 Days (Copy) Test",
+            "title": "Leh Nubra Pangong (Ex Leh) 5 Nights - 6 Days (Copy)",
             "description": null,
             "feature_image": "https:\/\/images.unsplash.com\/photo-1593118845043-359e5f628214?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4MjMwNjN8MHwxfHNlYXJjaHwzfHxsYWRha2h8ZW58MHx8fHwxNzcyNjk4NTQ5fDA&ixlib=rb-4.1.0&q=80&w=1080",
-            "final_price": "849461.00",
-            "base_price": "500782.00",
-            "commission_price": "348679.00",
+            "final_price": "861527.00",
+            "base_price": "520842.00",
+            "commission_price": "340685.00",
             "markup_percentage": "0.00",
             "is_gst_enabled": false,
             "gst_type": "included",
@@ -105,8 +105,8 @@
             "is_published": false,
             "created_by": "4931336c-27fc-45a8-bf66-e344a0908018",
             "updated_by": "4931336c-27fc-45a8-bf66-e344a0908018",
-            "created_at": "2026-03-14T11:35:05.000000Z",
-            "updated_at": "2026-03-14T11:43:34.000000Z",
+            "created_at": "2026-03-10T19:04:08.000000Z",
+            "updated_at": "2026-03-16T07:13:41.000000Z",
             "email_notifications": [],
             "booking": null,
             "inquiry": {
@@ -168,8 +168,8 @@
                     "id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
                     "title": "Leh Nubra Pangong (Ex Leh) 5 Nights - 6 Days (Copy) Test",
                     "description": null,
-                    "feature_image": "https:\/\/images.unsplash.com\/photo-1593118845043-359e5f628214?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4MjMwNjN8MHwxfHNlYXJjaHwzfHxsYWRha2h8ZW58MHx8fHwxNzcyNjk4NTQ5fDA&ixlib=rb-4.1.0&q=80&w=1080",
-                    "final_price": "849461.00",
+                    "feature_image": "https:\/\/images.pexels.com\/photos\/1295878\/pexels-photo-1295878.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+                    "final_price": "858461.00",
                     "markup_percentage": "0.00",
                     "travelers": {
                         "adults": 2,
@@ -227,18 +227,18 @@
                             "isCustom": false
                         },
                         {
-                            "id": "8e4d05aa-b73d-48bc-897c-404596471632",
-                            "key": "custom-1773036042624",
-                            "title": "Amendment Policy",
-                            "content": "<ol class=\"list-decimal pl-5\"><li value=\"1\" class=\"mb-1\" style=\"text-align: start;\"><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">Written Requests<\/strong><\/b><span style=\"white-space: pre-wrap;\">: All change requests (dates, hotels, or names) must be submitted in&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">writing via email<\/strong><\/b><span style=\"white-space: pre-wrap;\">&nbsp;to be officially processed.<\/span><\/li><li value=\"2\" class=\"mb-1\" style=\"text-align: start;\"><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">Amendment Fees<\/strong><\/b><span style=\"white-space: pre-wrap;\">: The agency usually charges a standard&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">administrative fee<\/strong><\/b><span style=\"white-space: pre-wrap;\">&nbsp;(e.g., \u20b91,000 - \u20b95,000 or $50 - $100) per change, in addition to any vendor costs.<\/span><\/li><li value=\"3\" class=\"mb-1\" style=\"text-align: start;\"><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">Availability Dependent<\/strong><\/b><span style=\"white-space: pre-wrap;\">: All requested changes are&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">subject to availability<\/strong><\/b><span style=\"white-space: pre-wrap;\">&nbsp;at the time of the request and cannot be guaranteed.<\/span><\/li><li value=\"4\" class=\"mb-1\" style=\"text-align: start;\"><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">Fare Differences<\/strong><\/b><span style=\"white-space: pre-wrap;\">: If an amendment results in a higher price (e.g., moving to a more expensive hotel or peak date), the traveler must pay the&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">difference in cost<\/strong><\/b><span style=\"white-space: pre-wrap;\">.<\/span><\/li><li value=\"5\" class=\"mb-1\" style=\"text-align: start;\"><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">Non-Transferable Bookings<\/strong><\/b><span style=\"white-space: pre-wrap;\">: Many bookings (especially flight tickets) are&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">non-transferable<\/strong><\/b><span style=\"white-space: pre-wrap;\">&nbsp;to another person due to airline security and name-change restrictions.<\/span><\/li><li value=\"6\" class=\"mb-1\" style=\"text-align: start;\"><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">Timeline Restrictions<\/strong><\/b><span style=\"white-space: pre-wrap;\">: Amendments made very close to the departure date (e.g., within 7\u201314 days) may be treated as a&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">cancellation and re-booking<\/strong><\/b><span style=\"white-space: pre-wrap;\">, incurring higher fees.<\/span><\/li><li value=\"7\" class=\"mb-1\" style=\"text-align: start;\"><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">Third-Party Costs<\/strong><\/b><span style=\"white-space: pre-wrap;\">: Any fees charged by airlines, hotels, or transport providers for changes will be passed directly to the traveler.<\/span><\/li><li value=\"8\" class=\"mb-1\" style=\"text-align: start;\"><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">Reduction in Group Size<\/strong><\/b><span style=\"white-space: pre-wrap;\">: If an amendment reduces the number of travelers, the remaining passengers may face a&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">price increase<\/strong><\/b><span style=\"white-space: pre-wrap;\">&nbsp;to cover shared costs (like private vehicles).<\/span><\/li><li value=\"9\" class=\"mb-1\" style=\"text-align: start;\"><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">Downgrade Policy<\/strong><\/b><span style=\"white-space: pre-wrap;\">: If a change results in a lower-priced package, the agency may not refund the difference if the original services were already locked in and paid for.<\/span><\/li><li value=\"10\" class=\"mb-1\" style=\"text-align: start;\"><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">Limit on Changes<\/strong><\/b><span style=\"white-space: pre-wrap;\">: Agencies often limit the number of free or low-cost amendments; beyond a certain point (e.g., 2 changes), they may charge&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">additional service fees<\/strong><\/b><span style=\"white-space: pre-wrap;\">.<\/span><\/li><\/ol>",
-                            "icon": "Edit",
-                            "isCustom": false
-                        },
-                        {
                             "id": "b2740cef-870b-4055-ae96-ac23d735da4f",
                             "key": "custom-1773036065602",
                             "title": "Why Choose Us",
                             "content": "<ul class=\"list-disc pl-5\"><li value=\"1\" class=\"mb-1\" style=\"text-align: start;\"><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">Expertly Crafted Itineraries:<\/strong><\/b><span style=\"white-space: pre-wrap;\">&nbsp;Designed by local experts who know the hidden gems, not just the tourist traps.<\/span><\/li><li value=\"2\" class=\"mb-1\" style=\"text-align: start;\"><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">Tailored to You:<\/strong><\/b><span style=\"white-space: pre-wrap;\">&nbsp;Completely customizable, whether you want a packed adventure or a relaxing getaway.<\/span><\/li><li value=\"3\" class=\"mb-1\" style=\"text-align: start;\"><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">24\/7 Support:<\/strong><\/b><span style=\"white-space: pre-wrap;\">&nbsp;We are with you every step of the way, offering peace of mind from departure to return.<\/span><\/li><li value=\"4\" class=\"mb-1\" style=\"text-align: start;\"><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">Curated Experiences:<\/strong><\/b><span style=\"white-space: pre-wrap;\">&nbsp;Access to unique, off-the-beaten-path activities you won't find in a guidebook.<\/span><\/li><\/ul>",
+                            "icon": "Edit",
+                            "isCustom": false
+                        },
+                        {
+                            "id": "28097425-da2c-4f01-8cce-0990360cd3e4",
+                            "key": "custom-1773502564129",
+                            "title": "New Section",
+                            "content": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Mock text<\/span><\/p>",
                             "icon": "Edit",
                             "isCustom": false
                         }
@@ -251,7 +251,7 @@
                         "info-915a9abc-a08d-4e93-a382-d62fcb79e42d",
                         "info-31dc47b4-bf94-478d-851f-a8323ff27973",
                         "info-12997463-8ed0-4c6a-99b5-d1e7d34f1e29",
-                        "info-8e4d05aa-b73d-48bc-897c-404596471632"
+                        "info-28097425-da2c-4f01-8cce-0990360cd3e4"
                     ],
                     "is_active": true,
                     "is_published": false,
@@ -259,7 +259,7 @@
                     "updated_by": "4931336c-27fc-45a8-bf66-e344a0908018",
                     "inquiry_id": "019cc189-0b93-7184-814f-c48e8a2801d7",
                     "created_at": "2026-03-14T11:35:05.000000Z",
-                    "updated_at": "2026-03-14T11:43:34.000000Z",
+                    "updated_at": "2026-03-14T15:38:59.000000Z",
                     "deleted_at": null,
                     "cab_pricing_helper": {
                         "cab_management_mode": "segment"
@@ -269,8 +269,8 @@
                     "gst_rate": null,
                     "gst_rate_id": null,
                     "email_sent_count": 0,
-                    "base_price": "500782.00",
-                    "commission_price": "348679.00",
+                    "base_price": "790792.00",
+                    "commission_price": "67669.00",
                     "status": null,
                     "payment_status": null
                 },
@@ -297,13 +297,13 @@
             },
             "components": [
                 {
-                    "id": "019cec2e-f725-7055-acbb-d89c715ea46b",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8653-70d5-a464-ebb99cb41374",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Note",
                     "name": "Note",
                     "reference_id": null,
-                    "description": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Have an early breakfast today morning and leave for the Shyam Valley Excursion. First place visit Hall of Fame. Then you will be be visiting the renowned Gurudwara Pathar Sahib. The biggest attraction of the day, is the visit to the Magnetic Hill, where you will see your car move uphill even when in neutral gear. Later visit the confluence or Sangam Point of Indus and Zanskar (Sangam), a colorful experience. Evening visit to Shanti Stupa built in 1991 by Japanese Buddhist Bhikshu Gyomyo Nakamura. Shanti stupa provides beautiful and panoramic view of the surrounding landscape. Shanti Stupa in Ladakh was built to promote world peace and a symbol of the ties between Japan and Ladakh.Overnight in leh.<\/span><\/p>",
+                    "description": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Have an early<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\"> breakfast today morning<\/strong><\/b><span style=\"white-space: pre-wrap;\"> and leave for the<\/span><u><span class=\"underline\" style=\"white-space: pre-wrap;\"> Shyam Valley Excursion<\/span><\/u><span style=\"white-space: pre-wrap;\">. First place visit Hall of Fame. Then you will be be visiting the renowned Gurudwara Pathar Sahib. The biggest attraction of the day, is the visit to the Magnetic Hill, where you will see your car move uphill even when in neutral gear. Later visit the confluence or Sangam Point of Indus and Zanskar (Sangam), a colorful experience. Evening visit to Shanti Stupa built in 1991 by Japanese Buddhist Bhikshu Gyomyo Nakamura. Shanti stupa provides beautiful and panoramic view of the surrounding landscape. <\/span><u><i><b><strong class=\"font-bold italic underline\" style=\"white-space: pre-wrap;\">Shanti Stupa<\/strong><\/b><\/i><\/u><span style=\"white-space: pre-wrap;\"> in Ladakh was built to promote world peace and a symbol of the ties between Japan and<\/span><a href=\"https:\/\/\" rel=\"noreferrer\" class=\"text-primary underline cursor-pointer\"><u><i><b><strong class=\"font-bold italic underline\" style=\"white-space: pre-wrap;\"> Ladakh.Overnight in leh<\/strong><\/b><\/i><\/u><\/a><span style=\"white-space: pre-wrap;\">.<\/span><\/p>",
                     "date": "2026-03-10T00:00:00.000000Z",
                     "day_number": 1,
                     "price": "0.00",
@@ -334,68 +334,47 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f726-70ec-96bc-8736a67019df",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8654-7087-902e-25a4177775d9",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Transport",
                     "name": "Cab supplier",
                     "reference_id": null,
-                    "description": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">All vehicles are new. <\/span><\/p>",
+                    "description": null,
                     "date": "2026-03-10T00:00:00.000000Z",
                     "day_number": 1,
-                    "price": "14999.00",
+                    "price": "4999.00",
                     "base_price": "4999.00",
                     "commission_price": "0.00",
                     "rating": "0.00",
-                    "images": [
-                        {
-                            "url": "https:\/\/images.pexels.com\/photos\/6280718\/pexels-photo-6280718.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-                            "title": "New Image"
-                        }
-                    ],
+                    "images": [],
                     "details": {
                         "transportName": "Cab supplier",
                         "operatingCities": null,
-                        "cabCategory": "019c2225-53af-722f-bb46-9ef025b50833",
-                        "cabModel": "019c2225-53b0-70a3-8fb2-dc90c9c1f4f4",
+                        "cabCategory": "019c2225-53ac-7132-a8c1-276604747dba",
+                        "cabModel": "019c2225-53ad-734a-b418-2db22e23c1be",
                         "transportDateTime": null,
                         "pickupLocation": "Sham Valley Trek Trailhead",
                         "dropLocation": "Shanti Stupa",
                         "routeStops": [
                             "Sham Valley Trek Trailhead",
                             "Shanti Stupa",
-                            "Shimla",
-                            "Chandigarh"
+                            "Shimla"
                         ],
-                        "transportPrice": 14999,
+                        "transportPrice": 4999,
                         "vendor": {
                             "transporter_name": "Cab supplier",
                             "id": "019c22c4-605a-7310-a4a7-620e009b5b81",
                             "notes": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Hi.......<\/span><\/p>",
                             "cab_categories": []
                         },
-                        "vehicleCount": 3,
-                        "additionalVehicles": [
-                            {
-                                "id": "1773488535710 -0.8803903029977564",
-                                "category": "019c2225-53b3-73d3-8c5b-8f245d0b4d7a",
-                                "model": "Tata Punch",
-                                "count": 2,
-                                "categoryName": "Luxury"
-                            },
-                            {
-                                "id": "1773488545315 -0.5045954736956596",
-                                "category": "019c2225-53b5-712f-b63a-b9af2cc640fd",
-                                "model": "Tata Harrier",
-                                "count": 1,
-                                "categoryName": "Tempo Traveller"
-                            }
-                        ],
+                        "vehicleCount": 1,
+                        "additionalVehicles": [],
                         "pax": null,
                         "driverAllowance": 0,
                         "nightHalt": 0,
-                        "cabCategoryName": "SUV",
-                        "cabModelName": "Ertiga",
+                        "cabCategoryName": "Sedan",
+                        "cabModelName": "Dzire",
                         "transportType": "cab",
                         "documents": [],
                         "location": null,
@@ -419,8 +398,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f727-70e8-93cf-3d92966f04fb",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8655-728a-91b0-2805aabd3b93",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Hotel",
                     "name": "Hotel Gyalpo Residency - A Mountain View Luxury Hotel in Leh",
@@ -706,438 +685,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f729-7003-89e2-573234fc8d12",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "parent_id": null,
-                    "component_type": "Activity",
-                    "name": "Hall of Fame",
-                    "reference_id": "019cc6fd-0675-72fd-94ac-01d7300a1a77",
-                    "description": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">The Hall of Fame Leh is&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">a museum that is constructed and maintained by the Indian army<\/strong><\/b><span style=\"white-space: pre-wrap;\">. Hall of fame is located near the Leh Airfield. This museum is built in memory of the soldiers who had lost their lives through the Indo-Pak wars.<\/span><\/p>",
-                    "date": "2026-03-10T00:00:00.000000Z",
-                    "day_number": 1,
-                    "price": "0.00",
-                    "base_price": "0.00",
-                    "commission_price": "0.00",
-                    "rating": "0.00",
-                    "images": [
-                        {
-                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_c800f6fd-85d6-40da-8511-0e99ab01523c.GetPhoto",
-                            "title": "Hall of Fame"
-                        },
-                        {
-                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_348f3282-2aa9-4f40-b5fa-a3822ce22c64.GetPhoto",
-                            "title": "Hall of Fame"
-                        },
-                        {
-                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_2cca85a4-5c6f-4332-9de1-4399ce3d7343.GetPhoto",
-                            "title": "Hall of Fame"
-                        },
-                        {
-                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_90a518ef-4eb6-47a2-aa31-b3f098392dc7.GetPhoto",
-                            "title": "Hall of Fame"
-                        },
-                        {
-                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_f2db764b-cf08-455b-8dd2-ccbec654338d.GetPhoto",
-                            "title": "Hall of Fame"
-                        }
-                    ],
-                    "details": {
-                        "address": null,
-                        "phone": null,
-                        "email": null,
-                        "location": null,
-                        "roomType": null,
-                        "numberOfRooms": 1,
-                        "mealPlan": null,
-                        "checkIn": null,
-                        "checkOut": null,
-                        "route": null,
-                        "vehicleType": null,
-                        "time": "09:00",
-                        "date": null,
-                        "duration": "5 minutes",
-                        "timezone": null,
-                        "bookedThrough": null,
-                        "confirmationNumber": null,
-                        "provider": null,
-                        "sourceData": {
-                            "seasons": [],
-                            "meal_plans": [],
-                            "room_categories": [],
-                            "other_charges": [],
-                            "city": null,
-                            "state": null,
-                            "country": null,
-                            "adult_price": 0,
-                            "children_price": 0,
-                            "infant_price": 0
-                        },
-                        "adult_price": 0,
-                        "children_price": 0,
-                        "infant_price": 0,
-                        "is_pricing_enabled": false,
-                        "commission_type": null,
-                        "commission_value": null,
-                        "activityId": "dab0c61e-56d0-47d7-848a-5410fa411979",
-                        "activityName": "Hall of Fame",
-                        "activityDescription": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">The Hall of Fame Leh is&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">a museum that is constructed and maintained by the Indian army<\/strong><\/b><span style=\"white-space: pre-wrap;\">. Hall of fame is located near the Leh Airfield. This museum is built in memory of the soldiers who had lost their lives through the Indo-Pak wars.<\/span><\/p>",
-                        "activityPrice": 0,
-                        "customPrice": 0,
-                        "customRating": 0,
-                        "activityImages": [
-                            {
-                                "uuid": "40f37dff-996c-40f2-84fb-f50ed1893c40",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_c800f6fd-85d6-40da-8511-0e99ab01523c.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_c800f6fd-85d6-40da-8511-0e99ab01523c.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_c800f6fd-85d6-40da-8511-0e99ab01523c.GetPhoto",
-                                "name": "Hall of Fame"
-                            },
-                            {
-                                "uuid": "dd67a7c5-c6e5-4266-aa8f-71a3210bd788",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_348f3282-2aa9-4f40-b5fa-a3822ce22c64.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_348f3282-2aa9-4f40-b5fa-a3822ce22c64.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_348f3282-2aa9-4f40-b5fa-a3822ce22c64.GetPhoto",
-                                "name": "Hall of Fame"
-                            },
-                            {
-                                "uuid": "f42c6b89-2543-44ec-9b07-fbaea7f86b51",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_2cca85a4-5c6f-4332-9de1-4399ce3d7343.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_2cca85a4-5c6f-4332-9de1-4399ce3d7343.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_2cca85a4-5c6f-4332-9de1-4399ce3d7343.GetPhoto",
-                                "name": "Hall of Fame"
-                            },
-                            {
-                                "uuid": "5dc9a4c9-f0aa-4c96-8ff8-5c3ea73ba293",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_90a518ef-4eb6-47a2-aa31-b3f098392dc7.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_90a518ef-4eb6-47a2-aa31-b3f098392dc7.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_90a518ef-4eb6-47a2-aa31-b3f098392dc7.GetPhoto",
-                                "name": "Hall of Fame"
-                            },
-                            {
-                                "uuid": "d9a33ac5-a277-472d-93a5-f078ffe7de5d",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_f2db764b-cf08-455b-8dd2-ccbec654338d.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_f2db764b-cf08-455b-8dd2-ccbec654338d.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_f2db764b-cf08-455b-8dd2-ccbec654338d.GetPhoto",
-                                "name": "Hall of Fame"
-                            }
-                        ],
-                        "id": "dab0c61e-56d0-47d7-848a-5410fa411979",
-                        "title": "Hall of Fame",
-                        "name": "Hall of Fame",
-                        "description": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">The Hall of Fame Leh is&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">a museum that is constructed and maintained by the Indian army<\/strong><\/b><span style=\"white-space: pre-wrap;\">. Hall of fame is located near the Leh Airfield. This museum is built in memory of the soldiers who had lost their lives through the Indo-Pak wars.<\/span><\/p>",
-                        "price_amount": 0,
-                        "gallery": [
-                            {
-                                "uuid": "40f37dff-996c-40f2-84fb-f50ed1893c40",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_c800f6fd-85d6-40da-8511-0e99ab01523c.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_c800f6fd-85d6-40da-8511-0e99ab01523c.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_c800f6fd-85d6-40da-8511-0e99ab01523c.GetPhoto",
-                                "name": "Hall of Fame"
-                            },
-                            {
-                                "uuid": "dd67a7c5-c6e5-4266-aa8f-71a3210bd788",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_348f3282-2aa9-4f40-b5fa-a3822ce22c64.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_348f3282-2aa9-4f40-b5fa-a3822ce22c64.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_348f3282-2aa9-4f40-b5fa-a3822ce22c64.GetPhoto",
-                                "name": "Hall of Fame"
-                            },
-                            {
-                                "uuid": "f42c6b89-2543-44ec-9b07-fbaea7f86b51",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_2cca85a4-5c6f-4332-9de1-4399ce3d7343.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_2cca85a4-5c6f-4332-9de1-4399ce3d7343.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_2cca85a4-5c6f-4332-9de1-4399ce3d7343.GetPhoto",
-                                "name": "Hall of Fame"
-                            },
-                            {
-                                "uuid": "5dc9a4c9-f0aa-4c96-8ff8-5c3ea73ba293",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_90a518ef-4eb6-47a2-aa31-b3f098392dc7.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_90a518ef-4eb6-47a2-aa31-b3f098392dc7.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_90a518ef-4eb6-47a2-aa31-b3f098392dc7.GetPhoto",
-                                "name": "Hall of Fame"
-                            },
-                            {
-                                "uuid": "d9a33ac5-a277-472d-93a5-f078ffe7de5d",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_f2db764b-cf08-455b-8dd2-ccbec654338d.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_f2db764b-cf08-455b-8dd2-ccbec654338d.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_f2db764b-cf08-455b-8dd2-ccbec654338d.GetPhoto",
-                                "name": "Hall of Fame"
-                            }
-                        ],
-                        "countryId": null,
-                        "stateId": null,
-                        "cityId": null,
-                        "city": null,
-                        "documents": []
-                    },
-                    "assignment": "all",
-                    "assigned_people": [],
-                    "sort_order": 4,
-                    "metadata": {
-                        "day_date": "2026-03-10"
-                    },
-                    "location": null,
-                    "address": null,
-                    "phone": null,
-                    "daywise_title": "First place visit Hall of Fame. Then you will be be visiting the renowned Gurudwara Pathar Sahib.",
-                    "email": null,
-                    "start_time": null,
-                    "end_time": null,
-                    "duration": null
-                },
-                {
-                    "id": "019cec2e-f72a-7043-a424-3a40bdaa234b",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "parent_id": null,
-                    "component_type": "Activity",
-                    "name": "Gurudwara Shri Pathar Sahib",
-                    "reference_id": "019cc6fe-3cc6-7089-8fda-e26a744c44e8",
-                    "description": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Gurdwara Shri Pathar Sahib is situated on the Srinagar-Leh Road, 25kms before the Leh. It is very beautiful and it was&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">created in memory of the founder of Sikh religion and the first guru , Guru Nanak Dev ji<\/strong><\/b><span style=\"white-space: pre-wrap;\">.<\/span><\/p>",
-                    "date": "2026-03-10T00:00:00.000000Z",
-                    "day_number": 1,
-                    "price": "0.00",
-                    "base_price": "0.00",
-                    "commission_price": "0.00",
-                    "rating": "0.00",
-                    "images": [
-                        {
-                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_c5d3f00c-5097-4665-a11b-53f572007138.GetPhoto",
-                            "title": "Gurudwara Shri Pathar Sahib"
-                        },
-                        {
-                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_5c2336b9-deae-4c02-ac7b-9fcec6a6d30e.GetPhoto",
-                            "title": "Gurudwara Shri Pathar Sahib"
-                        },
-                        {
-                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_8825cdd9-a965-4a1c-9a9b-09050ca0480e.GetPhoto",
-                            "title": "Gurudwara Shri Pathar Sahib"
-                        },
-                        {
-                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_7745cf0c-194d-40b6-8fff-e375c72f2b79.GetPhoto",
-                            "title": "Gurudwara Shri Pathar Sahib"
-                        },
-                        {
-                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_b56adc79-b99c-4626-9a0c-7e37d7598965.GetPhoto",
-                            "title": "Gurudwara Shri Pathar Sahib"
-                        }
-                    ],
-                    "details": {
-                        "address": null,
-                        "phone": null,
-                        "email": null,
-                        "location": null,
-                        "roomType": null,
-                        "numberOfRooms": 1,
-                        "mealPlan": null,
-                        "checkIn": null,
-                        "checkOut": null,
-                        "route": null,
-                        "vehicleType": null,
-                        "time": "09:00",
-                        "date": null,
-                        "duration": "5 minutes",
-                        "timezone": null,
-                        "bookedThrough": null,
-                        "confirmationNumber": null,
-                        "provider": null,
-                        "sourceData": {
-                            "seasons": [],
-                            "meal_plans": [],
-                            "room_categories": [],
-                            "other_charges": [],
-                            "city": null,
-                            "state": null,
-                            "country": null,
-                            "adult_price": 0,
-                            "children_price": 0,
-                            "infant_price": 0
-                        },
-                        "adult_price": 0,
-                        "children_price": 0,
-                        "infant_price": 0,
-                        "is_pricing_enabled": false,
-                        "commission_type": null,
-                        "commission_value": null,
-                        "activityId": "6af3e50f-4ac0-4317-b620-4c366a5b30d5",
-                        "activityName": "Gurudwara Shri Pathar Sahib",
-                        "activityDescription": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Gurdwara Shri Pathar Sahib is situated on the Srinagar-Leh Road, 25kms before the Leh. It is very beautiful and it was&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">created in memory of the founder of Sikh religion and the first guru , Guru Nanak Dev ji<\/strong><\/b><span style=\"white-space: pre-wrap;\">.<\/span><\/p>",
-                        "activityPrice": 0,
-                        "customPrice": 0,
-                        "customRating": 0,
-                        "activityImages": [
-                            {
-                                "uuid": "9390e6c9-5292-49ca-92de-1c172a1d4535",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_c5d3f00c-5097-4665-a11b-53f572007138.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_c5d3f00c-5097-4665-a11b-53f572007138.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_c5d3f00c-5097-4665-a11b-53f572007138.GetPhoto",
-                                "name": "Gurudwara Shri Pathar Sahib"
-                            },
-                            {
-                                "uuid": "ef45503b-6dd3-4d4c-be69-a6228a8b649b",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_5c2336b9-deae-4c02-ac7b-9fcec6a6d30e.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_5c2336b9-deae-4c02-ac7b-9fcec6a6d30e.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_5c2336b9-deae-4c02-ac7b-9fcec6a6d30e.GetPhoto",
-                                "name": "Gurudwara Shri Pathar Sahib"
-                            },
-                            {
-                                "uuid": "3a4758dd-45aa-4134-9b3d-aa885cdf2ec3",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_8825cdd9-a965-4a1c-9a9b-09050ca0480e.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_8825cdd9-a965-4a1c-9a9b-09050ca0480e.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_8825cdd9-a965-4a1c-9a9b-09050ca0480e.GetPhoto",
-                                "name": "Gurudwara Shri Pathar Sahib"
-                            },
-                            {
-                                "uuid": "b9a50d61-e22b-432f-8870-760cdc37d881",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_7745cf0c-194d-40b6-8fff-e375c72f2b79.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_7745cf0c-194d-40b6-8fff-e375c72f2b79.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_7745cf0c-194d-40b6-8fff-e375c72f2b79.GetPhoto",
-                                "name": "Gurudwara Shri Pathar Sahib"
-                            },
-                            {
-                                "uuid": "81032ae0-e0c3-45af-ab79-bc23615f953e",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_b56adc79-b99c-4626-9a0c-7e37d7598965.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_b56adc79-b99c-4626-9a0c-7e37d7598965.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_b56adc79-b99c-4626-9a0c-7e37d7598965.GetPhoto",
-                                "name": "Gurudwara Shri Pathar Sahib"
-                            }
-                        ],
-                        "id": "6af3e50f-4ac0-4317-b620-4c366a5b30d5",
-                        "title": "Gurudwara Shri Pathar Sahib",
-                        "name": "Gurudwara Shri Pathar Sahib",
-                        "description": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Gurdwara Shri Pathar Sahib is situated on the Srinagar-Leh Road, 25kms before the Leh. It is very beautiful and it was&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">created in memory of the founder of Sikh religion and the first guru , Guru Nanak Dev ji<\/strong><\/b><span style=\"white-space: pre-wrap;\">.<\/span><\/p>",
-                        "price_amount": 0,
-                        "gallery": [
-                            {
-                                "uuid": "9390e6c9-5292-49ca-92de-1c172a1d4535",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_c5d3f00c-5097-4665-a11b-53f572007138.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_c5d3f00c-5097-4665-a11b-53f572007138.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_c5d3f00c-5097-4665-a11b-53f572007138.GetPhoto",
-                                "name": "Gurudwara Shri Pathar Sahib"
-                            },
-                            {
-                                "uuid": "ef45503b-6dd3-4d4c-be69-a6228a8b649b",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_5c2336b9-deae-4c02-ac7b-9fcec6a6d30e.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_5c2336b9-deae-4c02-ac7b-9fcec6a6d30e.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_5c2336b9-deae-4c02-ac7b-9fcec6a6d30e.GetPhoto",
-                                "name": "Gurudwara Shri Pathar Sahib"
-                            },
-                            {
-                                "uuid": "3a4758dd-45aa-4134-9b3d-aa885cdf2ec3",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_8825cdd9-a965-4a1c-9a9b-09050ca0480e.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_8825cdd9-a965-4a1c-9a9b-09050ca0480e.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_8825cdd9-a965-4a1c-9a9b-09050ca0480e.GetPhoto",
-                                "name": "Gurudwara Shri Pathar Sahib"
-                            },
-                            {
-                                "uuid": "b9a50d61-e22b-432f-8870-760cdc37d881",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_7745cf0c-194d-40b6-8fff-e375c72f2b79.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_7745cf0c-194d-40b6-8fff-e375c72f2b79.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_7745cf0c-194d-40b6-8fff-e375c72f2b79.GetPhoto",
-                                "name": "Gurudwara Shri Pathar Sahib"
-                            },
-                            {
-                                "uuid": "81032ae0-e0c3-45af-ab79-bc23615f953e",
-                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_b56adc79-b99c-4626-9a0c-7e37d7598965.GetPhoto",
-                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_b56adc79-b99c-4626-9a0c-7e37d7598965.GetPhoto",
-                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_b56adc79-b99c-4626-9a0c-7e37d7598965.GetPhoto",
-                                "name": "Gurudwara Shri Pathar Sahib"
-                            }
-                        ],
-                        "countryId": null,
-                        "stateId": null,
-                        "cityId": null,
-                        "city": null,
-                        "documents": []
-                    },
-                    "assignment": "all",
-                    "assigned_people": [],
-                    "sort_order": 5,
-                    "metadata": {
-                        "day_date": "2026-03-10"
-                    },
-                    "location": null,
-                    "address": null,
-                    "phone": null,
-                    "daywise_title": "First place visit Hall of Fame. Then you will be be visiting the renowned Gurudwara Pathar Sahib.",
-                    "email": null,
-                    "start_time": null,
-                    "end_time": null,
-                    "duration": null
-                },
-                {
-                    "id": "019cec2e-f72b-7383-b886-c145543d138a",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "parent_id": null,
-                    "component_type": "Note",
-                    "name": "Note",
-                    "reference_id": "019cc247-14e4-7032-a6c3-cd0e28b7d98b",
-                    "description": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Enjoy a beautiful morning in the camps, charge yourself with morning breakfast and create lifetime memories. Today, drive back to Leh driving on the same route crossing the Changla La (pass). Arrive at Leh around afternoon and check in at hotel. You can go for some shopping in nearby local markets or just relax. Have dinner and go for a relaxed sleep to recharge yourself for the upcoming day.<\/span><\/p>",
-                    "date": "2026-03-10T00:00:00.000000Z",
-                    "day_number": 1,
-                    "price": "0.00",
-                    "base_price": "0.00",
-                    "commission_price": "0.00",
-                    "rating": "0.00",
-                    "images": [],
-                    "details": {
-                        "address": null,
-                        "phone": null,
-                        "email": null,
-                        "location": null,
-                        "roomType": null,
-                        "numberOfRooms": 1,
-                        "mealPlan": null,
-                        "checkIn": null,
-                        "checkOut": null,
-                        "route": null,
-                        "vehicleType": null,
-                        "time": "09:00",
-                        "date": null,
-                        "duration": "5 minutes",
-                        "timezone": null,
-                        "bookedThrough": null,
-                        "confirmationNumber": null,
-                        "provider": null,
-                        "city_name": null,
-                        "state_name": null,
-                        "country_name": null,
-                        "sourceData": {
-                            "seasons": [],
-                            "meal_plans": [],
-                            "room_categories": [],
-                            "other_charges": [],
-                            "city": null,
-                            "state": null,
-                            "country": null,
-                            "adult_price": 0,
-                            "children_price": 0,
-                            "infant_price": 0
-                        },
-                        "adult_price": 0,
-                        "children_price": 0,
-                        "infant_price": 0,
-                        "is_pricing_enabled": true,
-                        "commission_type": null,
-                        "commission_value": null,
-                        "documents": []
-                    },
-                    "assignment": "all",
-                    "assigned_people": [],
-                    "sort_order": 6,
-                    "metadata": {
-                        "day_date": "2026-03-10"
-                    },
-                    "location": null,
-                    "address": null,
-                    "phone": null,
-                    "daywise_title": "First place visit Hall of Fame. Then you will be be visiting the renowned Gurudwara Pathar Sahib.",
-                    "email": null,
-                    "start_time": null,
-                    "end_time": null,
-                    "duration": null
-                },
-                {
-                    "id": "019cec2e-f72c-7170-9dfc-188b6d433db8",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8657-7387-8237-e03fabb17988",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Hotel",
                     "name": "Impex Hill Resorts",
@@ -2220,7 +1769,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 7,
+                    "sort_order": 4,
                     "metadata": {
                         "day_date": "2026-03-10"
                     },
@@ -2234,8 +1783,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f72e-7168-bd87-367b39830e64",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-865a-7265-bf75-f3736a231425",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Hotel",
                     "name": "The Grand Welcome Hotel",
@@ -3625,7 +3174,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 8,
+                    "sort_order": 5,
                     "metadata": {
                         "day_date": "2026-03-10"
                     },
@@ -3639,8 +3188,438 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f730-7211-b5e8-ee116996b18d",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-865c-7274-9f55-d3c1d06d2bc8",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "parent_id": null,
+                    "component_type": "Activity",
+                    "name": "Hall of Fame",
+                    "reference_id": "019cc6fd-0675-72fd-94ac-01d7300a1a77",
+                    "description": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">The Hall of Fame Leh is&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">a museum that is constructed and maintained by the Indian army<\/strong><\/b><span style=\"white-space: pre-wrap;\">. Hall of fame is located near the Leh Airfield. This museum is built in memory of the soldiers who had lost their lives through the Indo-Pak wars.<\/span><\/p>",
+                    "date": "2026-03-10T00:00:00.000000Z",
+                    "day_number": 1,
+                    "price": "0.00",
+                    "base_price": "0.00",
+                    "commission_price": "0.00",
+                    "rating": "0.00",
+                    "images": [
+                        {
+                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_c800f6fd-85d6-40da-8511-0e99ab01523c.GetPhoto",
+                            "title": "Hall of Fame"
+                        },
+                        {
+                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_348f3282-2aa9-4f40-b5fa-a3822ce22c64.GetPhoto",
+                            "title": "Hall of Fame"
+                        },
+                        {
+                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_2cca85a4-5c6f-4332-9de1-4399ce3d7343.GetPhoto",
+                            "title": "Hall of Fame"
+                        },
+                        {
+                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_90a518ef-4eb6-47a2-aa31-b3f098392dc7.GetPhoto",
+                            "title": "Hall of Fame"
+                        },
+                        {
+                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_f2db764b-cf08-455b-8dd2-ccbec654338d.GetPhoto",
+                            "title": "Hall of Fame"
+                        }
+                    ],
+                    "details": {
+                        "address": null,
+                        "phone": null,
+                        "email": null,
+                        "location": null,
+                        "roomType": null,
+                        "numberOfRooms": 1,
+                        "mealPlan": null,
+                        "checkIn": null,
+                        "checkOut": null,
+                        "route": null,
+                        "vehicleType": null,
+                        "time": "09:00",
+                        "date": null,
+                        "duration": "5 minutes",
+                        "timezone": null,
+                        "bookedThrough": null,
+                        "confirmationNumber": null,
+                        "provider": null,
+                        "sourceData": {
+                            "seasons": [],
+                            "meal_plans": [],
+                            "room_categories": [],
+                            "other_charges": [],
+                            "city": null,
+                            "state": null,
+                            "country": null,
+                            "adult_price": 0,
+                            "children_price": 0,
+                            "infant_price": 0
+                        },
+                        "adult_price": 0,
+                        "children_price": 0,
+                        "infant_price": 0,
+                        "is_pricing_enabled": false,
+                        "commission_type": null,
+                        "commission_value": null,
+                        "activityId": "dab0c61e-56d0-47d7-848a-5410fa411979",
+                        "activityName": "Hall of Fame",
+                        "activityDescription": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">The Hall of Fame Leh is&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">a museum that is constructed and maintained by the Indian army<\/strong><\/b><span style=\"white-space: pre-wrap;\">. Hall of fame is located near the Leh Airfield. This museum is built in memory of the soldiers who had lost their lives through the Indo-Pak wars.<\/span><\/p>",
+                        "activityPrice": 0,
+                        "customPrice": 0,
+                        "customRating": 0,
+                        "activityImages": [
+                            {
+                                "uuid": "40f37dff-996c-40f2-84fb-f50ed1893c40",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_c800f6fd-85d6-40da-8511-0e99ab01523c.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_c800f6fd-85d6-40da-8511-0e99ab01523c.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_c800f6fd-85d6-40da-8511-0e99ab01523c.GetPhoto",
+                                "name": "Hall of Fame"
+                            },
+                            {
+                                "uuid": "dd67a7c5-c6e5-4266-aa8f-71a3210bd788",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_348f3282-2aa9-4f40-b5fa-a3822ce22c64.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_348f3282-2aa9-4f40-b5fa-a3822ce22c64.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_348f3282-2aa9-4f40-b5fa-a3822ce22c64.GetPhoto",
+                                "name": "Hall of Fame"
+                            },
+                            {
+                                "uuid": "f42c6b89-2543-44ec-9b07-fbaea7f86b51",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_2cca85a4-5c6f-4332-9de1-4399ce3d7343.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_2cca85a4-5c6f-4332-9de1-4399ce3d7343.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_2cca85a4-5c6f-4332-9de1-4399ce3d7343.GetPhoto",
+                                "name": "Hall of Fame"
+                            },
+                            {
+                                "uuid": "5dc9a4c9-f0aa-4c96-8ff8-5c3ea73ba293",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_90a518ef-4eb6-47a2-aa31-b3f098392dc7.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_90a518ef-4eb6-47a2-aa31-b3f098392dc7.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_90a518ef-4eb6-47a2-aa31-b3f098392dc7.GetPhoto",
+                                "name": "Hall of Fame"
+                            },
+                            {
+                                "uuid": "d9a33ac5-a277-472d-93a5-f078ffe7de5d",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_f2db764b-cf08-455b-8dd2-ccbec654338d.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_f2db764b-cf08-455b-8dd2-ccbec654338d.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_f2db764b-cf08-455b-8dd2-ccbec654338d.GetPhoto",
+                                "name": "Hall of Fame"
+                            }
+                        ],
+                        "id": "dab0c61e-56d0-47d7-848a-5410fa411979",
+                        "title": "Hall of Fame",
+                        "name": "Hall of Fame",
+                        "description": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">The Hall of Fame Leh is&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">a museum that is constructed and maintained by the Indian army<\/strong><\/b><span style=\"white-space: pre-wrap;\">. Hall of fame is located near the Leh Airfield. This museum is built in memory of the soldiers who had lost their lives through the Indo-Pak wars.<\/span><\/p>",
+                        "price_amount": 0,
+                        "gallery": [
+                            {
+                                "uuid": "40f37dff-996c-40f2-84fb-f50ed1893c40",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_c800f6fd-85d6-40da-8511-0e99ab01523c.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_c800f6fd-85d6-40da-8511-0e99ab01523c.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_c800f6fd-85d6-40da-8511-0e99ab01523c.GetPhoto",
+                                "name": "Hall of Fame"
+                            },
+                            {
+                                "uuid": "dd67a7c5-c6e5-4266-aa8f-71a3210bd788",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_348f3282-2aa9-4f40-b5fa-a3822ce22c64.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_348f3282-2aa9-4f40-b5fa-a3822ce22c64.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_348f3282-2aa9-4f40-b5fa-a3822ce22c64.GetPhoto",
+                                "name": "Hall of Fame"
+                            },
+                            {
+                                "uuid": "f42c6b89-2543-44ec-9b07-fbaea7f86b51",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_2cca85a4-5c6f-4332-9de1-4399ce3d7343.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_2cca85a4-5c6f-4332-9de1-4399ce3d7343.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_2cca85a4-5c6f-4332-9de1-4399ce3d7343.GetPhoto",
+                                "name": "Hall of Fame"
+                            },
+                            {
+                                "uuid": "5dc9a4c9-f0aa-4c96-8ff8-5c3ea73ba293",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_90a518ef-4eb6-47a2-aa31-b3f098392dc7.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_90a518ef-4eb6-47a2-aa31-b3f098392dc7.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_90a518ef-4eb6-47a2-aa31-b3f098392dc7.GetPhoto",
+                                "name": "Hall of Fame"
+                            },
+                            {
+                                "uuid": "d9a33ac5-a277-472d-93a5-f078ffe7de5d",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_f2db764b-cf08-455b-8dd2-ccbec654338d.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_f2db764b-cf08-455b-8dd2-ccbec654338d.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fd-0675-72fd-94ac-01d7300a1a77\/small_f2db764b-cf08-455b-8dd2-ccbec654338d.GetPhoto",
+                                "name": "Hall of Fame"
+                            }
+                        ],
+                        "countryId": null,
+                        "stateId": null,
+                        "cityId": null,
+                        "city": null,
+                        "documents": []
+                    },
+                    "assignment": "all",
+                    "assigned_people": [],
+                    "sort_order": 6,
+                    "metadata": {
+                        "day_date": "2026-03-10"
+                    },
+                    "location": null,
+                    "address": null,
+                    "phone": null,
+                    "daywise_title": "First place visit Hall of Fame. Then you will be be visiting the renowned Gurudwara Pathar Sahib.",
+                    "email": null,
+                    "start_time": null,
+                    "end_time": null,
+                    "duration": null
+                },
+                {
+                    "id": "019cf5af-865d-71ee-9634-6df89509b201",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "parent_id": null,
+                    "component_type": "Activity",
+                    "name": "Gurudwara Shri Pathar Sahib",
+                    "reference_id": "019cc6fe-3cc6-7089-8fda-e26a744c44e8",
+                    "description": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Gurdwara Shri Pathar Sahib is situated on the Srinagar-Leh Road, 25kms before the Leh. It is very beautiful and it was&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">created in memory of the founder of Sikh religion and the first guru , Guru Nanak Dev ji<\/strong><\/b><span style=\"white-space: pre-wrap;\">.<\/span><\/p>",
+                    "date": "2026-03-10T00:00:00.000000Z",
+                    "day_number": 1,
+                    "price": "0.00",
+                    "base_price": "0.00",
+                    "commission_price": "0.00",
+                    "rating": "0.00",
+                    "images": [
+                        {
+                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_c5d3f00c-5097-4665-a11b-53f572007138.GetPhoto",
+                            "title": "Gurudwara Shri Pathar Sahib"
+                        },
+                        {
+                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_5c2336b9-deae-4c02-ac7b-9fcec6a6d30e.GetPhoto",
+                            "title": "Gurudwara Shri Pathar Sahib"
+                        },
+                        {
+                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_8825cdd9-a965-4a1c-9a9b-09050ca0480e.GetPhoto",
+                            "title": "Gurudwara Shri Pathar Sahib"
+                        },
+                        {
+                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_7745cf0c-194d-40b6-8fff-e375c72f2b79.GetPhoto",
+                            "title": "Gurudwara Shri Pathar Sahib"
+                        },
+                        {
+                            "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_b56adc79-b99c-4626-9a0c-7e37d7598965.GetPhoto",
+                            "title": "Gurudwara Shri Pathar Sahib"
+                        }
+                    ],
+                    "details": {
+                        "address": null,
+                        "phone": null,
+                        "email": null,
+                        "location": null,
+                        "roomType": null,
+                        "numberOfRooms": 1,
+                        "mealPlan": null,
+                        "checkIn": null,
+                        "checkOut": null,
+                        "route": null,
+                        "vehicleType": null,
+                        "time": "09:00",
+                        "date": null,
+                        "duration": "5 minutes",
+                        "timezone": null,
+                        "bookedThrough": null,
+                        "confirmationNumber": null,
+                        "provider": null,
+                        "sourceData": {
+                            "seasons": [],
+                            "meal_plans": [],
+                            "room_categories": [],
+                            "other_charges": [],
+                            "city": null,
+                            "state": null,
+                            "country": null,
+                            "adult_price": 0,
+                            "children_price": 0,
+                            "infant_price": 0
+                        },
+                        "adult_price": 0,
+                        "children_price": 0,
+                        "infant_price": 0,
+                        "is_pricing_enabled": false,
+                        "commission_type": null,
+                        "commission_value": null,
+                        "activityId": "6af3e50f-4ac0-4317-b620-4c366a5b30d5",
+                        "activityName": "Gurudwara Shri Pathar Sahib",
+                        "activityDescription": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Gurdwara Shri Pathar Sahib is situated on the Srinagar-Leh Road, 25kms before the Leh. It is very beautiful and it was&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">created in memory of the founder of Sikh religion and the first guru , Guru Nanak Dev ji<\/strong><\/b><span style=\"white-space: pre-wrap;\">.<\/span><\/p>",
+                        "activityPrice": 0,
+                        "customPrice": 0,
+                        "customRating": 0,
+                        "activityImages": [
+                            {
+                                "uuid": "9390e6c9-5292-49ca-92de-1c172a1d4535",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_c5d3f00c-5097-4665-a11b-53f572007138.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_c5d3f00c-5097-4665-a11b-53f572007138.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_c5d3f00c-5097-4665-a11b-53f572007138.GetPhoto",
+                                "name": "Gurudwara Shri Pathar Sahib"
+                            },
+                            {
+                                "uuid": "ef45503b-6dd3-4d4c-be69-a6228a8b649b",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_5c2336b9-deae-4c02-ac7b-9fcec6a6d30e.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_5c2336b9-deae-4c02-ac7b-9fcec6a6d30e.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_5c2336b9-deae-4c02-ac7b-9fcec6a6d30e.GetPhoto",
+                                "name": "Gurudwara Shri Pathar Sahib"
+                            },
+                            {
+                                "uuid": "3a4758dd-45aa-4134-9b3d-aa885cdf2ec3",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_8825cdd9-a965-4a1c-9a9b-09050ca0480e.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_8825cdd9-a965-4a1c-9a9b-09050ca0480e.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_8825cdd9-a965-4a1c-9a9b-09050ca0480e.GetPhoto",
+                                "name": "Gurudwara Shri Pathar Sahib"
+                            },
+                            {
+                                "uuid": "b9a50d61-e22b-432f-8870-760cdc37d881",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_7745cf0c-194d-40b6-8fff-e375c72f2b79.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_7745cf0c-194d-40b6-8fff-e375c72f2b79.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_7745cf0c-194d-40b6-8fff-e375c72f2b79.GetPhoto",
+                                "name": "Gurudwara Shri Pathar Sahib"
+                            },
+                            {
+                                "uuid": "81032ae0-e0c3-45af-ab79-bc23615f953e",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_b56adc79-b99c-4626-9a0c-7e37d7598965.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_b56adc79-b99c-4626-9a0c-7e37d7598965.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_b56adc79-b99c-4626-9a0c-7e37d7598965.GetPhoto",
+                                "name": "Gurudwara Shri Pathar Sahib"
+                            }
+                        ],
+                        "id": "6af3e50f-4ac0-4317-b620-4c366a5b30d5",
+                        "title": "Gurudwara Shri Pathar Sahib",
+                        "name": "Gurudwara Shri Pathar Sahib",
+                        "description": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Gurdwara Shri Pathar Sahib is situated on the Srinagar-Leh Road, 25kms before the Leh. It is very beautiful and it was&nbsp;<\/span><b><strong class=\"font-bold\" style=\"white-space: pre-wrap;\">created in memory of the founder of Sikh religion and the first guru , Guru Nanak Dev ji<\/strong><\/b><span style=\"white-space: pre-wrap;\">.<\/span><\/p>",
+                        "price_amount": 0,
+                        "gallery": [
+                            {
+                                "uuid": "9390e6c9-5292-49ca-92de-1c172a1d4535",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_c5d3f00c-5097-4665-a11b-53f572007138.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_c5d3f00c-5097-4665-a11b-53f572007138.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_c5d3f00c-5097-4665-a11b-53f572007138.GetPhoto",
+                                "name": "Gurudwara Shri Pathar Sahib"
+                            },
+                            {
+                                "uuid": "ef45503b-6dd3-4d4c-be69-a6228a8b649b",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_5c2336b9-deae-4c02-ac7b-9fcec6a6d30e.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_5c2336b9-deae-4c02-ac7b-9fcec6a6d30e.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_5c2336b9-deae-4c02-ac7b-9fcec6a6d30e.GetPhoto",
+                                "name": "Gurudwara Shri Pathar Sahib"
+                            },
+                            {
+                                "uuid": "3a4758dd-45aa-4134-9b3d-aa885cdf2ec3",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_8825cdd9-a965-4a1c-9a9b-09050ca0480e.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_8825cdd9-a965-4a1c-9a9b-09050ca0480e.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_8825cdd9-a965-4a1c-9a9b-09050ca0480e.GetPhoto",
+                                "name": "Gurudwara Shri Pathar Sahib"
+                            },
+                            {
+                                "uuid": "b9a50d61-e22b-432f-8870-760cdc37d881",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_7745cf0c-194d-40b6-8fff-e375c72f2b79.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_7745cf0c-194d-40b6-8fff-e375c72f2b79.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_7745cf0c-194d-40b6-8fff-e375c72f2b79.GetPhoto",
+                                "name": "Gurudwara Shri Pathar Sahib"
+                            },
+                            {
+                                "uuid": "81032ae0-e0c3-45af-ab79-bc23615f953e",
+                                "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_b56adc79-b99c-4626-9a0c-7e37d7598965.GetPhoto",
+                                "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_b56adc79-b99c-4626-9a0c-7e37d7598965.GetPhoto",
+                                "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/activities\/019cc6fe-3cc6-7089-8fda-e26a744c44e8\/small_b56adc79-b99c-4626-9a0c-7e37d7598965.GetPhoto",
+                                "name": "Gurudwara Shri Pathar Sahib"
+                            }
+                        ],
+                        "countryId": null,
+                        "stateId": null,
+                        "cityId": null,
+                        "city": null,
+                        "documents": []
+                    },
+                    "assignment": "all",
+                    "assigned_people": [],
+                    "sort_order": 7,
+                    "metadata": {
+                        "day_date": "2026-03-10"
+                    },
+                    "location": null,
+                    "address": null,
+                    "phone": null,
+                    "daywise_title": "First place visit Hall of Fame. Then you will be be visiting the renowned Gurudwara Pathar Sahib.",
+                    "email": null,
+                    "start_time": null,
+                    "end_time": null,
+                    "duration": null
+                },
+                {
+                    "id": "019cf5af-865f-7243-b8a6-01c4c20ef841",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "parent_id": null,
+                    "component_type": "Note",
+                    "name": "Note",
+                    "reference_id": "019cc247-14e4-7032-a6c3-cd0e28b7d98b",
+                    "description": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Enjoy a beautiful morning in the camps, charge yourself with morning breakfast and create lifetime memories. Today, drive back to Leh driving on the same route crossing the Changla La (pass). Arrive at Leh around afternoon and check in at hotel. You can go for some shopping in nearby local markets or just relax. Have dinner and go for a relaxed sleep to recharge yourself for the upcoming day.<\/span><\/p>",
+                    "date": "2026-03-10T00:00:00.000000Z",
+                    "day_number": 1,
+                    "price": "0.00",
+                    "base_price": "0.00",
+                    "commission_price": "0.00",
+                    "rating": "0.00",
+                    "images": [],
+                    "details": {
+                        "address": null,
+                        "phone": null,
+                        "email": null,
+                        "location": null,
+                        "roomType": null,
+                        "numberOfRooms": 1,
+                        "mealPlan": null,
+                        "checkIn": null,
+                        "checkOut": null,
+                        "route": null,
+                        "vehicleType": null,
+                        "time": "09:00",
+                        "date": null,
+                        "duration": "5 minutes",
+                        "timezone": null,
+                        "bookedThrough": null,
+                        "confirmationNumber": null,
+                        "provider": null,
+                        "city_name": null,
+                        "state_name": null,
+                        "country_name": null,
+                        "sourceData": {
+                            "seasons": [],
+                            "meal_plans": [],
+                            "room_categories": [],
+                            "other_charges": [],
+                            "city": null,
+                            "state": null,
+                            "country": null,
+                            "adult_price": 0,
+                            "children_price": 0,
+                            "infant_price": 0
+                        },
+                        "adult_price": 0,
+                        "children_price": 0,
+                        "infant_price": 0,
+                        "is_pricing_enabled": true,
+                        "commission_type": null,
+                        "commission_value": null,
+                        "documents": []
+                    },
+                    "assignment": "all",
+                    "assigned_people": [],
+                    "sort_order": 8,
+                    "metadata": {
+                        "day_date": "2026-03-10"
+                    },
+                    "location": null,
+                    "address": null,
+                    "phone": null,
+                    "daywise_title": "First place visit Hall of Fame. Then you will be be visiting the renowned Gurudwara Pathar Sahib.",
+                    "email": null,
+                    "start_time": null,
+                    "end_time": null,
+                    "duration": null
+                },
+                {
+                    "id": "019cf5af-8660-7110-b01c-ea1f659f3a07",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Note",
                     "name": "Welcome to nubara vally",
@@ -3676,8 +3655,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f731-7232-8a82-d7d446d426a8",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8661-73ed-9342-e87e5e6fdcba",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Hotel",
                     "name": "Nubra Organic Retreat",
@@ -4638,8 +4617,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f733-72cc-b825-edce77d47819",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8665-7267-8352-011e38ff7045",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Flight",
                     "name": "Indira Gandhi International Airport to Kushok Bakula Rimpochee Airport",
@@ -4665,7 +4644,7 @@
                         "airline_name": "Akasa Air",
                         "tripType": "one-way",
                         "airline": "Akasa Air",
-                        "fareClass": "Economy",
+                        "fareClass": "019c2225-4fb7-73b9-a56c-65b9a47945af",
                         "supplier": null,
                         "segments": [
                             {
@@ -4745,8 +4724,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f734-733d-bfa6-63b50d420b8c",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8667-7062-9443-009a60e51e62",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Train",
                     "name": "Bandra Bullet Train Station to Bandra Bullet Train Station",
@@ -4856,8 +4835,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f735-707e-b487-e1f63b24e956",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8668-7329-b0a2-17371e609780",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Bus",
                     "name": "Navi Mumbai to Mumbai Central",
@@ -4943,8 +4922,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f736-72e6-bf7e-12510b24a1fe",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-866a-7213-92a9-06c2e39e7037",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Transport",
                     "name": "SMT Transporter",
@@ -5104,80 +5083,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f737-7077-875e-eeeecb36da4d",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "parent_id": null,
-                    "component_type": "Note",
-                    "name": "Some additional Note",
-                    "reference_id": "019cbcb1-ac03-7071-8668-3f23b4c852a9",
-                    "description": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Today after breakfast visit Hall of Fame, Gurudwara Pathar Sahib, Magnetic Hill &amp; Sangam View where Indus &amp; Zanskar river meet (confluence). Later we shall move back to Leh. Later visit Leh Palace and enjoy a sunset at Shanti Stupa.&nbsp;Night stay at hotel in Leh.<\/span><\/p>",
-                    "date": "2026-03-11T00:00:00.000000Z",
-                    "day_number": 2,
-                    "price": "0.00",
-                    "base_price": "0.00",
-                    "commission_price": "0.00",
-                    "rating": "0.00",
-                    "images": [],
-                    "details": {
-                        "address": null,
-                        "phone": null,
-                        "email": null,
-                        "location": null,
-                        "roomType": null,
-                        "numberOfRooms": 1,
-                        "mealPlan": null,
-                        "checkIn": null,
-                        "checkOut": null,
-                        "route": null,
-                        "vehicleType": null,
-                        "time": "09:00",
-                        "date": null,
-                        "duration": "5 minutes",
-                        "timezone": null,
-                        "bookedThrough": null,
-                        "confirmationNumber": null,
-                        "provider": null,
-                        "city_name": null,
-                        "state_name": null,
-                        "country_name": null,
-                        "sourceData": {
-                            "seasons": [],
-                            "meal_plans": [],
-                            "room_categories": [],
-                            "other_charges": [],
-                            "city": null,
-                            "state": null,
-                            "country": null,
-                            "adult_price": 0,
-                            "children_price": 0,
-                            "infant_price": 0
-                        },
-                        "adult_price": 0,
-                        "children_price": 0,
-                        "infant_price": 0,
-                        "is_pricing_enabled": true,
-                        "commission_type": null,
-                        "commission_value": null,
-                        "documents": []
-                    },
-                    "assignment": "all",
-                    "assigned_people": [],
-                    "sort_order": 15,
-                    "metadata": {
-                        "day_date": "2026-03-11"
-                    },
-                    "location": null,
-                    "address": null,
-                    "phone": null,
-                    "daywise_title": "Day 1 Arrive at Leh",
-                    "email": null,
-                    "start_time": null,
-                    "end_time": null,
-                    "duration": null
-                },
-                {
-                    "id": "019cec2e-f738-71ad-9b66-57dc07182a28",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-866c-71f5-be7f-deddbdb23479",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Note",
                     "name": "Note",
@@ -5199,7 +5106,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 16,
+                    "sort_order": 15,
                     "metadata": {
                         "day_date": "2026-03-12"
                     },
@@ -5213,8 +5120,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f739-736a-982b-d9013e7fc2c9",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-866f-73d3-9ec9-3e4d2fc4d473",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Activity",
                     "name": "Nubra Valley",
@@ -5378,7 +5285,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 17,
+                    "sort_order": 16,
                     "metadata": {
                         "day_date": "2026-03-12"
                     },
@@ -5392,8 +5299,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f73b-7012-b72f-a9bd85f3f026",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8671-725d-8cd7-876c332f6ea6",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Transport",
                     "name": "SMT Transporter",
@@ -5533,7 +5440,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 18,
+                    "sort_order": 17,
                     "metadata": {
                         "day_date": "2026-03-12"
                     },
@@ -5547,8 +5454,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f73c-7370-8fa7-90c86b1a7aa0",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8673-72f8-a332-81962d8ef806",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Transport",
                     "name": "Happy transport",
@@ -5556,9 +5463,9 @@
                     "description": "<p class=\"m-0 mb-2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">We will provide 20 vehicles.<\/span><\/p>",
                     "date": "2026-03-12T00:00:00.000000Z",
                     "day_number": 3,
-                    "price": "463386.00",
-                    "base_price": "421260.00",
-                    "commission_price": "42126.00",
+                    "price": "485452.00",
+                    "base_price": "441320.00",
+                    "commission_price": "44132.00",
                     "rating": "0.00",
                     "images": [],
                     "details": {
@@ -6050,7 +5957,7 @@
                             "The Grand Welcome Hotel",
                             "Delhi"
                         ],
-                        "transportPrice": 463386,
+                        "transportPrice": 485452,
                         "vehicleCount": 3,
                         "additionalVehicles": [
                             {
@@ -6075,6 +5982,13 @@
                                 "model": "Endeavour",
                                 "count": 5,
                                 "pax": "2"
+                            },
+                            {
+                                "id": "1773644071435 -0.32768845399030166",
+                                "category": "019c2225-53b8-72cd-8b1d-8a8ddccb4c2d",
+                                "model": "MG Gloster",
+                                "count": 1,
+                                "pax": "3"
                             }
                         ],
                         "pax": "4",
@@ -6087,7 +6001,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 19,
+                    "sort_order": 18,
                     "metadata": {
                         "day_date": "2026-03-12"
                     },
@@ -6101,8 +6015,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f73d-72bc-abc4-bd6e86ffe62f",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8675-7308-8bb0-c68b56f79739",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Transport",
                     "name": "Shimla Cab supplier",
@@ -6184,7 +6098,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 20,
+                    "sort_order": 19,
                     "metadata": {
                         "day_date": "2026-03-12"
                     },
@@ -6198,8 +6112,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f73e-72df-9960-0051818f1466",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8677-716f-b7a8-984d588152f7",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Hotel",
                     "name": "The hunder eco villa",
@@ -6466,7 +6380,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 21,
+                    "sort_order": 20,
                     "metadata": {
                         "day_date": "2026-03-12"
                     },
@@ -6480,8 +6394,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f73f-722f-b92a-c4af2b310808",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8679-73c2-94d6-679b7e59738f",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Note",
                     "name": "Note",
@@ -6503,7 +6417,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 22,
+                    "sort_order": 21,
                     "metadata": {
                         "day_date": "2026-03-13"
                     },
@@ -6517,8 +6431,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f740-70c0-83f3-50ef27bdaa00",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-867b-703a-8c2b-2b405ba9190d",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Activity",
                     "name": "Pangong Lake",
@@ -6682,7 +6596,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 23,
+                    "sort_order": 22,
                     "metadata": {
                         "day_date": "2026-03-13"
                     },
@@ -6696,8 +6610,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f741-71aa-9697-bae317ab5f76",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-867c-710f-8533-4bed045d68ed",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Transport",
                     "name": "Cab supplier",
@@ -6745,7 +6659,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 24,
+                    "sort_order": 23,
                     "metadata": {
                         "day_date": "2026-03-13"
                     },
@@ -6759,8 +6673,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f742-7101-8959-9e0fee06e9f2",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-867d-717b-b0f0-b6d68379370b",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Hotel",
                     "name": "Blue Chill Cottage Pangong",
@@ -7027,7 +6941,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 25,
+                    "sort_order": 24,
                     "metadata": {
                         "day_date": "2026-03-13"
                     },
@@ -7041,8 +6955,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f743-72ef-a259-c2cb7c48b2b6",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-867f-704f-97c4-57416931b8cb",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Flight",
                     "name": "Shimla Airport to Delhi",
@@ -7112,7 +7026,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 26,
+                    "sort_order": 25,
                     "metadata": {
                         "day_date": "2026-03-13"
                     },
@@ -7126,8 +7040,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f744-7014-8d23-b638d440dc00",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8680-709e-b3b8-3ea66f3d3c41",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Flight",
                     "name": "Shimla Airport to Delhi",
@@ -7210,7 +7124,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 27,
+                    "sort_order": 26,
                     "metadata": {
                         "day_date": "2026-03-13"
                     },
@@ -7224,8 +7138,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f744-7014-8d23-b638d5842358",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8682-71de-bec0-a849755872bf",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Flight",
                     "name": "Delhi to Kempegowda International Airport Bengaluru",
@@ -7321,7 +7235,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 28,
+                    "sort_order": 27,
                     "metadata": {
                         "day_date": "2026-03-13"
                     },
@@ -7335,8 +7249,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f745-7390-834f-e06f72561b84",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8683-71df-960d-8e5ab9399038",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Note",
                     "name": "Note",
@@ -7358,7 +7272,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 29,
+                    "sort_order": 28,
                     "metadata": {
                         "day_date": "2026-03-14"
                     },
@@ -7372,8 +7286,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f746-73b3-a580-1e15a829ebd5",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8684-7344-be8b-924a3da8dc12",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Activity",
                     "name": "Chang La Pass",
@@ -7537,7 +7451,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 30,
+                    "sort_order": 29,
                     "metadata": {
                         "day_date": "2026-03-14"
                     },
@@ -7551,8 +7465,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f747-717b-a8e9-ec2dcd6b862f",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8686-7035-b6da-e064d11bd090",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Hotel",
                     "name": "The hermit Homestay",
@@ -7819,7 +7733,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 31,
+                    "sort_order": 30,
                     "metadata": {
                         "day_date": "2026-03-14"
                     },
@@ -7833,8 +7747,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f748-71a6-b946-2d420282c4e3",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8687-7179-b602-12661c931eca",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Transport",
                     "name": "Cab supplier",
@@ -7889,7 +7803,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 32,
+                    "sort_order": 31,
                     "metadata": {
                         "day_date": "2026-03-14"
                     },
@@ -7903,8 +7817,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f748-71a6-b946-2d420416ebe0",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8688-73bb-8de1-a2de7047775a",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Note",
                     "name": "Note",
@@ -7926,7 +7840,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 33,
+                    "sort_order": 32,
                     "metadata": {
                         "day_date": "2026-03-15"
                     },
@@ -7940,8 +7854,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f749-705a-8b93-02ff0b6ac81a",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8689-7147-8f5e-2edbcf294a11",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Transport",
                     "name": "Cab supplier",
@@ -7989,7 +7903,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 34,
+                    "sort_order": 33,
                     "metadata": {
                         "day_date": "2026-03-15"
                     },
@@ -8003,8 +7917,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f74a-7234-a94a-3aa8c8a88eaa",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-868a-70e3-8175-20ab87170cf2",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Flight",
                     "name": "Kushok Bakula Rimpochee Airport to Delhi Airport (DEL)",
@@ -8071,7 +7985,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 35,
+                    "sort_order": 34,
                     "metadata": {
                         "day_date": "2026-03-15"
                     },
@@ -8085,8 +7999,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f74a-7234-a94a-3aa8c9cf246c",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-868a-70e3-8175-20ab8882a1f1",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Train",
                     "name": "New Ashok Nagar Rapid Train Station to Bandra Bullet Train Station",
@@ -8157,7 +8071,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 36,
+                    "sort_order": 35,
                     "metadata": {
                         "day_date": "2026-03-15"
                     },
@@ -8171,8 +8085,8 @@
                     "duration": null
                 },
                 {
-                    "id": "019cec2e-f74b-71c1-9ba2-1a672155723b",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-868b-73e7-8bb9-4c8bb3e795b8",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "parent_id": null,
                     "component_type": "Bus",
                     "name": "Mumbai Central to Navi Mumbai",
@@ -8232,7 +8146,7 @@
                     },
                     "assignment": "all",
                     "assigned_people": [],
-                    "sort_order": 37,
+                    "sort_order": 36,
                     "metadata": {
                         "day_date": "2026-03-15"
                     },
@@ -8249,164 +8163,20 @@
             "payments": [],
             "pricing_breakdown": [
                 {
-                    "id": "019cec2e-f756-724a-9df0-5cf7e4e74f36",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "item_name": "Cab supplier",
-                    "item_type": "Transport",
-                    "day_number": 4,
-                    "price": "6000.00",
-                    "base_price": null,
-                    "commission_price": null,
-                    "currency": "INR",
-                    "notes": "Component: Cab supplier | Date: 2026-03-13"
-                },
-                {
-                    "id": "019cec2e-f757-7284-819d-01d86f62dd50",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "item_name": "Blue Chill Cottage Pangong",
-                    "item_type": "Hotel",
-                    "day_number": 4,
-                    "price": "9100.00",
-                    "base_price": null,
-                    "commission_price": null,
-                    "currency": "INR",
-                    "notes": "Component: Blue Chill Cottage Pangong | Date: 2026-03-13"
-                },
-                {
-                    "id": "019cec2e-f758-70ec-806e-784b7ae77f83",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "item_name": "Shimla Airport to Delhi",
-                    "item_type": "Flight",
-                    "day_number": 4,
-                    "price": "0.00",
-                    "base_price": null,
-                    "commission_price": null,
-                    "currency": "INR",
-                    "notes": "Component: Shimla Airport to Delhi | Date: 2026-03-13"
-                },
-                {
-                    "id": "019cec2e-f758-70ec-806e-784b7d281038",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "item_name": "Shimla Airport to Delhi",
-                    "item_type": "Flight",
-                    "day_number": 4,
-                    "price": "0.00",
-                    "base_price": null,
-                    "commission_price": null,
-                    "currency": "INR",
-                    "notes": "Component: Shimla Airport to Delhi | Date: 2026-03-13"
-                },
-                {
-                    "id": "019cec2e-f759-71bd-be3f-2009fff51079",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "item_name": "Delhi to Kempegowda International Airport Bengaluru",
-                    "item_type": "Flight",
-                    "day_number": 4,
-                    "price": "0.00",
-                    "base_price": null,
-                    "commission_price": null,
-                    "currency": "INR",
-                    "notes": "Component: Delhi to Kempegowda International Airport Bengaluru | Date: 2026-03-13"
-                },
-                {
-                    "id": "019cec2e-f75a-7373-b7c9-190a9a165912",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "item_name": "Chang La Pass",
-                    "item_type": "Activity",
-                    "day_number": 5,
-                    "price": "0.00",
-                    "base_price": null,
-                    "commission_price": null,
-                    "currency": "INR",
-                    "notes": "Component: Chang La Pass | Date: 2026-03-14"
-                },
-                {
-                    "id": "019cec2e-f75a-7373-b7c9-190a9bfa9959",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "item_name": "The hermit Homestay",
-                    "item_type": "Hotel",
-                    "day_number": 5,
-                    "price": "7900.00",
-                    "base_price": null,
-                    "commission_price": null,
-                    "currency": "INR",
-                    "notes": "Component: The hermit Homestay | Date: 2026-03-14"
-                },
-                {
-                    "id": "019cec2e-f75b-72b4-b519-436a17757def",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "item_name": "Cab supplier",
-                    "item_type": "Transport",
-                    "day_number": 5,
-                    "price": "6000.00",
-                    "base_price": null,
-                    "commission_price": null,
-                    "currency": "INR",
-                    "notes": "Component: Cab supplier | Date: 2026-03-14"
-                },
-                {
-                    "id": "019cec2e-f75b-72b4-b519-436a18b9d7e4",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "item_name": "Cab supplier",
-                    "item_type": "Transport",
-                    "day_number": 6,
-                    "price": "600.00",
-                    "base_price": null,
-                    "commission_price": null,
-                    "currency": "INR",
-                    "notes": "Component: Cab supplier | Date: 2026-03-15"
-                },
-                {
-                    "id": "019cec2e-f75c-712d-ae88-c42490e0230e",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "item_name": "Kushok Bakula Rimpochee Airport to Delhi Airport (DEL)",
-                    "item_type": "Flight",
-                    "day_number": 6,
-                    "price": "3540.00",
-                    "base_price": null,
-                    "commission_price": null,
-                    "currency": "INR",
-                    "notes": "Component: Kushok Bakula Rimpochee Airport to Delhi Airport (DEL) | Date: 2026-03-15"
-                },
-                {
-                    "id": "019cec2e-f75c-712d-ae88-c42492bdf70a",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "item_name": "New Ashok Nagar Rapid Train Station to Bandra Bullet Train Station",
-                    "item_type": "Train",
-                    "day_number": 6,
-                    "price": "3540.00",
-                    "base_price": null,
-                    "commission_price": null,
-                    "currency": "INR",
-                    "notes": "Component: New Ashok Nagar Rapid Train Station to Bandra Bullet Train Station | Date: 2026-03-15"
-                },
-                {
-                    "id": "019cec2e-f75d-71ae-9fc3-82ff56f8035a",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "item_name": "Mumbai Central to Navi Mumbai",
-                    "item_type": "Bus",
-                    "day_number": 6,
-                    "price": "4000.00",
-                    "base_price": null,
-                    "commission_price": null,
-                    "currency": "INR",
-                    "notes": "Component: Mumbai Central to Navi Mumbai | Date: 2026-03-15"
-                },
-                {
-                    "id": "019cec2e-f74d-7253-ba9a-ff9f14ed62bb",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-868d-713a-b633-d96fee8a4247",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "item_name": "Cab supplier",
                     "item_type": "Transport",
                     "day_number": 1,
-                    "price": "14999.00",
+                    "price": "4999.00",
                     "base_price": null,
                     "commission_price": null,
                     "currency": "INR",
                     "notes": "Component: Cab supplier | Date: 2026-03-10"
                 },
                 {
-                    "id": "019cec2e-f74d-7253-ba9a-ff9f167812bc",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-868e-7218-9dcd-7460dba2387a",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "item_name": "Hotel Gyalpo Residency - A Mountain View Luxury Hotel in Leh",
                     "item_type": "Hotel",
                     "day_number": 1,
@@ -8417,32 +8187,8 @@
                     "notes": "Component: Hotel Gyalpo Residency - A Mountain View Luxury Hotel in Leh | Date: 2026-03-10"
                 },
                 {
-                    "id": "019cec2e-f74e-701f-a6fc-efacef2d4c75",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "item_name": "Hall of Fame",
-                    "item_type": "Activity",
-                    "day_number": 1,
-                    "price": "0.00",
-                    "base_price": null,
-                    "commission_price": null,
-                    "currency": "INR",
-                    "notes": "Component: Hall of Fame | Date: 2026-03-10"
-                },
-                {
-                    "id": "019cec2e-f74e-701f-a6fc-efacf09add0c",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
-                    "item_name": "Gurudwara Shri Pathar Sahib",
-                    "item_type": "Activity",
-                    "day_number": 1,
-                    "price": "0.00",
-                    "base_price": null,
-                    "commission_price": null,
-                    "currency": "INR",
-                    "notes": "Component: Gurudwara Shri Pathar Sahib | Date: 2026-03-10"
-                },
-                {
-                    "id": "019cec2e-f74f-70ce-928b-a680b6b8de49",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-868f-7230-9019-d7146d4b32ec",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "item_name": "Impex Hill Resorts",
                     "item_type": "Hotel",
                     "day_number": 1,
@@ -8453,8 +8199,8 @@
                     "notes": "Component: Impex Hill Resorts | Date: 2026-03-10"
                 },
                 {
-                    "id": "019cec2e-f750-72da-a688-5ff02b4370ae",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-868f-7230-9019-d7146e8b4059",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "item_name": "The Grand Welcome Hotel",
                     "item_type": "Hotel",
                     "day_number": 1,
@@ -8465,8 +8211,32 @@
                     "notes": "Component: The Grand Welcome Hotel | Date: 2026-03-10"
                 },
                 {
-                    "id": "019cec2e-f750-72da-a688-5ff02c555f3e",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8690-72f1-82fc-21e93aac6cd8",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "item_name": "Hall of Fame",
+                    "item_type": "Activity",
+                    "day_number": 1,
+                    "price": "0.00",
+                    "base_price": null,
+                    "commission_price": null,
+                    "currency": "INR",
+                    "notes": "Component: Hall of Fame | Date: 2026-03-10"
+                },
+                {
+                    "id": "019cf5af-8691-72b7-acd7-5ec7090ad6cc",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "item_name": "Gurudwara Shri Pathar Sahib",
+                    "item_type": "Activity",
+                    "day_number": 1,
+                    "price": "0.00",
+                    "base_price": null,
+                    "commission_price": null,
+                    "currency": "INR",
+                    "notes": "Component: Gurudwara Shri Pathar Sahib | Date: 2026-03-10"
+                },
+                {
+                    "id": "019cf5af-8691-72b7-acd7-5ec70b3a9077",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "item_name": "Nubra Organic Retreat",
                     "item_type": "Hotel",
                     "day_number": 2,
@@ -8477,8 +8247,8 @@
                     "notes": "Component: Nubra Organic Retreat | Date: 2026-03-11"
                 },
                 {
-                    "id": "019cec2e-f751-7242-a614-c6fb1ff9e190",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8692-7252-9885-4f1d4a5f9501",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "item_name": "Indira Gandhi International Airport to Kushok Bakula Rimpochee Airport",
                     "item_type": "Flight",
                     "day_number": 2,
@@ -8489,8 +8259,8 @@
                     "notes": "Component: Indira Gandhi International Airport to Kushok Bakula Rimpochee Airport | Date: 2026-03-11"
                 },
                 {
-                    "id": "019cec2e-f751-7242-a614-c6fb21c40348",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8693-7141-a66b-9d794aebf4ea",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "item_name": "Bandra Bullet Train Station to Bandra Bullet Train Station",
                     "item_type": "Train",
                     "day_number": 2,
@@ -8501,8 +8271,8 @@
                     "notes": "Component: Bandra Bullet Train Station to Bandra Bullet Train Station | Date: 2026-03-11"
                 },
                 {
-                    "id": "019cec2e-f752-7015-9bf7-7989b0305e17",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8693-7141-a66b-9d794cad7869",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "item_name": "Navi Mumbai to Mumbai Central",
                     "item_type": "Bus",
                     "day_number": 2,
@@ -8513,8 +8283,8 @@
                     "notes": "Component: Navi Mumbai to Mumbai Central | Date: 2026-03-11"
                 },
                 {
-                    "id": "019cec2e-f752-7015-9bf7-7989b17f71a0",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8694-7222-bf63-42e5b85a47af",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "item_name": "SMT Transporter",
                     "item_type": "Transport",
                     "day_number": 2,
@@ -8525,8 +8295,8 @@
                     "notes": "Component: SMT Transporter | Date: 2026-03-11"
                 },
                 {
-                    "id": "019cec2e-f753-7353-9632-68dd19a412fe",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8695-700f-8cf5-c035ad0860be",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "item_name": "Nubra Valley",
                     "item_type": "Activity",
                     "day_number": 3,
@@ -8537,8 +8307,8 @@
                     "notes": "Component: Nubra Valley | Date: 2026-03-12"
                 },
                 {
-                    "id": "019cec2e-f753-7353-9632-68dd1b1d16f3",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8695-700f-8cf5-c035ae9bb2a5",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "item_name": "SMT Transporter",
                     "item_type": "Transport",
                     "day_number": 3,
@@ -8549,20 +8319,20 @@
                     "notes": "Component: SMT Transporter | Date: 2026-03-12"
                 },
                 {
-                    "id": "019cec2e-f754-731e-8826-50621d43e616",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8696-70eb-b42a-1e0543327edf",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "item_name": "Happy transport",
                     "item_type": "Transport",
                     "day_number": 3,
-                    "price": "463386.00",
+                    "price": "485452.00",
                     "base_price": null,
                     "commission_price": null,
                     "currency": "INR",
                     "notes": "Component: Happy transport | Date: 2026-03-12"
                 },
                 {
-                    "id": "019cec2e-f754-731e-8826-50621e55fe36",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8697-7354-a48e-59cdfe7f6f44",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "item_name": "Shimla Cab supplier",
                     "item_type": "Transport",
                     "day_number": 3,
@@ -8573,8 +8343,8 @@
                     "notes": "Component: Shimla Cab supplier | Date: 2026-03-12"
                 },
                 {
-                    "id": "019cec2e-f755-71b6-b7d2-7fd6d5d36047",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8697-7354-a48e-59ce00d10250",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "item_name": "The hunder eco villa",
                     "item_type": "Hotel",
                     "day_number": 3,
@@ -8585,8 +8355,8 @@
                     "notes": "Component: The hunder eco villa | Date: 2026-03-12"
                 },
                 {
-                    "id": "019cec2e-f756-724a-9df0-5cf7e3517f0e",
-                    "package_id": "019cec20-e8e3-71ed-8670-9f4f5bd211a7",
+                    "id": "019cf5af-8698-707f-8d51-0be90e237422",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
                     "item_name": "Pangong Lake",
                     "item_type": "Activity",
                     "day_number": 4,
@@ -8595,6 +8365,150 @@
                     "commission_price": null,
                     "currency": "INR",
                     "notes": "Component: Pangong Lake | Date: 2026-03-13"
+                },
+                {
+                    "id": "019cf5af-8699-7322-8e5a-eb0998741494",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "item_name": "Cab supplier",
+                    "item_type": "Transport",
+                    "day_number": 4,
+                    "price": "6000.00",
+                    "base_price": null,
+                    "commission_price": null,
+                    "currency": "INR",
+                    "notes": "Component: Cab supplier | Date: 2026-03-13"
+                },
+                {
+                    "id": "019cf5af-8699-7322-8e5a-eb099a1213df",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "item_name": "Blue Chill Cottage Pangong",
+                    "item_type": "Hotel",
+                    "day_number": 4,
+                    "price": "9100.00",
+                    "base_price": null,
+                    "commission_price": null,
+                    "currency": "INR",
+                    "notes": "Component: Blue Chill Cottage Pangong | Date: 2026-03-13"
+                },
+                {
+                    "id": "019cf5af-869a-7280-bb83-2ff96a935e7a",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "item_name": "Shimla Airport to Delhi",
+                    "item_type": "Flight",
+                    "day_number": 4,
+                    "price": "0.00",
+                    "base_price": null,
+                    "commission_price": null,
+                    "currency": "INR",
+                    "notes": "Component: Shimla Airport to Delhi | Date: 2026-03-13"
+                },
+                {
+                    "id": "019cf5af-869b-72bb-b03f-90a354d632c5",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "item_name": "Shimla Airport to Delhi",
+                    "item_type": "Flight",
+                    "day_number": 4,
+                    "price": "0.00",
+                    "base_price": null,
+                    "commission_price": null,
+                    "currency": "INR",
+                    "notes": "Component: Shimla Airport to Delhi | Date: 2026-03-13"
+                },
+                {
+                    "id": "019cf5af-869b-72bb-b03f-90a356cd395b",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "item_name": "Delhi to Kempegowda International Airport Bengaluru",
+                    "item_type": "Flight",
+                    "day_number": 4,
+                    "price": "0.00",
+                    "base_price": null,
+                    "commission_price": null,
+                    "currency": "INR",
+                    "notes": "Component: Delhi to Kempegowda International Airport Bengaluru | Date: 2026-03-13"
+                },
+                {
+                    "id": "019cf5af-869c-70d4-8474-f7eeb9037161",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "item_name": "Chang La Pass",
+                    "item_type": "Activity",
+                    "day_number": 5,
+                    "price": "0.00",
+                    "base_price": null,
+                    "commission_price": null,
+                    "currency": "INR",
+                    "notes": "Component: Chang La Pass | Date: 2026-03-14"
+                },
+                {
+                    "id": "019cf5af-869d-711f-a1c9-0154e7aed13b",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "item_name": "The hermit Homestay",
+                    "item_type": "Hotel",
+                    "day_number": 5,
+                    "price": "7900.00",
+                    "base_price": null,
+                    "commission_price": null,
+                    "currency": "INR",
+                    "notes": "Component: The hermit Homestay | Date: 2026-03-14"
+                },
+                {
+                    "id": "019cf5af-869e-7067-aafb-87d5aabcf5d0",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "item_name": "Cab supplier",
+                    "item_type": "Transport",
+                    "day_number": 5,
+                    "price": "6000.00",
+                    "base_price": null,
+                    "commission_price": null,
+                    "currency": "INR",
+                    "notes": "Component: Cab supplier | Date: 2026-03-14"
+                },
+                {
+                    "id": "019cf5af-869f-72b6-a2b7-4625d9cdd0ae",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "item_name": "Cab supplier",
+                    "item_type": "Transport",
+                    "day_number": 6,
+                    "price": "600.00",
+                    "base_price": null,
+                    "commission_price": null,
+                    "currency": "INR",
+                    "notes": "Component: Cab supplier | Date: 2026-03-15"
+                },
+                {
+                    "id": "019cf5af-869f-72b6-a2b7-4625dbb18d4e",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "item_name": "Kushok Bakula Rimpochee Airport to Delhi Airport (DEL)",
+                    "item_type": "Flight",
+                    "day_number": 6,
+                    "price": "3540.00",
+                    "base_price": null,
+                    "commission_price": null,
+                    "currency": "INR",
+                    "notes": "Component: Kushok Bakula Rimpochee Airport to Delhi Airport (DEL) | Date: 2026-03-15"
+                },
+                {
+                    "id": "019cf5af-86a0-70ed-8510-f3f6595541ac",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "item_name": "New Ashok Nagar Rapid Train Station to Bandra Bullet Train Station",
+                    "item_type": "Train",
+                    "day_number": 6,
+                    "price": "3540.00",
+                    "base_price": null,
+                    "commission_price": null,
+                    "currency": "INR",
+                    "notes": "Component: New Ashok Nagar Rapid Train Station to Bandra Bullet Train Station | Date: 2026-03-15"
+                },
+                {
+                    "id": "019cf5af-86a1-73f0-87c0-698fa235f48a",
+                    "package_id": "019cd922-971f-71ce-a102-0a9a997e0350",
+                    "item_name": "Mumbai Central to Navi Mumbai",
+                    "item_type": "Bus",
+                    "day_number": 6,
+                    "price": "4000.00",
+                    "base_price": null,
+                    "commission_price": null,
+                    "currency": "INR",
+                    "notes": "Component: Mumbai Central to Navi Mumbai | Date: 2026-03-15"
                 }
             ],
             "status": null

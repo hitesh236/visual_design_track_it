@@ -28,6 +28,7 @@ type HotelCardProps = {
   notes?: string;
   checkIn?: string | null;
   checkOut?: string | null;
+  hideTime?: boolean;
 };
 
 // ─── Time formatter ───────────────────────────────────────────────
@@ -87,12 +88,10 @@ function Badge({
 // ─── Image with fallback ──────────────────────────────────────────
 
 function HotelImage({ src, name, rating, horizontal = false }: { src?: string; name: string; rating: number; horizontal?: boolean }) {
-  const badgeText = rating > 0 ? `${rating} Star Hotel` : 'Hotel';
-
   return (
     <div
       style={{
-        width: horizontal ? '220px' : '100%',
+        width: '100%',
         height: horizontal ? '100%' : '180px',
         borderRadius: horizontal ? '0' : 'var(--radius-badge)',
         position: 'relative',
@@ -122,29 +121,19 @@ function HotelImage({ src, name, rating, horizontal = false }: { src?: string; n
           alignItems: 'center',
           justifyContent: 'center'
         }}>
-          {/* Hotel building with floor windows */}
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="4" y="2" width="16" height="20" rx="1"/>
-            <path d="M4 8h16M4 14h16"/>
-            <path d="M9 22V14h6v8"/>
-            <rect x="6.5" y="4.5" width="2" height="2" fill="var(--color-primary)" stroke="none"/>
-            <rect x="10.5" y="4.5" width="2" height="2" fill="var(--color-primary)" stroke="none"/>
-            <rect x="14.5" y="4.5" width="2" height="2" fill="var(--color-primary)" stroke="none"/>
-            <rect x="6.5" y="9.5" width="2" height="2" fill="var(--color-primary)" stroke="none"/>
-            <rect x="14.5" y="9.5" width="2" height="2" fill="var(--color-primary)" stroke="none"/>
+          {/* Simplified Hotel Building */}
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 21h18" />
+            <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16" />
+            <path d="M9 7h1" />
+            <path d="M9 11h1" />
+            <path d="M9 15h1" />
+            <path d="M14 7h1" />
+            <path d="M14 11h1" />
+            <path d="M14 15h1" />
           </svg>
         </div>
       )}
-
-      {/* Overlay Badge - only for non-horizontal or small overlay */}
-      <div style={{
-        position: 'absolute',
-        top: '12px',
-        left: '12px',
-        zIndex: 1
-      }}>
-        <Badge color="rgba(0,0,0,0.6)">{badgeText}</Badge>
-      </div>
     </div>
   );
 }
@@ -168,6 +157,7 @@ function HotelCardFull({
   notes,
   checkIn,
   checkOut,
+  hideTime,
 }: HotelCardProps) {
   const firstImage = images?.[0];
 
@@ -224,6 +214,34 @@ function HotelCardFull({
               </div>
             )}
           </div>
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px',
+              padding: '2px 8px',
+              borderRadius: '999px',
+              backgroundColor: 'var(--color-hotel)',
+              color: 'var(--color-text-on-primary)',
+              fontSize: '10px',
+              fontWeight: 600,
+              letterSpacing: '0.04em',
+              textTransform: 'uppercase',
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
+            }}
+          >
+            {/* Hotel icon */}
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 21h18" />
+              <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16" />
+              <path d="M9 7h1" />
+              <path d="M14 7h1" />
+              <path d="M9 11h1" />
+              <path d="M14 11h1" />
+            </svg>
+            Hotel
+          </span>
         </div>
 
         {/* Location */}
@@ -252,7 +270,16 @@ function HotelCardFull({
           {mealPlan && (
             <div style={{ marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
               <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontFamily: 'var(--font-body)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Meal Plan:</span>
-              <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-hotel)', backgroundColor: 'var(--color-hotel-muted, #fff5f5)', padding: '2px 8px', borderRadius: '4px', border: '1px solid var(--color-hotel-border, #fed7d7)' }}>
+              <span style={{ 
+                fontSize: '12px', 
+                fontWeight: 600, 
+                color: 'var(--color-hotel-text)', 
+                backgroundColor: 'var(--color-hotel-muted)', 
+                padding: '2px 10px', 
+                borderRadius: '4px', 
+                border: '1px solid var(--color-hotel-border)',
+                fontFamily: 'var(--font-body)'
+              }}>
                 {mealPlan}
               </span>
             </div>
@@ -330,22 +357,24 @@ function HotelCardFull({
         </div>
 
         {/* Check-in / Check-out */}
-        <div style={{
-          marginTop: '12px',
-          paddingTop: '10px',
-          borderTop: '1px dashed var(--color-border)',
-          display: 'flex',
-          gap: '24px',
-        }}>
-          <div>
-            <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: '2px' }}>Check-In</div>
-            <div className="time-location-override" style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text)', fontFamily: 'var(--font-body)' }}>{formatTime(checkIn)}</div>
+        {!hideTime && (
+          <div style={{
+            marginTop: '12px',
+            paddingTop: '10px',
+            borderTop: '1px dashed var(--color-border)',
+            display: 'flex',
+            gap: '24px',
+          }}>
+            <div>
+              <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: '2px' }}>Check-In</div>
+              <div className="time-location-override" style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text)', fontFamily: 'var(--font-body)' }}>{formatTime(checkIn)}</div>
+            </div>
+            <div>
+              <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: '2px' }}>Check-Out</div>
+              <div className="time-location-override" style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text)', fontFamily: 'var(--font-body)' }}>{formatTime(checkOut)}</div>
+            </div>
           </div>
-          <div>
-            <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: '2px' }}>Check-Out</div>
-            <div className="time-location-override" style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text)', fontFamily: 'var(--font-body)' }}>{formatTime(checkOut)}</div>
-          </div>
-        </div>
+        )}
 
         {/* Other Inclusions */}
         {otherCharges && otherCharges.length > 0 && (
@@ -353,7 +382,7 @@ function HotelCardFull({
             <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontFamily: 'var(--font-body)', display: 'block', marginBottom: '4px' }}>Other Inclusions</span>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
               {otherCharges.map((charge, idx) => (
-                <span key={idx} style={{ fontSize: '12px', color: 'var(--color-primary-dark)', backgroundColor: 'var(--color-primary-muted)', padding: '2px 8px', borderRadius: '4px', fontFamily: 'var(--font-body)' }}>
+                <span key={idx} style={{ fontSize: '12px', color: 'var(--color-primary-muted-text)', backgroundColor: 'var(--color-primary-muted)', padding: '2px 8px', borderRadius: '4px', border: '1px solid var(--color-primary)', fontFamily: 'var(--font-body)' }}>
                   {charge.name}
                 </span>
               ))}
@@ -366,7 +395,7 @@ function HotelCardFull({
       {notes && (
         <div className="standard-note-bar">
           <strong>Note:</strong>
-          <span className="note-content-container" dangerouslySetInnerHTML={{ __html: notes }} />
+          <span className="hotel-note-content" dangerouslySetInnerHTML={{ __html: notes }} />
         </div>
       )}
     </div>
@@ -390,49 +419,79 @@ function HotelCardHorizontal({
   notes,
   checkIn,
   checkOut,
+  hideTime,
 }: HotelCardProps) {
   const firstImage = images?.[0];
   const displayLocation = [location, city_name, state_name].filter(Boolean).join(', ');
 
   return (
     <div
+      className="mini-compact-card hotel-horizontal"
       style={{
         borderRadius: 'var(--radius-card)',
         border: '1px solid var(--color-border)',
-        overflow: 'hidden',
         backgroundColor: 'var(--color-surface)',
-        display: 'flex',
         boxShadow: 'var(--shadow-card)',
-        minHeight: '180px',
       }}
     >
       {/* Image on Left */}
       {showImages && (
-        <HotelImage src={firstImage} name={name} rating={rating} horizontal />
+        <div className="mini-compact-img">
+          <HotelImage src={firstImage} name={name} rating={rating} horizontal />
+        </div>
       )}
 
       {/* Content on Right */}
       <div style={{ padding: 'var(--spacing-md)', flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column' }}>
-        <div style={{ marginBottom: '10px' }}>
-          <h3 style={{
-            fontFamily: 'var(--font-heading)',
-            fontSize: '1rem',
-            fontWeight: 700,
-            color: 'var(--color-text)',
-            lineHeight: 1.3,
-            margin: 0,
-          }}>
-            {name}
-          </h3>
-          {displayLocation && (
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
-              {displayLocation}
-            </div>
-          )}
+        <div style={{ marginBottom: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px' }}>
+          <div style={{ flex: 1 }}>
+            <h3 style={{
+              fontFamily: 'var(--font-heading)',
+              fontSize: '1rem',
+              fontWeight: 700,
+              color: 'var(--color-text)',
+              lineHeight: 1.3,
+              margin: 0,
+            }}>
+              {name}
+            </h3>
+            {displayLocation && (
+              <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                {displayLocation}
+              </div>
+            )}
+          </div>
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px',
+              padding: '2px 8px',
+              borderRadius: '999px',
+              backgroundColor: 'var(--color-hotel)',
+              color: 'var(--color-text-on-primary)',
+              fontSize: '9px',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
+            }}
+          >
+            {/* Hotel icon */}
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 21h18" />
+              <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16" />
+              <path d="M9 7h1" />
+              <path d="M14 7h1" />
+              <path d="M9 11h1" />
+              <path d="M14 11h1" />
+            </svg>
+            Hotel
+          </span>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', flex: 1 }}>
+        <div className="mini-compact-details-grid" style={{ flex: 1 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
             <div style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)', fontWeight: 600, textTransform: 'uppercase' }}>Stay Details</div>
             {mealPlan && <div style={{ fontSize: '0.75rem', fontWeight: 600 }}>Meal: {mealPlan}</div>}
@@ -445,19 +504,21 @@ function HotelCardHorizontal({
             )}
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-            <div style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)', fontWeight: 600, textTransform: 'uppercase' }}>Timing</div>
-            <div style={{ display: 'flex', gap: '12px' }}>
-              <div>
-                <div style={{ fontSize: '0.65rem', color: 'var(--color-text-muted)' }}>IN</div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700 }}>{formatTime(checkIn)}</div>
-              </div>
-              <div>
-                <div style={{ fontSize: '0.65rem', color: 'var(--color-text-muted)' }}>OUT</div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700 }}>{formatTime(checkOut)}</div>
+          {!hideTime && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <div style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)', fontWeight: 600, textTransform: 'uppercase' }}>Timing</div>
+              <div style={{ display: 'flex', gap: '12px' }}>
+                <div>
+                  <div style={{ fontSize: '0.65rem', color: 'var(--color-text-muted)' }}>IN</div>
+                  <div style={{ fontSize: '0.75rem', fontWeight: 700 }}>{formatTime(checkIn)}</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.65rem', color: 'var(--color-text-muted)' }}>OUT</div>
+                  <div style={{ fontSize: '0.75rem', fontWeight: 700 }}>{formatTime(checkOut)}</div>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {notes && (
@@ -483,6 +544,7 @@ function HotelRow({
   notes,
   checkIn,
   checkOut,
+  hideTime,
 }: HotelCardProps) {
   const displayLocation = [location, city_name, state_name].filter(Boolean).join(', ');
 
@@ -575,12 +637,12 @@ function HotelRow({
                 roomConfigurations.map((room, idx) => (
                   <span key={room.id ?? idx} style={{
                     fontSize: '0.7rem',
-                    color: 'var(--color-hotel)',
-                    backgroundColor: 'var(--color-hotel-muted, #fff5f5)',
+                    color: 'var(--color-hotel-text)',
+                    backgroundColor: 'var(--color-hotel-muted)',
                     padding: '3px 10px',
                     borderRadius: '4px',
                     fontWeight: 600,
-                    border: '1px solid var(--color-hotel-border, #fed7d7)',
+                    border: '1px solid var(--color-hotel-border)',
                     fontFamily: 'var(--font-body)',
                   }}>
                     {room.numberOfRooms} {room.roomType}
@@ -592,12 +654,12 @@ function HotelRow({
                 roomType && (
                   <span style={{
                     fontSize: '0.7rem',
-                    color: 'var(--color-hotel)',
-                    backgroundColor: 'var(--color-hotel-muted, #fff5f5)',
+                    color: 'var(--color-hotel-text)',
+                    backgroundColor: 'var(--color-hotel-muted)',
                     padding: '3px 10px',
                     borderRadius: '4px',
                     fontWeight: 600,
-                    border: '1px solid var(--color-hotel-border, #fed7d7)',
+                    border: '1px solid var(--color-hotel-border)',
                     fontFamily: 'var(--font-body)',
                   }}>
                     {numberOfRooms && `${numberOfRooms} `}{roomType}
@@ -624,74 +686,57 @@ function HotelRow({
       </div>
 
       {/* ── Check-in / Check-out — indented to align under name ─ */}
-      <div style={{
-        borderTop: '1px solid var(--color-border)',
-        padding: '10px 16px',
-        paddingLeft: '68px', // 16px outer + 40px icon + 12px gap
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-      }}>
-        {/* Check-In */}
-        <div style={{ flex: 1 }}>
-          <div style={{
-            fontSize: '10px',
-            fontWeight: 700,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: 'var(--color-text-muted)',
-            marginBottom: '3px',
-            fontFamily: 'var(--font-body)',
-          }}>
-            Check-In
+      {!hideTime && (
+        <div style={{
+          borderTop: '1px solid var(--color-border)',
+          padding: '10px 16px',
+          paddingLeft: '68px', // 16px outer + 40px icon + 12px gap
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+        }}>
+          {/* Check-In */}
+          <div style={{ flex: 1 }}>
+            <div style={{
+              fontSize: '10px',
+              fontWeight: 700,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color: 'var(--color-text-muted)',
+              marginBottom: '3px',
+              fontFamily: 'var(--font-body)',
+            }}>
+              Check-In
+            </div>
+            <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text)' }}>
+              {formatTime(checkIn)}
+            </div>
           </div>
-          <div style={{
-            fontSize: '0.875rem',
-            fontWeight: 700,
-            color: 'var(--color-text)',
-            fontFamily: 'var(--font-body)',
-          }}>
-            {formatTime(checkIn)}
-          </div>
-        </div>
-
-        {/* Separator icon */}
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-border)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-          <path d="M21 12c-2.4 0-4.67.97-6.36 2.66A9 9 0 0 0 12 21" />
-          <path d="M12 3a9 9 0 0 0-9 9" />
-          <path d="M3 12c2.4 0 4.67-.97 6.36-2.66A9 9 0 0 0 12 3" />
-          <path d="M12 21a9 9 0 0 0 9-9" />
-        </svg>
-
-        {/* Check-Out */}
-        <div style={{ flex: 1 }}>
-          <div style={{
-            fontSize: '10px',
-            fontWeight: 700,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: 'var(--color-text-muted)',
-            marginBottom: '3px',
-            fontFamily: 'var(--font-body)',
-          }}>
-            Check-Out
-          </div>
-          <div style={{
-            fontSize: '0.875rem',
-            fontWeight: 700,
-            color: 'var(--color-text)',
-            fontFamily: 'var(--font-body)',
-          }}>
-            {formatTime(checkOut)}
+          {/* Check-Out */}
+          <div style={{ flex: 1 }}>
+            <div style={{
+              fontSize: '10px',
+              fontWeight: 700,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color: 'var(--color-text-muted)',
+              marginBottom: '3px',
+              fontFamily: 'var(--font-body)',
+            }}>
+              Check-Out
+            </div>
+            <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text)' }}>
+              {formatTime(checkOut)}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* ── Note strip ───────────────────────────────────────── */}
       {notes && (
         <div className="standard-note-bar">
           <strong>Note:</strong>
-          <span className="note-content-container" dangerouslySetInnerHTML={{ __html: notes }} />
+          <span className="hotel-note-content" dangerouslySetInnerHTML={{ __html: notes }} />
         </div>
       )}
     </div>

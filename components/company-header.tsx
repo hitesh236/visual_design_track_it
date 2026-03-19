@@ -90,26 +90,48 @@ export function CompanyHeader({ company }: CompanyHeaderProps) {
   return (
     <>
       <style>{`
-        @media (max-width: 640px) {
-          .company-header-root {
-            flex-direction: column !important;
-            align-items: center !important;
-            text-align: center !important;
-            gap: 12px !important;
+        /* 📱 1. MOBILE FIRST (Default Centered Styles) */
+        .company-header-root {
+          flex-direction: column !important;
+          align-items: center !important;
+          text-align: center !important;
+          gap: 12px !important;
+        }
+        .company-header-left {
+          flex-direction: column !important;
+          align-items: center !important;
+        }
+        .company-header-info {
+          align-items: center !important;
+        }
+        .company-header-chips {
+          justify-content: center !important;
+          flex-wrap: wrap !important;
+        }
+        .company-header-badge {
+          align-self: center !important;
+        }
+
+        /* 🧬 2. TABLET/DESKTOP ENHANCEMENTS */
+        @media (min-width: 768px), print {
+          .itinerary-shell:not([data-forced-mobile="true"]) .company-header-root {
+            flex-direction: row !important;
+            align-items: flex-end !important;
+            text-align: left !important;
+            gap: 20px !important;
           }
-          .company-header-left {
-            flex-direction: column !important;
-            align-items: center !important;
+          .itinerary-shell:not([data-forced-mobile="true"]) .company-header-left {
+            flex-direction: row !important;
+            align-items: flex-start !important;
           }
-          .company-header-info {
-            align-items: center !important;
+          .itinerary-shell:not([data-forced-mobile="true"]) .company-header-info {
+            align-items: flex-start !important;
           }
-          .company-header-chips {
-            justify-content: center !important;
-            flex-wrap: wrap !important;
+          .itinerary-shell:not([data-forced-mobile="true"]) .company-header-chips {
+            justify-content: flex-start !important;
           }
-          .company-header-badge {
-            align-self: center !important;
+          .itinerary-shell:not([data-forced-mobile="true"]) .company-header-badge {
+            align-self: flex-start !important;
           }
         }
       `}</style>

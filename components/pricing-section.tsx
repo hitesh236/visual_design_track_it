@@ -323,36 +323,57 @@ export function PricingSection({ items, totalPrice }: PricingSectionProps) {
       }}
     >
       <style>{`
-        @media (max-width: 640px) {
-          .pricing-header {
-            display: none !important;
-          }
-          .pricing-row {
+        /* 📱 1. MOBILE FIRST (Default Stacked Cards) */
+        .pricing-header {
+          display: none !important;
+        }
+        .pricing-row {
+          display: grid !important;
+          grid-template-columns: auto 1fr !important;
+          grid-template-areas: 
+            "day name"
+            "type price" !important;
+          row-gap: 8px !important;
+          column-gap: 12px !important;
+          padding: 14px !important;
+          margin: 0 0 12px 0 !important;
+          border: 1px solid var(--color-border) !important;
+          border-radius: var(--radius-card) !important;
+          background-color: transparent !important;
+          align-items: center !important;
+        }
+        .pricing-row:last-child {
+          margin-bottom: 0 !important;
+          border-bottom: 1px solid var(--color-border) !important;
+        }
+        .pricing-row:hover {
+          background-color: var(--color-primary-muted) !important;
+        }
+        .pricing-row > div:nth-child(1) { grid-area: day; }
+        .pricing-row > div:nth-child(2) { grid-area: name; font-size: 0.95rem !important; }
+        .pricing-row > div:nth-child(3) { grid-area: type; margin-left: 0 !important; }
+        .pricing-row > div:nth-child(4) { grid-area: price; justify-self: end; font-size: 1rem !important; }
+
+        /* 🧬 2. TABLET/DESKTOP ENHANCEMENTS (Table-like List) */
+        @media (min-width: 1024px), print {
+          .itinerary-shell:not([data-forced-mobile="true"]) .pricing-header {
             display: grid !important;
-            grid-template-columns: auto 1fr !important;
-            grid-template-areas: 
-              "day name"
-              "type price" !important;
-            row-gap: 8px !important;
-            column-gap: 12px !important;
-            padding: 14px !important;
-            margin: 0 0 12px 0 !important;
-            border: 1px solid var(--color-border) !important;
-            border-radius: var(--radius-card) !important;
-            background-color: transparent !important;
-            align-items: center !important;
+            grid-template-columns: 60px 1fr 100px 90px !important;
           }
-          .pricing-row:last-child {
-            margin-bottom: 0 !important;
+          .itinerary-shell:not([data-forced-mobile="true"]) .pricing-row {
+            display: grid !important;
+            grid-template-columns: 60px 1fr 100px 90px !important;
+            grid-template-areas: none !important;
+            padding: var(--spacing-sm) var(--spacing-md) !important;
+            margin: 0 !important;
+            border: none !important;
             border-bottom: 1px solid var(--color-border) !important;
+            border-radius: 0 !important;
           }
-          .pricing-row:hover {
-            background-color: var(--color-primary-muted) !important;
-          }
-          .pricing-row > div:nth-child(1) { grid-area: day; }
-          .pricing-row > div:nth-child(2) { grid-area: name; font-size: 0.95rem !important; }
-          .pricing-row > div:nth-child(3) { grid-area: type; margin-left: 0 !important; }
-          .pricing-row > div:nth-child(4) { grid-area: price; justify-self: end; font-size: 1rem !important; }
+          .itinerary-shell:not([data-forced-mobile="true"]) .pricing-row > div:nth-child(1) { grid-area: auto; }
+          .itinerary-shell:not([data-forced-mobile="true"]) .pricing-row > div:nth-child(2) { grid-area: auto; font-size: 14px !important; }
+          .itinerary-shell:not([data-forced-mobile="true"]) .pricing-row > div:nth-child(3) { grid-area: auto; }
+          .itinerary-shell:not([data-forced-mobile="true"]) .pricing-row > div:nth-child(4) { grid-area: auto; justify-self: stretch; text-align: right !important; font-size: 14px !important; }
         }
       `}</style>
       {/* Section title */}

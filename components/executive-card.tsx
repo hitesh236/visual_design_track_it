@@ -100,13 +100,11 @@ export function ExecutiveCard({ executive }: ExecutiveCardProps) {
   return (
     <>
       <style>{`
-        /* ── Desktop layout ─────────────────────────── */
+        /* 📱 1. MOBILE FIRST (Default Styles) */
         .exec-card-root {
           display:         flex;
-          justify-content: space-between;
-          align-items:     flex-start;
-          gap:             clamp(16px, 4vw, 32px);
-          padding:         clamp(1.25rem, 4vw, 2rem) clamp(1rem, 4vw, 2.5rem);
+          flex-direction:  column;
+          padding:         1.25rem;
           margin:          var(--spacing-section) 0;
           background-color: var(--color-primary-muted);
           border-left:     4px solid var(--color-primary);
@@ -115,38 +113,37 @@ export function ExecutiveCard({ executive }: ExecutiveCardProps) {
         }
 
         .exec-card-left {
-          display:     flex;
-          align-items: flex-start;
-          gap:         20px;
-          flex:        1;
-          min-width:   0;
+          display:        flex;
+          flex-direction: row;
+          align-items:    center;
+          gap:            14px;
+          margin-bottom:  14px;
         }
 
         .exec-card-info {
           display:        flex;
           flex-direction: column;
-          gap:            4px;
+          gap:            2px;
           min-width:      0;
         }
 
         .exec-card-name {
-          font-size:   1.25rem;
+          font-size:   1rem;
           font-weight: 700;
           font-family: var(--font-heading);
           color:       var(--color-text);
         }
 
         .exec-card-designation {
-          font-size:      0.85rem;
+          font-size:      0.78rem;
           font-weight:    600;
           color:          var(--color-text-muted);
-          letter-spacing: 0.02em;
         }
 
         .exec-card-message {
-          font-size:   0.95rem;
+          font-size:   0.875rem;
           color:       var(--color-text);
-          margin:      12px 0 0 0;
+          margin:      0 0 16px 0;
           line-height: 1.6;
           font-style:  italic;
           opacity:     0.85;
@@ -154,18 +151,18 @@ export function ExecutiveCard({ executive }: ExecutiveCardProps) {
         }
 
         .exec-card-right {
-          display:        flex;
+          width:       100%;
+          display:     flex;
           flex-direction: column;
-          align-items:    flex-end;
-          gap:            12px;
-          flex-shrink:    0;
+          align-items: stretch;
+          gap:         12px;
         }
 
         .exec-card-buttons {
-          display:        flex;
-          flex-direction: column;
-          gap:            8px;
-          min-width:      180px;
+          display:               grid;
+          grid-template-columns: 1fr 1fr;
+          gap:                   8px;
+          width:                 100%;
         }
 
         .exec-btn {
@@ -177,72 +174,71 @@ export function ExecutiveCard({ executive }: ExecutiveCardProps) {
           border-radius:   var(--radius-badge);
           font-size:       13px;
           font-weight:     600;
-          font-family:     var(--font-body);
           text-decoration: none;
           transition:      opacity 0.2s ease;
           cursor:          pointer;
           white-space:     nowrap;
         }
+        .exec-btn-email { grid-column: 1 / -1; }
         .exec-btn:hover { opacity: 0.88; }
 
         .exec-card-availability {
           font-size:  0.75rem;
           color:      var(--color-text-muted);
-          text-align: right;
-          margin-top: 4px;
+          text-align: center;
+          margin-top: 8px;
         }
 
-        /* ── Mobile layout (≤ 640px) ─────────────────── */
-        @media (max-width: 640px) {
+        .exec-msg-desktop { display: none !important; }
+
+        /* 🧬 2. TABLET/DESKTOP ENHANCEMENTS */
+        @media (min-width: 768px), print {
           .exec-card-root {
-            flex-direction: column;
-            padding:        1.25rem;
-            gap:            0;
+            flex-direction:  row;
+            justify-content: space-between;
+            align-items:     flex-start;
+            gap:             clamp(16px, 4vw, 32px);
+            padding:         clamp(1.25rem, 4vw, 2rem) clamp(1rem, 4vw, 2.5rem);
           }
 
-          /* Top section: avatar + name/designation side by side */
           .exec-card-left {
-            flex-direction: row;
-            align-items:    center;
-            gap:            14px;
-            width:          100%;
-            margin-bottom:  14px;
+            align-items: flex-start;
+            gap:         20px;
+            flex:        1;
+            margin-bottom: 0;
           }
 
-          .exec-card-info { gap: 2px; }
+          .exec-card-info { gap: 4px; }
+          .exec-card-name        { font-size: 1.25rem; }
+          .exec-card-designation { font-size: 0.85rem; }
 
-          .exec-card-name        { font-size: 1rem;   }
-          .exec-card-designation { font-size: 0.78rem; }
-
-          /* Message full-width below the avatar row */
           .exec-card-message {
-            font-size: 0.875rem;
-            margin:    0 0 16px 0;
+            font-size: 0.95rem;
+            margin:    12px 0 0 0;
           }
 
-          /* Buttons: 2-column grid, full width */
           .exec-card-right {
-            width:       100%;
-            align-items: stretch;
+            width:       auto;
+            align-items: flex-end;
           }
 
           .exec-card-buttons {
-            display:               grid;
-            grid-template-columns: 1fr 1fr;
-            gap:                   8px;
-            min-width:             unset;
-            width:                 100%;
+            display:        flex;
+            flex-direction: column;
+            gap:            8px;
+            min-width:      180px;
           }
 
-          /* Make email button span full width on its own row */
-          .exec-btn-email {
-            grid-column: 1 / -1;
-          }
+          .exec-btn-email { grid-column: auto; }
 
           .exec-card-availability {
-            text-align: center;
-            margin-top: 8px;
+            text-align: right;
+            margin-top: 4px;
           }
+
+          /* Show/Hide messages based on layout */
+          .exec-msg-desktop { display: block !important; }
+          .exec-msg-mobile  { display: none !important; }
         }
       `}</style>
 

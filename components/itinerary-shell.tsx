@@ -28,9 +28,10 @@ function useGoogleFonts(headingFont: string, bodyFont: string) {
 
 type ItineraryShellProps = {
   children: React.ReactNode;
+  forcedMobile?: boolean;
 };
 
-export function ItineraryShell({ children }: ItineraryShellProps) {
+export function ItineraryShell({ children, forcedMobile = false }: ItineraryShellProps) {
   const { theme } = useTheme();
 
   useGoogleFonts(theme.headingFont, theme.bodyFont);
@@ -38,6 +39,7 @@ export function ItineraryShell({ children }: ItineraryShellProps) {
   return (
     <main
       className="itinerary-shell"
+      data-forced-mobile={forcedMobile ? 'true' : 'false'}
       style={{
         backgroundColor: 'var(--color-bg)',
         color:            'var(--color-text)',
@@ -53,11 +55,12 @@ export function ItineraryShell({ children }: ItineraryShellProps) {
     >
       <div
         className="itinerary-inner-wrapper"
+        data-forced-mobile={forcedMobile ? 'true' : 'false'}
         style={{
           maxWidth:        '860px',
           width:           '100%',
           margin:          '0 auto',
-          padding:         '0 var(--spacing-md)',
+          padding:         forcedMobile ? '0 5px' : '0 var(--spacing-md)', // Manual fallback if CSS vars don't resolve
           backgroundColor: 'var(--color-bg)',
           minHeight:       '100vh',
           boxShadow:       'var(--shadow-elevated)',

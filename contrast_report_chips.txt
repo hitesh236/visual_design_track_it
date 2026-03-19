@@ -1,0 +1,13 @@
+CHIP CONTRAST VERIFICATION REPORT:
+
+Mood: NATURE
+ - Primary Muted Text (Chips) on Muted BG       : #437051 on #e9edea -> 4.83:1 [PASS]
+ - Hotel Text (Meal Plan) on Hotel Muted BG     : #1466b8 on #edf5fd -> 5.27:1 [PASS]
+
+Mood: LUXURY
+ - Primary Muted Text (Chips) on Muted BG       : #f1f1f1 on #393323 -> 11.12:1 [PASS]
+ - Hotel Text (Meal Plan) on Hotel Muted BG     : #a3ccf5 on #172636 -> 9.15:1 [PASS]
+
+Mood: ADVENTURE
+ - Primary Muted Text (Chips) on Muted BG       : #b14502 on #fbe7db -> 4.72:1 [PASS]
+ - Hotel Text (Meal Plan) on Hotel Muted BG     : #1466b8 on #edf5fd -> 5.27:1 [PASS]

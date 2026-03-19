@@ -74,6 +74,65 @@ function PlaceholderCard({
   );
 }
 
+// ─── Calendar Sticker Component ───────────────────────────────────
+
+export function CalendarDateIcon({ month, day, weekday, isSmall = false }: { month: string, day: string, weekday: string, isSmall?: boolean }) {
+  return (
+    <div style={{
+      width: isSmall ? '56px' : '68px',
+      backgroundColor: 'var(--color-surface)',
+      borderRadius: '12px',
+      overflow: 'hidden',
+      boxShadow: 'var(--shadow-sm)',
+      border: '1px solid var(--color-border)',
+      display: 'flex',
+      flexDirection: 'column',
+      textAlign: 'center',
+      fontFamily: 'var(--font-heading)',
+    }}>
+      {/* Weekday on top (e.g. WED) */}
+      <div style={{
+        backgroundColor: 'var(--color-primary)',
+        color: '#ffffff',
+        fontSize: isSmall ? '10px' : '11px',
+        fontWeight: 700,
+        padding: isSmall ? '3px 2px' : '5px 2px',
+        textTransform: 'uppercase',
+        letterSpacing: '0.05em'
+      }}>
+        {weekday.slice(0, 3)}
+      </div>
+      {/* Date below (e.g. MAR 10) */}
+      <div style={{
+        padding: isSmall ? '4px 0' : '6px 0',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+        <div style={{
+          fontSize: isSmall ? '10px' : '11px',
+          fontWeight: 700,
+          color: 'var(--color-primary)',
+          textTransform: 'uppercase',
+          marginBottom: isSmall ? '0' : '2px',
+          opacity: 0.8
+        }}>
+          {month}
+        </div>
+        <div style={{
+          fontSize: isSmall ? '18px' : '22px',
+          fontWeight: 800,
+          color: 'var(--color-text)',
+          lineHeight: 1
+        }}>
+          {day}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Component type guard ─────────────────────────────────────────
 
 type ComponentType =
@@ -96,11 +155,13 @@ function SingleComponent({
   displayMode,
   showImages,
   showDescriptions,
+  hideTime = false,
 }: {
   component: any;
   displayMode: 'card' | 'row' | 'boarding-pass' | 'box' | 'inline' | 'horizontal-card';
   showImages: boolean;
   showDescriptions: boolean;
+  hideTime?: boolean;
 }) {
   const type: ComponentType = isKnownType(component.component_type)
     ? component.component_type
@@ -114,6 +175,7 @@ function SingleComponent({
           description={component.description ?? ''}
           displayMode={displayMode as 'box' | 'inline'}
           showDescriptions={showDescriptions}
+          hideTime={hideTime}
         />
       );
     case 'Hotel':
@@ -138,6 +200,7 @@ function SingleComponent({
           notes={component.description}
           checkIn={component.start_time ?? null}
           checkOut={component.end_time ?? null}
+          hideTime={hideTime}
         />
       );
     case 'Activity':
@@ -149,6 +212,7 @@ function SingleComponent({
           displayMode={displayMode as 'card' | 'row' | 'horizontal-card'}
           showImages={showImages}
           showDescriptions={showDescriptions}
+          hideTime={hideTime}
         />
       );
     case 'Flight': {
@@ -169,6 +233,7 @@ function SingleComponent({
           status={c.details?.status ?? 'Confirmed'}
           description={c.description}
           displayMode={displayMode === 'row' ? 'row' : 'widget'}
+          hideTime={hideTime}
         />
       );
     }
@@ -189,6 +254,8 @@ function SingleComponent({
             ?? component.details?.segments?.[0]?.fareClass}
           price={component.price}
           notes={component.description}
+          hideTime={hideTime}
+          displayMode={displayMode as any}
         />
       );
     case 'Bus':
@@ -205,6 +272,8 @@ function SingleComponent({
           price={component.price}
           notes={component.description}
           vendorName={component.details?.vendor?.name}
+          hideTime={hideTime}
+          displayMode={displayMode as any}
         />
       );
     default:
@@ -255,6 +324,86 @@ export function ComponentRenderer({
 
   return (
     <>
+      <style>{`
+        .timeline-item-wrapper {
+          page-break-inside: avoid;
+          width: 100%;
+          position: relative;
+          margin-bottom: 24px;
+        }
+        .timeline-item-layout {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          position: relative;
+        }
+        .timeline-desktop-time { 
+          display: flex; 
+          justify-content: flex-start; 
+          align-items: flex-start;
+          width: 100%;
+          padding: 0 16px;
+        }
+        .timeline-hide-on-mobile { display: none !important; }
+        .timeline-desktop-node { display: none; }
+        .timeline-desktop-content { 
+          display: block; 
+          position: relative; 
+          padding: 0 16px;
+        }
+        .timeline-mobile-connector { display: flex; }
+
+        @media (min-width: 1024px), print {
+          /* Apply desktop styles only if NOT forced into mobile preview mode */
+          .itinerary-shell:not([data-forced-mobile="true"]) .timeline-item-layout {
+            flex-direction: row;
+            gap: 0;
+            align-items: flex-start;
+            display: grid;
+            grid-template-columns: 80px 32px 1fr;
+          }
+          .itinerary-shell:not([data-forced-mobile="true"]) .timeline-desktop-time { 
+            display: flex; 
+            justify-content: flex-end !important;
+            width: 80px;
+            padding: 0 16px 0 0;
+            flex-shrink: 0;
+          }
+          .itinerary-shell:not([data-forced-mobile="true"]) .timeline-hide-on-mobile { display: flex !important; }
+          .itinerary-shell:not([data-forced-mobile="true"]) .timeline-desktop-node { 
+            display: block; 
+            position: relative;
+            width: 32px;
+            align-self: stretch; /* Crucial for continuous line */
+          }
+          .itinerary-shell:not([data-forced-mobile="true"]) .timeline-desktop-node::before {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 0;
+            bottom: -24px; /* Perfectly bridges the 24px margin-bottom */
+            width: 2px;
+            background-color: var(--color-primary);
+            opacity: 0.15;
+          }
+          /* Start the line at the node center for the first item */
+          .itinerary-shell:not([data-forced-mobile="true"]) .timeline-item-wrapper:first-of-type .timeline-desktop-node::before {
+            top: 12px; 
+          }
+          /* Stop the line at the node for the last item */
+          .itinerary-shell:not([data-forced-mobile="true"]) .timeline-item-wrapper:last-of-type .timeline-desktop-node::before {
+            bottom: auto;
+            height: 12px;
+          }
+          .itinerary-shell:not([data-forced-mobile="true"]) .timeline-desktop-content {
+            flex: 1;
+            padding-left: 0;
+            padding-right: 0;
+          }
+          .itinerary-shell:not([data-forced-mobile="true"]) .timeline-mobile-connector { display: none; }
+        }
+      `}</style>
+
       {components.map((component, i) => {
         const type = component.component_type as ComponentType;
         const c = component;
@@ -263,28 +412,19 @@ export function ComponentRenderer({
 
         // For timeline layout, determine what to show in the left column
         let timeLabel = '';
+        let dateParts: { month: string, day: string, weekday: string } | null = null;
+        
         if (isTimeline) {
-           if (i === 0) {
-             // First item of the day gets the Day number and Date
-             if (dayDate) {
-               const dateObj = new Date(dayDate);
-               timeLabel = isNaN(dateObj.getTime()) ? dayDate : dateObj.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
-             }
-             if (dayNumber) {
-               timeLabel = `Day ${dayNumber}${timeLabel ? '\n' + timeLabel : ''}`;
-             }
-           } else {
-             // Subsequent items get their specific time (if available), or remain blank
-             const startTimeStr = c.start_time ?? c.details?.segments?.[0]?.departure ?? c.details?.departureDateTime;
-             if (startTimeStr) {
-               try {
-                 const d = new Date(startTimeStr);
-                 timeLabel = isNaN(d.getTime()) ? startTimeStr : d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-               } catch(e) { 
-                 timeLabel = startTimeStr; 
-               }
-             }
-           }
+          // Only show specific component time (if available) - Day Header already shows the date sticker
+          const startTimeStr = c.start_time ?? c.details?.segments?.[0]?.departure ?? c.details?.departureDateTime;
+          if (startTimeStr) {
+            try {
+              const d = new Date(startTimeStr);
+              timeLabel = isNaN(d.getTime()) ? startTimeStr : d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            } catch(e) { 
+              timeLabel = startTimeStr; 
+            }
+          }
         }
 
         let componentEl: React.ReactNode;
@@ -299,6 +439,7 @@ export function ComponentRenderer({
               key="transport-group"
               items={transportItems}
               displayMode={lc.componentDisplay.transport === 'row' ? 'row' : 'card'}
+              hideTime={isTimeline}
             />
           );
         } else {
@@ -320,6 +461,7 @@ export function ComponentRenderer({
               displayMode={displayMode}
               showImages={resolvedShowImages}
               showDescriptions={resolvedShowDescriptions}
+              hideTime={isTimeline}
             />
           );
         }
@@ -332,143 +474,57 @@ export function ComponentRenderer({
           <div 
             key={component.id ?? i} 
             className="timeline-item-wrapper"
-            style={{
-              pageBreakInside: 'avoid',
-              width: '100%',
-              position: 'relative',
-              marginBottom: '24px',
-            }}
           >
-            {/* The wrapper logic handles switching from Stacked Mobile to Absolute Axis Desktop */}
-            <style>{`
-              .timeline-item-layout[data-key="${component.id ?? i}"] {
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-                position: relative;
-              }
-              .timeline-desktop-time { display: none; }
-              .timeline-desktop-node { display: none; }
-              .timeline-desktop-content { display: block; position: relative; }
-              .timeline-mobile-header { display: flex; }
-              .timeline-mobile-connector { display: flex; }
-
-              @media (min-width: 640px) {
-                .timeline-item-layout[data-key="${component.id ?? i}"] {
-                  flex-direction: row;
-                  gap: 0;
-                  align-items: flex-start;
-                }
-                .timeline-desktop-time { 
-                  display: block; 
-                  width: 134px; /* Fixed width for the left axis */
-                  padding-right: 24px; /* pl-6 to push away from line */
-                  flex-shrink: 0;
-                }
-                .timeline-desktop-node { 
-                  display: block; 
-                  position: absolute;
-                  left: 134px; /* Exact seam position */
-                  top: 0;
-                  bottom: -24px; /* Bridge the 24px marginBottom of the container */
-                  width: 2px;
-                  background-color: ${i === components.length - 1 ? 'transparent' : 'var(--color-border)'};
-                  z-index: 0;
-                }
-                .timeline-desktop-content {
-                  flex: 1;
-                  padding-left: 32px; /* pl-8 to push content away from line */
-                }
-                .timeline-mobile-header { display: none; }
-                .timeline-mobile-connector { display: none; }
-              }
-            `}</style>
-
-            <div className="timeline-item-layout" data-key={component.id ?? i}>
+            <div className="timeline-item-layout">
               
-              {/* === MOBILE TOP HEADER === */}
+              {/* === SHARED Time Column (Shows as header on mobile, left col on desktop) === */}
               <div 
-                className="timeline-mobile-header"
+                className={`timeline-desktop-time ${i === 0 ? 'timeline-hide-on-mobile' : ''}`}
                 style={{
-                  alignItems: 'center',
-                  background: 'var(--color-surface)',
-                  padding: '8px 12px',
-                  borderRadius: 'var(--radius-card)',
-                  border: '1px solid var(--color-border)',
-                  boxShadow: 'var(--shadow-card)',
-                  justifyContent: 'space-between',
-                  gap: '12px'
+                  display: 'flex',
+                  justifyContent: 'flex-start', // Default for mobile as requested
+                  alignItems: 'flex-start',
                 }}
               >
-                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <div style={{
-                      width: '16px',
-                      height: '16px',
-                      borderRadius: '50%',
-                      backgroundColor: 'var(--color-primary)',
-                      border: '2px solid white',
-                      boxShadow: '0 0 0 1px var(--color-primary)',
-                      flexShrink: 0
-                    }} />
-                    <span style={{
-                      fontWeight: 700, 
-                      fontSize: '13px', 
-                      color: 'var(--color-text)', 
-                      fontFamily: 'var(--font-heading)',
-                      textTransform: 'uppercase'
-                    }}>
-                      Event
-                    </span>
-                 </div>
-                 {timeLabel && (
-                    <span style={{
-                      fontSize: '13px',
-                      fontWeight: 600,
-                      color: 'var(--color-primary)',
-                      fontFamily: 'var(--font-heading)',
-                      textAlign: 'right',
-                      whiteSpace: 'pre-line',
-                      lineHeight: 1.2
-                    }}>
-                      {timeLabel}
-                    </span>
-                 )}
-              </div>
-
-              {/* === DESKTOP COL 1: Time === */}
-              <div 
-                className="timeline-desktop-time"
-                style={{
-                  textAlign: 'right',
-                  paddingTop: '0px', // Removed padding to align perfectly
-                  fontSize: '14px',
-                  fontWeight: 600,
-                  color: 'var(--color-primary)',
-                  fontFamily: 'var(--font-heading)',
-                  whiteSpace: 'pre-line',
-                  lineHeight: '20px' // Fixed line height for easy vertical center calculation
-                }}
-              >
-                {timeLabel || ''}
+                 {timeLabel ? (
+                   dateParts ? (
+                     <CalendarDateIcon {...dateParts} />
+                   ) : (
+                     <div style={{
+                       backgroundColor: 'var(--color-primary-muted)',
+                       border: '1px solid var(--color-primary-border, var(--color-border))',
+                       borderRadius: '8px',
+                       padding: '6px 12px',
+                       textAlign: 'center',
+                       minWidth: '60px',
+                       fontSize: '13px',
+                       fontWeight: 700,
+                       color: 'var(--color-primary)',
+                       fontFamily: 'var(--font-heading)',
+                       whiteSpace: 'pre-line',
+                       lineHeight: '1.2',
+                       boxShadow: 'var(--shadow-sm)',
+                     }}>
+                       {timeLabel}
+                     </div>
+                   )
+                 ) : null}
               </div>
 
               {/* === DESKTOP SEAM (Line & Absolute Circle) === */}
               <div className="timeline-desktop-node">
-                 <div style={{
-                   position: 'absolute',
-                   top: '0',
-                   left: '1px', // Center on the 2px line
-                   transform: 'translateX(-50%)',
-                   width: '20px',  // Match image layout
-                   height: '20px',
-                   borderRadius: '50%',
-                   backgroundColor: 'white',
-                   border: '2px solid var(--color-primary)',
-                   zIndex: 10,
-                   display: 'flex',
-                   alignItems: 'center',
-                   justifyContent: 'center',
-                 }} />
+                  <div style={{
+                    position: 'absolute',
+                    top: '6px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '12px',
+                    height: '12px',
+                    borderRadius: '50%',
+                    backgroundColor: 'var(--color-bg)',
+                    border: '2px solid var(--color-primary)',
+                    zIndex: 10,
+                  }} />
               </div>
 
               {/* === DESKTOP COL 2: Fluid Content === */}
@@ -478,15 +534,15 @@ export function ComponentRenderer({
 
             </div>
             
-            {/* === MOBILE STACKED CONNECTOR LINE (Between items, except last) === */}
+            {/* === MOBILE STACKED CONNECTOR LINE === */}
             {i !== components.length - 1 && (
               <div 
                 className="timeline-mobile-connector"
                 style={{
                   width: '2px',
-                  height: '16px',
+                  height: '14px',
                   backgroundColor: 'var(--color-border)',
-                  margin: '4px auto', // Center it vertically between cards
+                  margin: '4px auto',
                 }}
               />
             )}

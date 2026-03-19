@@ -15,20 +15,22 @@ type TrainRowProps = {
   class?: string;
   price?: number | string;
   notes?: string;
+  hideTime?: boolean;
+  displayMode?: 'card' | 'row';
 };
 
 // ─── Train icon ───────────────────────────────────────────────────
 
 function TrainIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-      <rect x="4" y="3" width="16" height="14" rx="3" />
-      <path d="M4 11h16" />
-      <path d="M12 3v8" />
-      <circle cx="8.5" cy="19.5" r="1.5" />
-      <circle cx="15.5" cy="19.5" r="1.5" />
-      <path d="M8.5 17.5l-2 2" />
-      <path d="M15.5 17.5l2 2" />
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M2 17h20" />
+      <path d="M3 17V6a2 2 0 0 1 2-2h12l3 3v10H3Z" />
+      <path d="M3 11h17" />
+      <path d="M8 4v7" />
+      <path d="M13 4v7" />
+      <circle cx="7" cy="20" r="2" />
+      <circle cx="17" cy="20" r="2" />
     </svg>
   );
 }
@@ -70,7 +72,65 @@ function formatDateTime(iso?: string): string {
   }
 }
 
-// ─── Train card ────────────────────────────────────────────────────
+// ─── Premium Row Layout (Mini-Compact) ───────────────────────────────
+
+function TrainRowPremium({
+  name,
+  from,
+  to,
+  departure,
+  trainNo,
+  trainName,
+  class: travelClass,
+  price,
+  hideTime,
+}: TrainRowProps) {
+  const displayTrainName = trainName || name || 'Train';
+  const details = [
+    trainNo ? `Train ${trainNo}` : null,
+    travelClass,
+    !hideTime && formatDateTime(departure).split(',').pop()?.trim()
+  ].filter(Boolean).join(' · ');
+
+  return (
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '10px',
+      padding: 'var(--spacing-sm) var(--spacing-md)',
+      borderRadius: 'var(--radius-badge)',
+      backgroundColor: 'var(--color-surface)',
+      border: '1px solid var(--color-border)',
+      width: '100%',
+    }}>
+      {/* Icon */}
+      <div style={{
+        width: '32px',
+        height: '32px',
+        borderRadius: 'var(--radius-badge)',
+        backgroundColor: 'var(--color-train, #5c6bc0)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexShrink: 0,
+      }}>
+        <TrainIcon />
+      </div>
+      {/* Text */}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-primary)' }}>{from || 'From'}</span>
+          <ArrowIcon />
+          <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-primary)' }}>{to || 'To'}</span>
+        </div>
+        <div style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
+          {displayTrainName} {details && ` · ${details}`}
+        </div>
+      </div>
+      {/* Price removed as per user request */}
+    </div>
+  );
+}
 
 export function TrainCard({
   name,
@@ -83,7 +143,25 @@ export function TrainCard({
   class: travelClass,
   price,
   notes,
+  hideTime,
+  displayMode,
 }: TrainRowProps) {
+  if (displayMode === 'row') {
+    return (
+      <TrainRowPremium
+        name={name}
+        from={from}
+        to={to}
+        departure={departure}
+        trainNo={trainNo}
+        trainName={trainName}
+        class={travelClass}
+        price={price}
+        hideTime={hideTime}
+      />
+    );
+  }
+
   const displayTrainName = trainName || name || 'Train';
   const departDate = formatDateTime(departure).split(',')[0];
 
@@ -119,16 +197,15 @@ export function TrainCard({
               justifyContent: 'center',
               flexShrink: 0,
             }}>
-              {/* Train side profile with wheels */}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="5" width="20" height="12" rx="2"/>
-                <path d="M2 10h20"/>
-                <rect x="4" y="6.5" width="3" height="2" rx="0.5" fill="#fff" stroke="none"/>
-                <rect x="9" y="6.5" width="3" height="2" rx="0.5" fill="#fff" stroke="none"/>
-                <rect x="14" y="6.5" width="3" height="2" rx="0.5" fill="#fff" stroke="none"/>
-                <circle cx="6" cy="19" r="2" fill="#fff" stroke="none"/>
-                <circle cx="18" cy="19" r="2" fill="#fff" stroke="none"/>
-                <path d="M4 17h16v2H4z" fill="#fff" stroke="none"/>
+              {/* High-visibility Train Icon (Side Profile) */}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M2 17h20" />
+                <path d="M3 17V6a2 2 0 0 1 2-2h12l3 3v10H3Z" />
+                <path d="M3 11h17" />
+                <path d="M8 4v7" />
+                <path d="M13 4v7" />
+                <circle cx="7" cy="20" r="2" />
+                <circle cx="17" cy="20" r="2" />
               </svg>
             </div>
             <h3 className="card-title-override" style={{
@@ -158,21 +235,26 @@ export function TrainCard({
           marginBottom: '0',
         }}>
           <style>{`
-            @media (max-width: 480px) {
+            .train-dep-arr-mobile {
+              grid-template-columns: 1fr !important;
+              gap: 16px !important;
+            }
+            .train-arr-align { text-align: left !important; }
+            .train-arrow-mobile { display: none !important; }
+
+            @media (min-width: 768px) {
               .train-dep-arr-mobile {
-                grid-template-columns: 1fr !important;
-                gap: 16px !important;
+                grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+                gap: 14px !important;
               }
-              .train-arr-align { text-align: left !important; }
-              .train-arrow-mobile { display: none !important; }
+              .train-arr-align { text-align: right !important; }
+              .train-arrow-mobile { display: flex !important; }
             }
           `}</style>
           <div 
             className="train-dep-arr-mobile"
             style={{
               display: 'grid',
-              gridTemplateColumns: 'minmax(0, 1fr) auto minmax(0, 1fr)',
-              gap: '14px',
               alignItems: 'center',
             }}
           >
@@ -186,15 +268,17 @@ export function TrainCard({
               }}>
                 Departure
               </div>
-              <div className="time-location-override" style={{
-                fontWeight: 700,
-                fontSize: '14px',
-                color: 'var(--color-text)',
-                fontFamily: 'var(--font-heading)',
-                marginBottom: '2px',
-              }}>
-                {formatDateTime(departure).split(',').pop()?.trim()}
-              </div>
+              {!hideTime && (
+                <div className="time-location-override" style={{
+                  fontWeight: 700,
+                  fontSize: '14px',
+                  color: 'var(--color-text)',
+                  fontFamily: 'var(--font-heading)',
+                  marginBottom: '2px',
+                }}>
+                  {formatDateTime(departure).split(',').pop()?.trim()}
+                </div>
+              )}
               <div style={{
                 fontSize: '0.8125rem',
                 color: 'var(--color-text)',
@@ -217,15 +301,17 @@ export function TrainCard({
               }}>
                 Arrival
               </div>
-              <div className="time-location-override" style={{
-                fontWeight: 700,
-                fontSize: '14px',
-                color: 'var(--color-text)',
-                fontFamily: 'var(--font-heading)',
-                marginBottom: '2px',
-              }}>
-                {formatDateTime(arrival).split(',').pop()?.trim()}
-              </div>
+              {!hideTime && (
+                <div className="time-location-override" style={{
+                  fontWeight: 700,
+                  fontSize: '14px',
+                  color: 'var(--color-text)',
+                  fontFamily: 'var(--font-heading)',
+                  marginBottom: '2px',
+                }}>
+                  {formatDateTime(arrival).split(',').pop()?.trim()}
+                </div>
+              )}
               <div style={{
                 fontSize: '0.8125rem',
                 color: 'var(--color-text)',
@@ -253,7 +339,7 @@ export function TrainCard({
       {notes && (
         <div className="standard-note-bar">
           <strong>Note:</strong>
-          <span className="note-content-container" dangerouslySetInnerHTML={{ __html: notes }} />
+          <span className="train-note-content" dangerouslySetInnerHTML={{ __html: notes }} />
         </div>
       )}
     </div>

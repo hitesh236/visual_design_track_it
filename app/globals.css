@@ -4,20 +4,32 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Global box-model reset ── */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 img,
-video {
+video,
+canvas,
+svg {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
 @layer base {
+
+  :root {
+    --font-size-adjust: 0px;
+  }
+
+  .itinerary-shell {
+    font-size: calc(16px + var(--font-size-adjust));
+  }
 
   :root,
   [data-mood="nature"] {
@@ -32,11 +44,11 @@ video {
     /* earthy green */
     --primary-foreground: 60 93% 98%;
     --secondary: 74 20% 80%;
-    --secondary-foreground: 74 38% 30%;
+    --secondary-foreground: 74 38% 24%;
     --muted: 74 10% 90%;
-    --muted-foreground: 20 10% 50%;
+    --muted-foreground: 20 10% 38%;
     --accent: 74 38% 44%;
-    --accent-foreground: 60 93% 98%;
+    --accent-foreground: 74 50% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 30 20% 90%;
@@ -65,7 +77,7 @@ video {
     --secondary: 240 10% 25%;
     --secondary-foreground: 240 10% 95%;
     --muted: 240 10% 30%;
-    --muted-foreground: 240 5% 70%;
+    --muted-foreground: 240 5% 78%;
     --accent: 42 56% 64%;
     --accent-foreground: 42 100% 10%;
     --border: 42 56% 44%;
@@ -87,7 +99,7 @@ video {
     --card-foreground: 20 15% 15%;
     --popover: 36 29% 100%;
     --popover-foreground: 20 15% 15%;
-    --primary: 19 80% 51%;
+    --primary: 19 80% 42%;
     /* energetic orange */
     --primary-foreground: 0 0% 100%;
     --secondary: 34 80% 85%;
@@ -96,9 +108,9 @@ video {
     --muted-foreground: 20 10% 40%;
     --accent: 34 98% 60%;
     --accent-foreground: 19 80% 21%;
-    --border: 19 80% 51%;
+    --border: 19 80% 42%;
     --input: 36 20% 90%;
-    --ring: 19 80% 51%;
+    --ring: 19 80% 42%;
     --radius: 2px;
     --shadow-card: 4px 0 0 0 hsl(var(--primary));
     --spacing-section: 2.5rem;
@@ -119,7 +131,7 @@ video {
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222 47% 11%;
     --muted: 210 40% 96.1%;
-    --muted-foreground: 215 20% 65%;
+    --muted-foreground: 215 16% 43%;
     --accent: 210 40% 90%;
     --accent-foreground: 222 47% 11%;
     --border: 214 32% 91%;
@@ -147,8 +159,8 @@ video {
     --secondary: 261 27% 86%;
     --secondary-foreground: 261 17% 32%;
     --muted: 261 20% 92%;
-    --muted-foreground: 260 10% 50%;
-    --accent: 261 40% 70%;
+    --muted-foreground: 260 10% 35%;
+    --accent: 261 40% 55%;
     --accent-foreground: 0 0% 100%;
     --border: 0 0% 100% / 0.2;
     --input: 0 0% 100% / 0.6;
@@ -211,10 +223,25 @@ video {
   }
 
   /* Note content normalization */
+  .hotel-note-content,
+  .hotel-note-content *,
+  .flight-note-content,
+  .flight-note-content *,
+  .bus-note-content,
+  .bus-note-content *,
+  .train-note-content,
+  .train-note-content *,
+  .activity-note-content,
+  .activity-note-content *,
+  .transport-note-content,
+  .transport-note-content *,
+  .day-note-content,
+  .day-note-content *,
+  .day-note-box,
+  .day-note-box *,
   .note-content-container,
   .note-content-container * {
     font-style: inherit !important;
-
   }
 
   .note-content-container p {
@@ -222,10 +249,24 @@ video {
     padding: 0 !important;
   }
 
+  .hotel-note-content,
+  .flight-note-content,
+  .bus-note-content,
+  .train-note-content,
+  .activity-note-content,
+  .transport-note-content,
+  .day-note-content,
   .note-content-container {
-    font-size: clamp(0.8rem, 1.5vw, 0.9375rem);
+    font-size: 14px;
     line-height: 1.7;
-    color: var(--color-text-muted);
+    color: var(--color-text);
+    font-family: var(--font-body);
+  }
+
+  .day-note-box {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--color-text);
     font-family: var(--font-body);
   }
 
@@ -233,21 +274,25 @@ video {
   .day-note-box {
     line-height: 1.6;
     border-radius: 8px;
+    padding: 12px;
+    background-color: var(--color-note-bg);
+    color: var(--color-note-text);
+    margin-bottom: 12px;
   }
 
   .day-note-box h4 {
     margin: 0 0 6px 0;
     font-size: 14px;
     font-weight: 700;
-    color: #431407;
+    color: var(--color-note-accent);
     line-height: 1.2;
     font-family: var(--font-heading);
-    display:block !important;
+    display: block !important;
   }
 
   .day-note-box strong,
   .day-note-box b {
-    color: #431407;
+    color: var(--color-note-accent);
     font-weight: 700;
   }
 
@@ -259,8 +304,8 @@ video {
     font-style: normal;
     margin-top: auto;
     font-size: clamp(0.8rem, 1.5vw, 0.9375rem);
-    color: #92400e;
-    background-color: #fff7ed;
+    color: var(--color-note-text);
+    background-color: var(--color-note-bg);
     padding: 10px 16px;
     line-height: 1.7;
     font-family: var(--font-body);
@@ -269,14 +314,14 @@ video {
   }
 
   .standard-note-bar {
-    color: #92400e;
+    color: var(--color-note-text);
     font-size: 11px;
     line-height: inherit;
   }
 
   .standard-note-bar strong {
     font-style: normal !important;
-    color: #ea580c;
+    color: var(--color-note-accent);
     font-size: 10px;
     text-transform: uppercase;
     font-weight: 700;
@@ -292,62 +337,218 @@ video {
     width: 100%;
   }
 
-  @media (max-width: 639px) {
-    .responsive-card-grid {
-      grid-template-columns: 1fr !important;
-      gap: 12px !important;
+  /* 📱 1. MOBILE FIRST (Default Styles — No @media) */
+  .responsive-card-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .mobile-stack {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* Typography / Spacing defaults for Mobile */
+  :root {
+    --spacing-md: 12px;
+    --spacing-lg: 15px;
+    --spacing-section: 1.5rem;
+  }
+
+  .day-heading-override {
+    font-size: 18px !important;
+  }
+
+  .card-title-override {
+    font-size: 16px !important;
+  }
+
+  .time-location-override {
+    font-size: 13px !important;
+  }
+
+  .itinerary-inner-wrapper {
+    padding-left: 12px;
+    padding-right: 12px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .day-card-inner {
+    padding: 15px !important;
+  }
+
+  .mini-compact-card {
+    flex-direction: column !important;
+  }
+
+  .mini-compact-card .mini-compact-img {
+    width: 100% !important;
+    height: 180px !important;
+    max-height: none !important;
+  }
+
+  /* 🧬 2. TABLET ENHANCEMENTS */
+  @media (min-width: 768px) {
+    .itinerary-shell:not([data-forced-mobile="true"]) {
+      --spacing-md: 16px;
+      --spacing-lg: 20px;
+      --spacing-section: 2.5rem;
     }
 
-    .mobile-stack {
-      flex-direction: column !important;
-      align-items: flex-start !important;
+    .itinerary-shell:not([data-forced-mobile="true"]) .responsive-card-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 16px !important;
     }
 
-    .mobile-hide {
-      display: none !important;
+    .itinerary-shell:not([data-forced-mobile="true"]) .mobile-stack {
+      flex-direction: row !important;
+      align-items: center !important;
     }
 
-    /* ── STRICT MOBILE TYPOGRAPHY OVERRIDES ── */
-    /* Force day card title to 18px max */
-    .day-heading-override {
+    .itinerary-shell:not([data-forced-mobile="true"]) .day-heading-override {
+      font-size: 22px !important;
+    }
+
+    .itinerary-shell:not([data-forced-mobile="true"]) .card-title-override {
       font-size: 18px !important;
     }
 
-    /* Force card titles (hotels, flights, etc) to 16px max */
-    .card-title-override {
-      font-size: 16px !important;
+    .itinerary-shell:not([data-forced-mobile="true"]) .itinerary-inner-wrapper {
+      padding-left: 24px;
+      padding-right: 24px;
     }
 
-    /* Force time locations (departure, arrival, checkin, checkout) to 13px */
-    .time-location-override {
-      font-size: 13px !important;
+    .itinerary-shell:not([data-forced-mobile="true"]) .mini-compact-card {
+      flex-direction: row !important;
+    }
+
+    .itinerary-shell:not([data-forced-mobile="true"]) .mini-compact-card .mini-compact-img {
+      width: 220px !important;
+      height: auto !important;
     }
   }
+
+  /* 🚀 3. DESKTOP & A4 PRINT UNIFICATION */
+  @media (min-width: 1024px),
+  print {
+    .itinerary-shell:not([data-forced-mobile="true"]) {
+      --spacing-md: 20px;
+      --spacing-lg: 24px;
+      --spacing-section: 3rem;
+    }
+
+    .itinerary-shell:not([data-forced-mobile="true"]) .itinerary-inner-wrapper {
+      max-width: 794px;
+      /* ~210mm (A4) */
+      padding: 0;
+      background: var(--color-surface);
+    }
+
+    .itinerary-shell:not([data-forced-mobile="true"]) .responsive-card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    }
+
+    .itinerary-shell:not([data-forced-mobile="true"]) .day-card-inner {
+      padding: 24px !important;
+    }
+  }
+}
+
+/* ── Mini-Compact (Horizontal) Logic ── */
+.mini-compact-details-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .itinerary-shell:not([data-forced-mobile="true"]) .mini-compact-details-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+.mini-compact-card {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  align-items: stretch;
+  flex-direction: column;
+  /* Image matches content height by default */
+}
+
+.mini-compact-card .mini-compact-img {
+  flex-shrink: 0;
+  width: 220px;
+  position: relative;
+}
+
+.mini-compact-card .mini-compact-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mini-compact-card.hotel-horizontal .mini-compact-img {
+  height: 200px;
+  min-height: 200px;
+  width: auto;
+}
+
+
+/* Hotel specific constraint: Fixed 200px height in horizontal mode */
+/* "If short (100px) -> 200px only. If long (300px) -> stop growing at 200px" */
+
+/* Activity specific constraint: Max 150px. 
+   If content < 150px, image matches content.
+   If content > 150px, image stays 150px.
+*/
+.mini-compact-card.activity-horizontal .mini-compact-img {
+  max-height: 150px;
+}
+
+.mini-compact-card.activity-horizontal .mini-compact-img-wrapper {
+  max-height: 150px;
+  width: 180px;
+  flex-shrink: 0;
 }
 
 /* ── Note Styling Overrides ── */
 .standard-note-bar {
   display: block;
-  /* Ensure it is not flex, allowing text flow */
   margin-top: 12px;
   padding: 8px 12px;
   background-color: var(--color-bg);
   border-left: 1px solid var(--color-primary);
-  border-radius: 4px;
+  border-radius: 0 0 var(--radius-card) var(--radius-card);
 }
 
 .standard-note-bar strong {
-  font-size: 10px !important;
+  font-size: 11px !important;
   font-weight: 700 !important;
-  color: var(--color-primary) !important;
+  color: var(--color-note-accent) !important;
   margin-right: 6px;
 }
 
+/* ── Dedicated section-specific note classes for independent styling ── */
+.hotel-note-content,
+.hotel-note-content *,
+.flight-note-content,
+.flight-note-content *,
+.bus-note-content,
+.bus-note-content *,
+.train-note-content,
+.train-note-content *,
+.activity-note-content,
+.activity-note-content *,
+.transport-note-content,
+.transport-note-content *,
+.day-note-content,
+.day-note-content *,
 .note-content-container,
 .note-content-container * {
   display: inline !important;
-  /* Keep content inline with the Note label */
-  /* font-size: 10px !important; */
+  font-size: 12px !important;
   color: var(--color-text) !important;
   line-height: 1.5 !important;
 }
@@ -355,57 +556,72 @@ video {
 @media print {
   @page {
     size: A4;
+    size: auto;
     margin: 10mm;
   }
 
+  /* Hide UI elements */
+  .sidebar-root,
+  .mobile-label,
   .no-print,
   .switcher-panel-root,
-  button[title="Customize appearance"] {
+  .mobile-device-frame::before,
+  .mobile-device-frame::after {
     display: none !important;
   }
 
-  body {
-    background: #fff !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    width: 100% !important;
+  /* Reset main layout for print */
+  .flex-root {
+    display: block !important;
+    min-height: 0 !important;
   }
 
-  /* Reset shell constraint for print */
-  main>div {
+  .preview-area,
+  .mobile-preview-bg {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    display: block !important;
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  .mobile-device-frame {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    background: #fff !important;
+  }
+
+  .mobile-scroll-area {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .itinerary-shell {
+    background: #fff !important;
+    background-image: none !important;
+    min-height: 0 !important;
+  }
+
+  .itinerary-inner-wrapper {
     max-width: 100% !important;
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
     box-shadow: none !important;
-    background-color: transparent !important;
+    background: #fff !important;
   }
 
-  /* Force Accordion content to be visible */
-  .accordion-content-wrapper {
-    max-height: none !important;
-    display: block !important;
-    opacity: 1 !important;
+  /* Re-enable visibility for content */
+  * {
+    color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
   }
 
-  /* Force show Chevron as open or hide it */
-  .accordion-trigger svg {
-    display: none !important;
-  }
 
-  /* Typography adjustments for print */
-  h1,
-  h2,
-  h3 {
-    page-break-after: avoid;
-    color: #000 !important;
-  }
-
-  p,
-  span,
-  div {
-    color: #333 !important;
-  }
 
   /* Avoid breaking cards across pages where possible */
   .day-card-inner {

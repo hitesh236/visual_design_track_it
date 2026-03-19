@@ -15,6 +15,8 @@ import { ExecutiveCard } from '@/components/executive-card';
 import { useExecutive } from '@/hooks/use-executive';
 import { Sidebar } from '@/components/sidebar/sidebar';
 import { useSections } from '@/hooks/use-sections';
+import PAYMENT_DATA from '@/data/Payment.json';
+import { BankDetailsCard } from '@/components/bank-details-card';
 
 const d = ITINERARY.data.data;
 
@@ -117,6 +119,7 @@ export default function Page() {
                     key={day.day_number}
                     day={day}
                     isLast={i === days.length - 1}
+                    forcedMobile={previewMode === 'mobile'}
                   />
                 ))}
               </div>
@@ -150,6 +153,9 @@ export default function Page() {
               return <InfoSections key="info_group" sections={collectedInfoSections} />;
             }
             return null;
+
+          case 'bank_details':
+            return <BankDetailsCard key="bank_details" details={PAYMENT_DATA.data.items.bankdetail.results as any} />;
 
           case 'executive':
             return <div key="executive" id="section-executive"><ExecutiveCard executive={executive} /></div>;
@@ -243,7 +249,7 @@ export default function Page() {
           margin-top: 16px;
           font-size: 11px;
           font-weight: 600;
-          color: #64748b;
+          color: #475569;
           letter-spacing: 0.04em;
           text-transform: uppercase;
           font-family: var(--font-body, sans-serif);
@@ -268,7 +274,7 @@ export default function Page() {
         {previewMode === 'desktop' ? (
           // ── Desktop View ──
           <div className="preview-area itinerary-container">
-            <ItineraryShell>
+            <ItineraryShell forcedMobile={false}>
               {itineraryContent}
             </ItineraryShell>
           </div>
@@ -277,7 +283,7 @@ export default function Page() {
           <div className="mobile-preview-bg itinerary-container">
             <div className="mobile-device-frame">
               <div className="mobile-scroll-area">
-                <ItineraryShell>
+                <ItineraryShell forcedMobile={true}>
                   {itineraryContent}
                 </ItineraryShell>
               </div>

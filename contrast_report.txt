@@ -1,0 +1,56 @@
+FINAL VERIFICATION REPORT:
+
+Mood: NATURE
+ - Main Text on Surface                         : #1a1a1a on #ffffff -> 17.40:1 [PASS]
+ - Muted Text on Surface                        : #526f5c on #ffffff -> 5.55:1 [PASS]
+ - Main Text on BG                              : #1a1a1a on #faf7f2 -> 16.29:1 [PASS]
+ - Muted Text on BG                             : #526f5c on #faf7f2 -> 5.19:1 [PASS]
+ - Primary (Labels) on Surface                  : #437051 on #ffffff -> 5.71:1 [PASS]
+ - Primary (Labels) on BG                       : #437051 on #faf7f2 -> 5.35:1 [PASS]
+ - Text on Primary (Active)                     : #ffffff on #437051 -> 5.71:1 [PASS]
+ - Text on Primary Muted (Active Button)        : #1a1a1a on #e9edea -> 14.72:1 [PASS]
+ - Muted Text on Primary Muted (Desc in Active) : #526f5c on #e9edea -> 4.69:1 [PASS]
+
+Mood: LUXURY
+ - Main Text on Surface                         : #f1f1f1 on #16213e -> 14.07:1 [PASS]
+ - Muted Text on Surface                        : #c2c1bc on #16213e -> 8.82:1 [PASS]
+ - Main Text on BG                              : #f1f1f1 on #1a1a2e -> 15.10:1 [PASS]
+ - Muted Text on BG                             : #c2c1bc on #1a1a2e -> 9.46:1 [PASS]
+ - Primary (Labels) on Surface                  : #C9A84C on #16213e -> 6.95:1 [PASS]
+ - Primary (Labels) on BG                       : #C9A84C on #1a1a2e -> 7.46:1 [PASS]
+ - Text on Primary (Active)                     : #1a1a1a on #C9A84C -> 7.62:1 [PASS]
+ - Text on Primary Muted (Active Button)        : #f1f1f1 on #393323 -> 11.12:1 [PASS]
+ - Muted Text on Primary Muted (Desc in Active) : #c2c1bc on #393323 -> 6.97:1 [PASS]
+
+Mood: ADVENTURE
+ - Main Text on Surface                         : #1a1a1a on #ffffff -> 17.40:1 [PASS]
+ - Muted Text on Surface                        : #6f5e52 on #ffffff -> 6.18:1 [PASS]
+ - Main Text on BG                              : #1a1a1a on #f5f0eb -> 15.37:1 [PASS]
+ - Muted Text on BG                             : #6f5e52 on #f5f0eb -> 5.46:1 [PASS]
+ - Primary (Labels) on Surface                  : #B04402 on #ffffff -> 5.72:1 [PASS]
+ - Primary (Labels) on BG                       : #B04402 on #f5f0eb -> 5.05:1 [PASS]
+ - Text on Primary (Active)                     : #ffffff on #B04402 -> 5.72:1 [PASS]
+ - Text on Primary Muted (Active Button)        : #1a1a1a on #fbe7db -> 14.55:1 [PASS]
+ - Muted Text on Primary Muted (Desc in Active) : #6f5e52 on #fbe7db -> 5.17:1 [PASS]
+
+Mood: MODERN
+ - Main Text on Surface                         : #1a1a1a on #f8fafc -> 16.63:1 [PASS]
+ - Muted Text on Surface                        : #525c6f on #f8fafc -> 6.43:1 [PASS]
+ - Main Text on BG                              : #1a1a1a on #ffffff -> 17.40:1 [PASS]
+ - Muted Text on BG                             : #525c6f on #ffffff -> 6.73:1 [PASS]
+ - Primary (Labels) on Surface                  : #2563EB on #f8fafc -> 4.94:1 [PASS]
+ - Primary (Labels) on BG                       : #2563EB on #ffffff -> 5.17:1 [PASS]
+ - Text on Primary (Active)                     : #ffffff on #2563EB -> 5.17:1 [PASS]
+ - Text on Primary Muted (Active Button)        : #1a1a1a on #dee6f7 -> 13.90:1 [PASS]
+ - Muted Text on Primary Muted (Desc in Active) : #525c6f on #dee6f7 -> 5.38:1 [PASS]
+
+Mood: SPIRITUAL
+ - Main Text on Surface                         : #1a1a1a on #faf9fb -> 16.58:1 [PASS]
+ - Muted Text on Surface                        : #5e526f on #faf9fb -> 6.87:1 [PASS]
+ - Main Text on BG                              : #1a1a1a on #f3f0f7 -> 15.43:1 [PASS]
+ - Muted Text on BG                             : #5e526f on #f3f0f7 -> 6.39:1 [PASS]
+ - Primary (Labels) on Surface                  : #7B5EA7 on #faf9fb -> 5.00:1 [PASS]
+ - Primary (Labels) on BG                       : #7B5EA7 on #f3f0f7 -> 4.65:1 [PASS]
+ - Text on Primary (Active)                     : #ffffff on #7B5EA7 -> 5.25:1 [PASS]
+ - Text on Primary Muted (Active Button)        : #1a1a1a on #eae9ed -> 14.40:1 [PASS]
+ - Muted Text on Primary Muted (Desc in Active) : #5e526f on #eae9ed -> 5.97:1 [PASS]

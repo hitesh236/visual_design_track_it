@@ -26,17 +26,29 @@ function hsl(h: number, s: number, l: number): string {
   return `hsl(${h}, ${s}%, ${l}%)`;
 }
 
-function resolveButtonTextColor(l: number, colorMode: string): string {
-  if (colorMode === 'light' && l > 65) return '#1a1a1a';
-  return '#ffffff';
+function getLuminance(hex: string): number {
+  const r = parseInt(hex.slice(1, 3), 16) / 255;
+  const g = parseInt(hex.slice(3, 5), 16) / 255;
+  const b = parseInt(hex.slice(5, 7), 16) / 255;
+  const a = [r, g, b].map(v => v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
+  return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+}
+
+function resolveButtonTextColor(primaryColor: string): string {
+  const l = getLuminance(primaryColor);
+  // WCAG says text needs 4.5:1 ratio. 
+  // White text (L=1.0) on background with luminance L: (1.0 + 0.05) / (L + 0.05) >= 4.5 => L <= 0.183
+  // Dark text (L=0.01) on background with luminance L: (L + 0.05) / (0.01 + 0.05) >= 4.5 => L >= 0.22
+  // We'll use 0.2 as the threshold.
+  return l > 0.2 ? '#1a1a1a' : '#ffffff';
 }
 
 // ─── Scale Mapping ───────────────────────────────────────────────
 
-const SCALE_FACTORS: Record<ScaleMode, string> = {
-  small: '0.9',
-  normal: '1.0',
-  large: '1.15',
+const SCALE_OFFSETS: Record<ScaleMode, string> = {
+  small: '-2px',
+  normal: '0px',
+  large: '2px',
 };
 
 // ─── Spacing Scale ───────────────────────────────────────────────
@@ -54,34 +66,47 @@ export function resolveThemeToCSSVars(
 ): Record<string, string> {
   const [h, s, l] = hexToHsl(theme.primaryColor);
   const spacing = spacingScale[theme.sectionSpacing];
-  const scale = SCALE_FACTORS[theme.scaleMode || 'normal'];
+  const fontAdjust = SCALE_OFFSETS[theme.scaleMode || 'normal'];
+
+  const isDark = theme.colorMode === 'dark';
 
   return {
     // Scaling Factor
-    '--itinerary-scale':     scale,
+    '--font-size-adjust':     fontAdjust,
 
     // Colors — primary scale
     '--color-primary':       hsl(h, s, l),
     '--color-primary-light': hsl(h, s, Math.min(l + 20, 95)),
     '--color-primary-dark':  hsl(h, s, Math.max(l - 20, 10)),
-    '--color-primary-muted': hsl(h, Math.max(s - 20, 10), Math.min(l + 30, 95)),
+    // In dark mode, primary-muted should be DARKENED if it's used as a background for light text,
+    // or kept very light if used with dark text. 
+    // Let's make it consistent: very light for light mode, very dark for dark mode.
+    '--color-primary-muted': isDark
+                               ? hsl(h, Math.max(s - 30, 5), 18)
+                               : hsl(h, Math.max(s - 20, 10), 92),
+    '--color-primary-muted-text': isDark ? '#f1f1f1' : hsl(h, s, Math.min(l, 40)),
 
     // Colors — surfaces
     '--color-bg':            theme.backgroundColor,
     '--color-surface':       theme.surfaceColor,
-    '--color-border':        theme.colorMode === 'dark'
+    '--color-border':        isDark
                                ? hsl(h, 10, 25)
                                : hsl(h, 15, 88),
 
     // Colors — text
-    '--color-text':          theme.colorMode === 'dark' ? '#f1f1f1' : '#1a1a1a',
-    '--color-text-muted':    theme.colorMode === 'dark'
-                               ? hsl(h, 10, 65)
-                               : hsl(h, 10, 45),
-    '--color-text-on-primary': resolveButtonTextColor(l, theme.colorMode),
+    '--color-text':          isDark ? '#f1f1f1' : '#1a1a1a',
+    '--color-text-muted':    isDark
+                               ? hsl(h, 5, 75) // Lighter for dark mode
+                               : hsl(h, 15, 38), // Darker for light mode
+    '--color-text-on-primary': resolveButtonTextColor(theme.primaryColor),
 
     // Colors — semantic
-    '--color-hotel':         'hsl(210, 80%, 50%)',
+    // Colors — semantic (Hotel)
+    '--color-hotel':         hsl(h, s, l),
+    '--color-hotel-muted':   isDark ? hsl(h, 25, 20) : hsl(h, 30, 96),
+    '--color-hotel-border':  isDark ? hsl(h, s, 35) : hsl(h, s, 85),
+    '--color-hotel-text':    isDark ? hsl(h, s, 90) : hsl(h, s, 25),
+    
     '--color-flight':        'hsl(270, 70%, 55%)',
     '--color-transport':     'hsl(25, 90%, 52%)',
     '--color-activity':      'hsl(145, 60%, 40%)',
@@ -113,5 +138,14 @@ export function resolveThemeToCSSVars(
     '--spacing-md':          spacing.md,
     '--spacing-lg':          spacing.lg,
     '--spacing-section':     spacing.section,
+
+    // Note Section Specifically (Fixes WCAG failures in various moods)
+    '--color-note-bg':       isDark
+                               ? hsl(h, 10, 20)
+                               : hsl(h, 25, 96),
+    '--color-note-text':     isDark ? '#f1f1f1' : hsl(h, 20, 25),
+    '--color-note-accent':   isDark 
+                               ? hsl(h, s, Math.max(l, 60)) // Brighter primary/accent for dark mode
+                               : hsl(h, s, Math.min(l, 40)), // Darker primary/accent for light mode
   };
 }

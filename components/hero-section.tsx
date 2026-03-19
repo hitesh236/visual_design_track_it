@@ -76,7 +76,7 @@ function StatItem({
       <span style={{ color: 'var(--color-primary)', flexShrink: 0 }}>
         {icon}
       </span>
-      <div style={{ minWidth: 0 }}>
+      <div style={{ flex: '1 1 auto', minWidth: 0 }}>
         <div
           style={{
             fontSize: 'clamp(0.55rem, 1.2vw, 0.7rem)',
@@ -84,17 +84,18 @@ function StatItem({
             letterSpacing: '0.06em',
             textTransform: 'uppercase',
             color: 'var(--color-text-muted)',
+            whiteSpace: 'nowrap',
           }}
         >
           {label}
         </div>
         <div
           style={{
-            fontSize: 'clamp(0.75rem, 1.6vw, 0.9375rem)',
+            fontSize: 'clamp(0.7rem, 1.5vw, 0.875rem)',
             fontWeight: 700,
             color: 'var(--color-text)',
             fontFamily: 'var(--font-body)',
-            wordBreak: 'break-word',
+            whiteSpace: 'nowrap',
           }}
         >
           {value}
@@ -105,6 +106,7 @@ function StatItem({
               fontSize: 'clamp(0.6rem, 1vw, 0.75rem)',
               color: 'var(--color-text-muted)',
               marginTop: '-1px',
+              whiteSpace: 'nowrap',
             }}
           >
             {subValue}
@@ -198,31 +200,54 @@ export function HeroSection({
   return (
     <div style={{ marginBottom: 'var(--spacing-section)' }}>
       <style>{`
-        @media (max-width: 480px) {
-          .hero-client-price-row {
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            gap: 12px !important;
+        /* 📱 1. MOBILE FIRST (Default) */
+        .hero-client-price-row {
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          gap: 12px !important;
+        }
+        .hero-price-badge {
+          align-self: flex-start !important;
+        }
+        .hero-stat-item {
+          padding: 8px 14px !important;
+          flex: 1 0 auto !important;
+        }
+        .hero-stat-divider {
+          display: none !important;
+        }
+        .hero-title {
+          font-size: 22px !important;
+        }
+        .hero-price-pill {
+          font-size: 18px !important;
+        }
+
+        /* 🧬 2. TABLET/DESKTOP ENHANCEMENTS */
+        @media (min-width: 768px), print {
+          .itinerary-shell:not([data-forced-mobile="true"]) .hero-client-price-row {
+            flex-direction: row !important;
+            align-items: center !important;
+            gap: 20px !important;
           }
-          .hero-price-badge {
-            align-self: flex-start !important;
+          .itinerary-shell:not([data-forced-mobile="true"]) .hero-price-badge {
+            align-self: center !important;
           }
-          .hero-stat-item {
-            padding: 8px 14px !important;
-            flex: 1 1 calc(50% - 28px) !important;
+          .itinerary-shell:not([data-forced-mobile="true"]) .hero-stat-item {
+            padding: var(--spacing-sm) var(--spacing-md) !important;
+            flex: 1 1 140px !important;
           }
-          .hero-stat-divider {
-            display: none !important;
+          .itinerary-shell:not([data-forced-mobile="true"]) .hero-stat-divider {
+            display: block !important;
           }
-          /* Heading capped at 22px */
-          .hero-title {
-            font-size: 22px !important;
+          .itinerary-shell:not([data-forced-mobile="true"]) .hero-title {
+            font-size: clamp(2.2rem, 5vw, 4rem) !important;
           }
-          /* Price number capped at 18px */
-          .hero-price-pill {
-            font-size: 18px !important;
+          .itinerary-shell:not([data-forced-mobile="true"]) .hero-price-pill {
+            font-size: clamp(1.1rem, 2.5vw, 1.75rem) !important;
           }
         }
+
         @media (min-width: 481px) and (max-width: 768px) {
           .hero-stat-item {
             flex: 1 1 calc(33% - 28px) !important;
@@ -346,8 +371,6 @@ export function HeroSection({
             >
               Prepared for{' '}
               <strong className="hero-client-name" style={{ color: '#ffffff' }}>{clientName}</strong>
-              <span className="hero-inquiry-separator">{' — '}</span>
-              <span className="hero-inquiry-id">{inquiryId}</span>
             </p>
 
             {/* Price badge */}

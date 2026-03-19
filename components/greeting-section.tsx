@@ -9,7 +9,7 @@ function GreetingHtmlContent({ html }: { html: string }) {
     <>
       <style>{`
         .greeting-html-content p {
-          font-size: clamp(0.8rem, 1.5vw, 0.9375rem);
+          font-size: 14px;
           font-family: var(--font-body);
           color: var(--color-text);
           margin: 0 0 8px 0;

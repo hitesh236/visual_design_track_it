@@ -21,6 +21,7 @@ const DEFAULT_SECTIONS: Section[] = [
   { id: 'info_payment',    label: 'Payment Policy',              isVisible: true },
   { id: 'info_amendment',  label: 'Amendment Policy',            isVisible: true },
   { id: 'info_why',        label: 'Why Choose Us',               isVisible: true },
+  { id: 'bank_details',    label: 'Bank Details',                isVisible: true },
   { id: 'executive',       label: 'Sales Executive',             isVisible: true },
 ];
 

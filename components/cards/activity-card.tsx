@@ -7,6 +7,7 @@ type ActivityCardProps = {
   displayMode: 'card' | 'row' | 'horizontal-card';
   showImages?: boolean;
   showDescriptions?: boolean;
+  hideTime?: boolean;
 };
 
 // ─── Image with fallback ──────────────────────────────────────────
@@ -16,20 +17,18 @@ function ActivityImage({ src, name, size = '160px', horizontal = false }: { src?
     return (
       <div
         style={{
-          width: horizontal ? '180px' : '100%',
+          width: horizontal ? '100%' : '100%',
           height: horizontal ? '100%' : size,
-          minHeight: horizontal ? '140px' : 'auto',
           borderRadius: horizontal ? '0' : 'var(--radius-badge)',
           background: 'linear-gradient(135deg, var(--color-activity), var(--color-primary-light))',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          flexShrink: 0,
         }}
       >
-        {/* Camera / activity ticket icon */}
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2z"/>
+        {/* Simplified high-visibility ticket icon */}
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M2 9a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v2a2 2 0 1 0 0 4v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2a2 2 0 1 0 0-4V9Z"/>
           <path d="m9 12 2 2 4-4"/>
         </svg>
       </div>
@@ -39,12 +38,10 @@ function ActivityImage({ src, name, size = '160px', horizontal = false }: { src?
   return (
     <div
       style={{
-        width: horizontal ? '180px' : '100%',
+        width: horizontal ? '100%' : '100%',
         height: horizontal ? '100%' : size,
-        minHeight: horizontal ? '140px' : 'auto',
         borderRadius: horizontal ? '0' : 'var(--radius-badge)',
         overflow: 'clip',
-        flexShrink: 0,
       }}
     >
       <img
@@ -140,8 +137,8 @@ function ActivityCardFull({
             }}
           >
             {/* Ticket icon */}
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2z" />
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M2 9a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v2a2 2 0 1 0 0 4v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2a2 2 0 1 0 0-4V9Z"/>
             </svg>
             Activity
           </span>
@@ -150,7 +147,7 @@ function ActivityCardFull({
         {/* Description */}
         {showDescriptions && description && (
           <div
-            className="note-content-container"
+            className="activity-note-content"
             dangerouslySetInnerHTML={{ __html: description }}
           />
         )}
@@ -172,19 +169,19 @@ function ActivityCardHorizontal({
 
   return (
     <div
+      className="mini-compact-card activity-horizontal"
       style={{
         borderRadius: 'var(--radius-card)',
         border: '1px solid var(--color-border)',
-        overflow: 'hidden',
         backgroundColor: 'var(--color-surface)',
-        display: 'flex',
-        minHeight: '140px',
         boxShadow: 'var(--shadow-card)',
       }}
     >
       {/* Image on Left */}
       {showImages && (
-        <ActivityImage src={firstImage} name={name} horizontal />
+        <div className="mini-compact-img">
+          <ActivityImage src={firstImage} name={name} horizontal />
+        </div>
       )}
 
       {/* Content on Right */}
@@ -213,13 +210,17 @@ function ActivityCardHorizontal({
             textTransform: 'uppercase',
             whiteSpace: 'nowrap',
           }}>
+            {/* Ticket icon */}
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M2 9a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v2a2 2 0 1 0 0 4v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2a2 2 0 1 0 0-4V9Z"/>
+            </svg>
             Activity
           </span>
         </div>
 
         {showDescriptions && description && (
           <div
-            className="note-content-container"
+            className="activity-note-content"
             style={{ fontSize: '0.75rem', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: '4', WebkitBoxOrient: 'vertical' }}
             dangerouslySetInnerHTML={{ __html: description }}
           />
@@ -232,45 +233,71 @@ function ActivityCardHorizontal({
 // ─── Row variant (compact) ────────────────────────────────────────
 // Shows only the activity name — no description, no images.
 
-function ActivityRow({ name }: ActivityCardProps) {
+function ActivityRow({ name, images }: ActivityCardProps) {
+  const firstImage = images?.[0];
+
   return (
     <div
       style={{
         display: 'flex',
         alignItems: 'center',
-        gap: '10px',
-        padding: 'var(--spacing-sm) var(--spacing-md)',
+        gap: '12px',
+        padding: '8px 12px',
         borderRadius: 'var(--radius-badge)',
         backgroundColor: 'var(--color-surface)',
         border: '1px solid var(--color-border)',
         width: '100%',
         boxSizing: 'border-box',
+        transition: 'all 0.2s ease',
       }}
     >
-      {/* Icon */}
-      <div
-        style={{
-          width: '28px',
-          height: '28px',
-          borderRadius: 'var(--radius-badge)',
-          backgroundColor: 'var(--color-activity)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0,
-        }}
-      >
-        {/* Activity ticket icon */}
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2z"/>
-          <path d="m9 12 2 2 4-4"/>
-        </svg>
-      </div>
+      {/* Thumbnail or Icon */}
+      {firstImage ? (
+        <div
+          style={{
+            width: '40px',
+            height: '40px',
+            borderRadius: '6px',
+            overflow: 'hidden',
+            flexShrink: 0,
+            border: '1px solid var(--color-border)',
+          }}
+        >
+          <img
+            src={firstImage}
+            alt={name}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+            }}
+          />
+        </div>
+      ) : (
+        <div
+          style={{
+            width: '40px',
+            height: '40px',
+            borderRadius: '6px',
+            backgroundColor: 'var(--color-activity)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+          }}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M2 9a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v2a2 2 0 1 0 0 4v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2a2 2 0 1 0 0-4V9Z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+      )}
 
-      {/* Activity name only */}
+      {/* Activity name */}
       <div
         style={{
-          fontSize: 'clamp(0.75rem, 1.4vw, 0.875rem)',
+          fontSize: '0.9rem',
           fontWeight: 600,
           color: 'var(--color-text)',
           fontFamily: 'var(--font-body)',

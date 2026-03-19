@@ -1,0 +1,66 @@
+{
+    "status": 200,
+    "message": "Branch list fetched successfully",
+    "data": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": "019c2225-52f4-72b1-b123-bca71f659e5f",
+                "name": "Track Itinerary Travel CRM",
+                "type": "Company",
+                "gst": "07ABCDE1234F1Z5",
+                "address": "Hall No. 101, 1st Floor, STPI Building \r\nIncubation Centre, near SBI, SDA Complex, \r\nKasumpti, Shimla, \r\nHimachal Pradesh 171009",
+                "status": "Active",
+                "tenant_id": "019c2225-4ebb-7077-8303-d69169e65160",
+                "created_by": null,
+                "email": "vishvender@eligocs.com",
+                "data": "{\"extra\":{\"name\":\"Track Itinerary Travel CRM\",\"address\":\"Hall No. 101, 1st Floor, STPI Building \\r\\nIncubation Centre, near SBI, SDA Complex, \\r\\nKasumpti, Shimla, \\r\\nHimachal Pradesh 171009\",\"pan\":\"ABCDE1234F\",\"countryId\":\"019c221b-9148-726d-8543-9794c5469856\",\"stateId\":\"019c221b-9202-7019-960f-1fa6f35cd732\",\"cityId\":\"019c221b-99c6-7091-8000-a8a542bc54ed\",\"state\":\"Himachal Pradesh\",\"city\":\"Shimla\",\"stateName\":\"Himachal Pradesh\",\"cityName\":\"Shimla\",\"emails\":[\"vishvender@eligocs.com\",\"test@himalyan.com\"],\"phones\":[\"9317215303\",\"8956236598\"],\"baseCurrency\":\"inr\",\"logoUrl\":\"\"}}",
+                "last_updated_by": "4931336c-27fc-45a8-bf66-e344a0908018",
+                "created_at": "2026-02-03T06:16:37.000000Z",
+                "updated_at": "2026-03-16T10:40:44.000000Z",
+                "creator_name": null,
+                "updater_name": null,
+                "logo": {
+                    "uuid": "36c96fc4-c679-4ff9-9613-7820de34b696",
+                    "event_id": "019c2225-52f4-72b1-b123-bca71f659e5f",
+                    "name": "TI_logo_Color.png",
+                    "large_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/branch\/large_36c96fc4-c679-4ff9-9613-7820de34b696.png",
+                    "medium_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/branch\/medium_36c96fc4-c679-4ff9-9613-7820de34b696.png",
+                    "small_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/storage\/Uploads\/track\/branch\/small_36c96fc4-c679-4ff9-9613-7820de34b696.png"
+                },
+                "creator": null,
+                "updater": null
+            }
+        ],
+        "first_page_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/api\/branches?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "https:\/\/track.trackitineraryapi.eligo.cloud\/api\/branches?page=1",
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "page": null,
+                "active": false
+            },
+            {
+                "url": "https:\/\/track.trackitineraryapi.eligo.cloud\/api\/branches?page=1",
+                "label": "1",
+                "page": 1,
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "page": null,
+                "active": false
+            }
+        ],
+        "next_page_url": null,
+        "path": "https:\/\/track.trackitineraryapi.eligo.cloud\/api\/branches",
+        "per_page": 15,
+        "prev_page_url": null,
+        "to": 1,
+        "total": 1
+    }
+}

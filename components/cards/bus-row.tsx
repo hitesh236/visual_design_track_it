@@ -16,19 +16,21 @@ type BusRowProps = {
   price?: number | string;
   notes?: string;
   vendorName?: string;
+  hideTime?: boolean;
+  displayMode?: 'card' | 'row';
 };
 
 // ─── Bus icon ─────────────────────────────────────────────────────
 
 function BusIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-      <path d="M8 6v6" />
-      <path d="M16 6v6" />
-      <path d="M2 12h19.6" />
-      <path d="M18 18h2a1 1 0 0 0 1-1v-3.65a2 2 0 0 0-.672-1.482l-1.932-1.686A2 2 0 0 0 17.068 10H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h1" />
-      <circle cx="8" cy="18" r="2" />
-      <circle cx="16" cy="18" r="2" />
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="4" y="3" width="16" height="16" rx="2" />
+      <path d="M4 11h16" />
+      <path d="M8 15h0.01" />
+      <path d="M16 15h0.01" />
+      <path d="M6 19v2" />
+      <path d="M18 19v2" />
     </svg>
   );
 }
@@ -79,9 +81,64 @@ function formatAmount(val?: number | string) {
   }).format(n);
 }
 
-// ─── Bus row ──────────────────────────────────────────────────────
 
-// ─── Bus card ──────────────────────────────────────────────────────
+// ─── Premium Row Layout (Mini-Compact) ───────────────────────────────
+
+function BusRowPremium({
+  name,
+  from,
+  to,
+  departure,
+  operator,
+  busType,
+  price,
+  hideTime,
+}: BusRowProps) {
+  const displayBusName = operator || name || 'Bus';
+  const details = [
+    busType,
+    !hideTime && formatDateTime(departure).split(',').pop()?.trim()
+  ].filter(Boolean).join(' · ');
+
+  return (
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '10px',
+      padding: 'var(--spacing-sm) var(--spacing-md)',
+      borderRadius: 'var(--radius-badge)',
+      backgroundColor: 'var(--color-surface)',
+      border: '1px solid var(--color-border)',
+      width: '100%',
+    }}>
+      {/* Icon */}
+      <div style={{
+        width: '32px',
+        height: '32px',
+        borderRadius: 'var(--radius-badge)',
+        backgroundColor: 'var(--color-bus, #fb8c00)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexShrink: 0,
+      }}>
+        <BusIcon />
+      </div>
+      {/* Text */}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-primary)' }}>{from || 'From'}</span>
+          <ArrowIcon />
+          <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-primary)' }}>{to || 'To'}</span>
+        </div>
+        <div style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
+          {displayBusName} {details && ` · ${details}`}
+        </div>
+      </div>
+      {/* Price removed as per user request */}
+    </div>
+  );
+}
 
 export function BusCard({
   name,
@@ -95,7 +152,24 @@ export function BusCard({
   price,
   notes,
   vendorName,
+  hideTime,
+  displayMode,
 }: BusRowProps) {
+  if (displayMode === 'row') {
+    return (
+      <BusRowPremium
+        name={name}
+        from={from}
+        to={to}
+        departure={departure}
+        operator={operator}
+        busType={busType}
+        price={price}
+        hideTime={hideTime}
+      />
+    );
+  }
+
   const busDisplayName = vendorName || operator || name || 'Bus';
   const departDate = formatDateTime(departure).split(',')[0];
 
@@ -131,16 +205,14 @@ export function BusCard({
               justifyContent: 'center',
               flexShrink: 0,
             }}>
-              {/* Bus top view with windows */}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="4" width="20" height="14" rx="2"/>
-                <path d="M7 18v2M17 18v2"/>
-                <path d="M2 9h20"/>
-                <rect x="4" y="11" width="3" height="3" rx="0.5" fill="#fff" stroke="none"/>
-                <rect x="9" y="11" width="3" height="3" rx="0.5" fill="#fff" stroke="none"/>
-                <rect x="14" y="11" width="3" height="3" rx="0.5" fill="#fff" stroke="none"/>
-                <circle cx="7" cy="20" r="1" fill="#fff"/>
-                <circle cx="17" cy="20" r="1" fill="#fff"/>
+              {/* High-visibility Bus Icon (Front Profile) */}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="4" y="3" width="16" height="16" rx="2" />
+                <path d="M4 11h16" />
+                <path d="M8 15h.01" />
+                <path d="M16 15h.01" />
+                <path d="M6 19v2" />
+                <path d="M18 19v2" />
               </svg>
             </div>
             <h3 className="card-title-override" style={{
@@ -158,7 +230,6 @@ export function BusCard({
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
             {departDate && <SummaryPill>{departDate}</SummaryPill>}
             {busType && <SummaryPill>{busType}</SummaryPill>}
-            {seatNumber && <SummaryPill>Seat: {seatNumber}</SummaryPill>}
           </div>
         </div>
 
@@ -171,21 +242,26 @@ export function BusCard({
           marginBottom: '0',
         }}>
           <style>{`
-            @media (max-width: 480px) {
+            .bus-dep-arr-mobile {
+              grid-template-columns: 1fr !important;
+              gap: 16px !important;
+            }
+            .bus-arr-align { text-align: left !important; }
+            .bus-arrow-mobile { display: none !important; }
+
+            @media (min-width: 768px) {
               .bus-dep-arr-mobile {
-                grid-template-columns: 1fr !important;
-                gap: 16px !important;
+                grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+                gap: 14px !important;
               }
-              .bus-arr-align { text-align: left !important; }
-              .bus-arrow-mobile { display: none !important; }
+              .bus-arr-align { text-align: right !important; }
+              .bus-arrow-mobile { display: flex !important; }
             }
           `}</style>
           <div 
             className="bus-dep-arr-mobile"
             style={{
               display: 'grid',
-              gridTemplateColumns: 'minmax(0, 1fr) auto minmax(0, 1fr)',
-              gap: '14px',
               alignItems: 'center',
             }}
           >
@@ -199,15 +275,17 @@ export function BusCard({
               }}>
                 Departure
               </div>
-              <div className="time-location-override" style={{
-                fontWeight: 700,
-                fontSize: '14px',
-                color: 'var(--color-text)',
-                fontFamily: 'var(--font-heading)',
-                marginBottom: '2px',
-              }}>
-                {formatDateTime(departure).split(',').pop()?.trim()}
-              </div>
+              {!hideTime && (
+                <div className="time-location-override" style={{
+                  fontWeight: 700,
+                  fontSize: '14px',
+                  color: 'var(--color-text)',
+                  fontFamily: 'var(--font-heading)',
+                  marginBottom: '2px',
+                }}>
+                  {formatDateTime(departure).split(',').pop()?.trim()}
+                </div>
+              )}
               <div style={{
                 fontSize: '0.8125rem',
                 color: 'var(--color-text)',
@@ -230,15 +308,17 @@ export function BusCard({
               }}>
                 Arrival
               </div>
-              <div className="time-location-override" style={{
-                fontWeight: 700,
-                fontSize: '14px',
-                color: 'var(--color-text)',
-                fontFamily: 'var(--font-heading)',
-                marginBottom: '2px',
-              }}>
-                {formatDateTime(arrival).split(',').pop()?.trim()}
-              </div>
+              {!hideTime && (
+                <div className="time-location-override" style={{
+                  fontWeight: 700,
+                  fontSize: '14px',
+                  color: 'var(--color-text)',
+                  fontFamily: 'var(--font-heading)',
+                  marginBottom: '2px',
+                }}>
+                  {formatDateTime(arrival).split(',').pop()?.trim()}
+                </div>
+              )}
               <div style={{
                 fontSize: '0.8125rem',
                 color: 'var(--color-text)',
@@ -255,7 +335,7 @@ export function BusCard({
       {notes && (
         <div className="standard-note-bar">
           <strong>Note:</strong>
-          <span className="note-content-container" dangerouslySetInnerHTML={{ __html: notes }} />
+          <span className="bus-note-content" dangerouslySetInnerHTML={{ __html: notes }} />
         </div>
       )}
     </div>

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTheme } from '@/context/theme-context';
 import { getLayoutConfig } from '@/lib/layout-presets';
 import { formatDateShort } from '@/lib/itinerary-utils';
-import { ComponentRenderer } from '@/components/component-renderer';
+import { ComponentRenderer, CalendarDateIcon } from '@/components/component-renderer';
 
 // ─── Types ────────────────────────────────────────────────────────
 
@@ -18,17 +18,18 @@ export type DayData = {
 
 // ─── Mobile hook ──────────────────────────────────────────────────
 
-function useMobile() {
-  const [isMobile, setIsMobile] = useState(false);
+function useMobile(forcedMobile?: boolean) {
+  const [isMobileState, setIsMobileState] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
+
+  const isMobile = forcedMobile || isMobileState;
 
   useEffect(() => {
     setHasMounted(true);
     const check = () => {
-      // For hydration safety, check for window and forced mobile frame
+      // For hydration safety, check for window
       if (typeof window === 'undefined') return;
-      const frameMobile = document.querySelector('.itinerary-shell[data-forced-mobile="true"]');
-      setIsMobile(window.innerWidth < 640 || !!frameMobile);
+      setIsMobileState(window.innerWidth < 768);
     };
     check();
     window.addEventListener('resize', check);
@@ -40,9 +41,7 @@ function useMobile() {
     };
   }, []);
 
-  // During hydration, always return false to match server output.
-  // The layout will "snap" to the correct state immediately after mount.
-  return hasMounted ? isMobile : false;
+  return { isMobile: hasMounted ? isMobile : false, hasMounted };
 }
 
 // ─── Day number pill ──────────────────────────────────────────────
@@ -59,12 +58,13 @@ function DayPill({ number }: { number: number }) {
         borderRadius:    '50%',
         backgroundColor: 'var(--color-primary)',
         color:           'var(--color-text-on-primary)',
-        fontFamily:      'var(--font-heading)',
-        fontSize:        '14px',
-        fontWeight:      700,
+        fontFamily:      'var(--font-body)', // Better readability for numbers than the thin serif heading font
+        fontSize:        '18px',
+        fontWeight:      800,
         flexShrink:      0,
         boxShadow:       'var(--shadow-card)',
         zIndex:          1,
+        lineHeight:      1,
       }}
     >
       {number}
@@ -79,100 +79,125 @@ function DayHeader({
   title,
   date,
   compact = false,
+  isMobile = false,
+  layout,
 }: {
   dayNumber: number;
   title:     string;
   date?:     string;
   compact?:  boolean;
+  isMobile?: boolean;
+  layout?:   string;
 }) {
   const cleanTitle = title
     .replace(/^day\s+\d+[\s:·\-–—]*/i, '')
     .trim();
 
-  // ── Compact: single horizontal bar (day label + title only) ─────
-  if (compact) {
-    return (
-      <div
-        style={{
-          display:         'flex',
-          alignItems:      'center',
-          gap:             '10px',
-          paddingBottom:   'var(--spacing-sm)',
-          marginBottom:    'var(--spacing-sm)',
-          borderBottom:    '1px solid var(--color-border)',
-        }}
-      >
-        {/* Day label */}
-        <span
-          style={{
-            display:         'inline-flex',
-            alignItems:      'center',
-            padding:         '2px 10px',
-            borderRadius:    '999px',
-            backgroundColor: 'var(--color-primary)',
-            color:           'var(--color-text-on-primary)',
-            fontSize:        'clamp(0.65rem, 1.1vw, 0.8rem)',
-            fontWeight:      700,
-            letterSpacing:   '0.04em',
-            flexShrink:      0,
-          }}
-        >
-          DAY {dayNumber}
-        </span>
+  // ── Unified: chip + title (compact or not, mobile or not) ──────
 
-        {/* Title only — no date in compact mode */}
-        <span
-          style={{
-            fontFamily:   'var(--font-body)',
-            fontSize:     'clamp(0.75rem, 1.4vw, 0.875rem)',
-            fontWeight:   600,
-            color:        'var(--color-primary)',
-            flex:         1,
-          }}
-        >
-          {cleanTitle}
-        </span>
+  const dateObj = date ? new Date(date) : null;
+  const month = dateObj ? dateObj.toLocaleDateString('en-US', { month: 'short' }).toUpperCase() : '';
+  const day = dateObj ? dateObj.getDate().toString() : '';
+  const weekday = dateObj ? dateObj.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase() : '';
+  const fullWeekday = dateObj ? dateObj.toLocaleDateString('en-US', { weekday: 'long' }) : '';
+
+  // ── 1. Stacked Layout Variant (Matching User Image) ────────────
+  if (layout === 'stacked') {
+    return (
+      <div style={{
+        display:      'flex',
+        alignItems:   'flex-start', // Align circle with first line of title
+        gap:          '16px',
+        marginBottom: 'var(--spacing-lg)',
+      }}>
+        <DayPill number={dayNumber} />
+        
+        <div style={{ flex: 1 }}>
+          <h2 
+            className="day-heading-override" 
+            style={{
+              fontFamily: 'var(--font-heading)',
+              fontSize:   isMobile ? '1.25rem' : '1.5rem',
+              fontWeight: 800,
+              color:      'var(--color-primary)',
+              lineHeight: 1.3,
+              margin:     0,
+            }}
+          >
+            {cleanTitle}
+          </h2>
+          {dateObj && (
+            <div style={{
+              marginTop:       '8px',
+              display:         'inline-flex',
+              padding:         '3px 12px',
+              borderRadius:    '999px',
+              backgroundColor: 'var(--color-primary-muted)',
+              color:           'var(--color-primary)',
+              fontSize:        '11px',
+              fontWeight:      700,
+              fontFamily:      'var(--font-body)',
+              textTransform:   'uppercase',
+              letterSpacing:   '0.02em',
+              boxShadow:       'var(--shadow-sm)',
+            }}>
+              {day} {month.charAt(0) + month.slice(1).toLowerCase()}
+            </div>
+          )}
+        </div>
       </div>
     );
   }
 
-  // ── Default: pill + stacked title (stacked + split layouts) ──────
+  // ── Default / Other Layouts: chip + title ──────
   return (
     <div
       style={{
         display:      'flex',
         alignItems:   'center',
-        gap:          '12px',
-        marginBottom: 'var(--spacing-md)',
+        gap:          '16px',
+        marginBottom: layout === 'timeline' ? 'var(--spacing-sm)' : 'var(--spacing-md)',
       }}
     >
-      <DayPill number={dayNumber} />
+      {dateObj ? (
+        <CalendarDateIcon
+          month={(isMobile && layout === 'timeline') ? 'DAY' : month}
+          day={(isMobile && layout === 'timeline') ? dayNumber.toString() : day}
+          weekday={weekday}
+        />
+      ) : (
+        <DayPill number={dayNumber} />
+      )}
       <div style={{ flex: 1 }}>
+        {!isMobile && (
+          <div style={{
+            display: 'inline-flex',
+            padding: '2px 8px',
+            borderRadius: '4px',
+            backgroundColor: 'var(--color-primary-muted)',
+            fontSize: '11px',
+            fontWeight: 700,
+            color: 'var(--color-primary)',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+            marginBottom: '6px'
+          }}>
+            Day {dayNumber}
+          </div>
+        )}
         <h2
           className="day-heading-override"
           style={{
             fontFamily:   'var(--font-heading)',
-            fontSize:     'clamp(1.1rem, 2.5vw, 1.125rem)', // Max 18px
-            fontWeight:   700,
+            fontSize:     'clamp(1.25rem, 3vw, 1.4rem)',
+            fontWeight:   800,
             color:        'var(--color-primary)',
             lineHeight:   1.2,
-            marginBottom: '4px',
             margin:       0,
           }}
         >
           {cleanTitle}
         </h2>
-        {date && (
-          <div
-            style={{
-              fontSize:   'clamp(0.7rem, 1.2vw, 0.8125rem)',
-              color:      'var(--color-text-muted)',
-              fontFamily: 'var(--font-body)',
-            }}
-          >
-            {formatDateShort(date)}
-          </div>
-        )}
       </div>
     </div>
   );
@@ -214,15 +239,17 @@ function TimelineConnector({ style: lineStyle }: { style: 'line' | 'dotted' | 'n
 export function DayCard({
   day,
   isLast = false,
+  forcedMobile,
 }: {
   day:     DayData;
   isLast?: boolean;
+  forcedMobile?: boolean;
 }) {
+  const { isMobile, hasMounted } = useMobile(forcedMobile);
   const { layout, activeMoodId } = useTheme();
   const layoutConfig = getLayoutConfig(layout);
   const date   = day.components[0]?.metadata?.day_date ?? day.date;
   const isGlass = activeMoodId === 'spiritual';
-  const isMobile = useMobile();
 
   const isFeatured = day.isFeatured ?? false;
 
@@ -243,12 +270,13 @@ export function DayCard({
   return (
     <>
       <style>{`
-        @media (max-width: 480px) {
-          .day-card-inner {
-            padding: var(--spacing-sm) var(--spacing-md) !important;
-          }
-          .day-timeline-connector {
-            display: none !important;
+        .timeline-global-connector {
+          display: none;
+        }
+        @media (min-width: 1024px), print {
+          /* Show global connector only on desktop/A4 */
+          .itinerary-shell:not([data-forced-mobile="true"]) .timeline-global-connector {
+            display: flex !important;
           }
         }
       `}</style>
@@ -258,7 +286,11 @@ export function DayCard({
           marginBottom: isLast ? 0 : 'var(--spacing-section)',
         }}
       >
-        {!isLast && <TimelineConnector style={layoutConfig.timeline.style} />}
+        {!isLast && (
+          <div className="timeline-global-connector">
+            <TimelineConnector style={layoutConfig.timeline.style} />
+          </div>
+        )}
 
         <div
           className="day-card-inner"
@@ -299,7 +331,7 @@ export function DayCard({
               padding:   layout === 'timeline' ? '0 16px' : '0',
             }}
           >
-            <DayHeader dayNumber={day.day_number} title={day.title} date={date} compact={isCompact} />
+            <DayHeader dayNumber={day.day_number} title={day.title} date={date} compact={isCompact} isMobile={isMobile} layout={layout} />
 
             {layoutConfig.dayCard.direction === 'row' && !isMobile && (() => {
               const note = day.components.find(c => c.component_type === 'Note');

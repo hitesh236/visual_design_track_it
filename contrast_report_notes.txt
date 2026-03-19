@@ -1,0 +1,21 @@
+NOTE CONTRAST VERIFICATION REPORT:
+
+Mood: NATURE
+ - Note Text on Note BG                         : #334d3b on #f2f7f4 -> 8.56:1 [PASS]
+ - Note Accent (Label/Bold) on Note BG          : #437051 on #f2f7f4 -> 5.27:1 [PASS]
+
+Mood: LUXURY
+ - Note Text on Note BG                         : #f1f1f1 on #38352e -> 10.83:1 [PASS]
+ - Note Accent (Label/Bold) on Note BG          : #d0b362 on #38352e -> 6.00:1 [PASS]
+
+Mood: ADVENTURE
+ - Note Text on Note BG                         : #4d3d33 on #f7f4f2 -> 9.44:1 [PASS]
+ - Note Accent (Label/Bold) on Note BG          : #b14502 on #f7f4f2 -> 5.15:1 [PASS]
+
+Mood: MODERN
+ - Note Text on Note BG                         : #333b4d on #f2f4f7 -> 10.17:1 [PASS]
+ - Note Accent (Label/Bold) on Note BG          : #1147bb on #f2f4f7 -> 7.21:1 [PASS]
+
+Mood: SPIRITUAL
+ - Note Text on Note BG                         : #3d334d on #f4f2f7 -> 10.62:1 [PASS]
+ - Note Accent (Label/Bold) on Note BG          : #604884 on #f4f2f7 -> 6.85:1 [PASS]
