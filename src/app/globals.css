@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&family=Merriweather:wght@400;700&family=Montserrat:wght@700&family=Nunito:wght@400;600&family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,131 +8,71 @@
   :root {
     --background: 206 33% 95%;
     --foreground: 210 50% 15%;
-    --card: 0 0% 100%;
-    --card-foreground: 210 50% 15%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 210 50% 15%;
-    --primary: 210 50% 40%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 20% 90%;
-    --secondary-foreground: 210 50% 40%;
-    --muted: 210 20% 90%;
-    --muted-foreground: 210 20% 40%;
-    --accent: 180 64% 55%;
-    --accent-foreground: 180 64% 15%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
     --border: 210 30% 85%;
-    --input: 210 30% 85%;
-    --ring: 210 50% 40%;
-    --radius: 0.5rem;
-    
-    /* Default Scale Multiplier */
+    --primary: 210 50% 40%;
     --itinerary-scale: 1.0;
-  }
-  .dark {
-    --background: 210 50% 10%;
-    --foreground: 210 33% 95%;
-    --card: 210 50% 12%;
-    --card-foreground: 210 33% 95%;
-    --popover: 210 50% 12%;
-    --popover-foreground: 210 33% 95%;
-    --primary: 180 64% 55%;
-    --primary-foreground: 210 50% 10%;
-    --secondary: 210 30% 20%;
-    --secondary-foreground: 180 64% 55%;
-    --muted: 210 30% 20%;
-    --muted-foreground: 210 20% 70%;
-    --accent: 180 64% 55%;
-    --accent-foreground: 210 50% 10%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 210 30% 20%;
-    --input: 210 30% 20%;
-    --ring: 180 64% 55%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-    box-sizing: border-box;
-  }
-  body {
-    @apply bg-background text-foreground;
-    overflow-x: hidden;
-    /* Apply global scale to base body font */
-    font-size: calc(16px * var(--itinerary-scale));
   }
 }
 
 @layer components {
-  /* ── Scalable Typography ── */
-  .note-content-container {
-    font-size: calc(clamp(0.8rem, 1.5vw, 0.92rem) * var(--itinerary-scale)) !important;
-    line-height: 1.7 !important;
-    color: var(--color-text);
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
+  /* ── Core Scalable Layout ── */
+  .itin-shell {
+    @apply min-h-screen w-full flex flex-col items-center;
+    background-color: var(--color-bg);
   }
 
-  .greeting-html-content p {
-    font-size: calc(clamp(0.8rem, 1.5vw, 0.92rem) * var(--itinerary-scale)) !important;
-    line-height: 1.7 !important;
-    margin-bottom: calc(12px * var(--itinerary-scale)) !important;
+  .itin-wrapper {
+    @apply w-full flex flex-col min-h-screen relative;
+    max-width: 860px;
+    background-color: var(--color-bg);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 0 var(--spacing-md);
   }
 
-  .greeting-html-content p:last-child {
-    margin-bottom: 0 !important;
+  .itin-shell[data-forced-mobile="true"] .itin-wrapper {
+    @apply max-width-full p-0 shadow-none;
   }
 
-  .note-content-container p,
-  .note-content-container span,
-  .note-content-container li {
-    font-size: inherit !important;
-    line-height: inherit !important;
-  }
-
-  .note-content-container strong,
-  .greeting-html-content strong {
-    font-weight: 700;
-    color: var(--color-primary);
-  }
-
-  /* ── Scalable Wrappers ── */
-  .day-note-box {
+  /* ── Scalable Components ── */
+  .itin-card {
+    @apply overflow-hidden transition-all duration-200;
     border-radius: var(--radius-card);
-    padding: calc(12px * var(--itinerary-scale)) calc(16px * var(--itinerary-scale));
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-card);
+  }
+
+  .itin-card:hover {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .location-box {
+    @apply w-full;
+    border-radius: 10px;
+    padding: calc(12px * var(--itinerary-scale));
     background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
   }
 
-  .day-note-box h4 {
-    margin: 0 0 calc(8px * var(--itinerary-scale)) 0 !important;
-    font-weight: 700;
-    font-family: var(--font-heading);
-    color: var(--color-text);
-    font-size: calc(14px * var(--itinerary-scale));
-  }
-
-  /* Note Strip styling */
+  /* ── Notes System ── */
   .standard-note-bar {
-    display: block;
-    margin-top: calc(12px * var(--itinerary-scale));
-    padding: calc(10px * var(--itinerary-scale)) calc(16px * var(--itinerary-scale));
+    @apply block w-full border-t;
     background-color: var(--color-bg);
-    border-top: 1px solid var(--color-border);
-    width: 100%;
-    box-sizing: border-box;
-    font-size: calc(10px * var(--itinerary-scale)) !important;
+    padding: calc(8px * var(--itinerary-scale)) calc(16px * var(--itinerary-scale));
+    border-color: var(--color-border);
   }
 
   .standard-note-bar strong {
+    @apply font-bold uppercase;
     font-size: calc(9px * var(--itinerary-scale)) !important;
-    font-weight: 700 !important;
-    color: var(--color-primary) !important;
-    margin-right: calc(6px * var(--itinerary-scale));
-    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-right: 8px;
+  }
+
+  .note-content-container {
+    font-size: calc(clamp(0.8rem, 1.5vw, 0.92rem) * var(--itinerary-scale)) !important;
+    line-height: 1.6;
+    color: var(--color-text);
   }
 
   .standard-note-bar .note-content-container,
@@ -140,32 +81,59 @@
     color: var(--color-text-muted) !important;
   }
 
-  /* Responsive Horizontal Card Stacking */
-  .horizontal-card-root {
-    display: flex;
-    flex-direction: row;
+  /* ── Horizontal Cards (Mini-Compact) ── */
+  .h-card-root {
+    @apply flex flex-row w-full overflow-hidden;
   }
 
-  .horizontal-card-image {
+  .h-card-img-wrapper {
+    @apply flex-shrink-0;
     width: calc(220px * var(--itinerary-scale));
-    height: auto;
+  }
+
+  .h-card-content {
+    @apply flex flex-col flex-1 min-w-0;
+    padding: var(--spacing-md);
   }
 
   @media (max-width: 639px) {
-    .horizontal-card-root {
-      flex-direction: column !important;
-    }
-    .horizontal-card-image {
-      width: 100% !important;
-      height: calc(180px * var(--itinerary-scale)) !important;
-    }
+    .h-card-root { @apply flex-col; }
+    .h-card-img-wrapper { @apply w-full; height: 180px; }
   }
 
-  .itinerary-shell[data-forced-mobile="true"] .horizontal-card-root {
-    flex-direction: column !important;
+  .itin-shell[data-forced-mobile="true"] .h-card-root { @apply flex-col; }
+  .itin-shell[data-forced-mobile="true"] .h-card-img-wrapper { @apply w-full; height: 180px; }
+
+  /* ── Timeline Elements ── */
+  .timeline-node {
+    @apply absolute rounded-full bg-white border-2 z-10;
+    width: 16px;
+    height: 16px;
+    border-color: var(--color-primary);
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
   }
-  .itinerary-shell[data-forced-mobile="true"] .horizontal-card-image {
-    width: 100% !important;
-    height: calc(180px * var(--itinerary-scale)) !important;
+
+  .timeline-line {
+    @apply absolute w-px h-full bg-gray-200 z-0;
+    left: 50%;
+    transform: translateX(-50%);
   }
+}
+
+/* ── Typography Scale ── */
+body {
+  font-size: calc(16px * var(--itinerary-scale));
+  color: var(--color-text);
+}
+
+.greeting-html-content p {
+  font-size: clamp(0.8rem, 1.5vw, 0.92rem) !important;
+  margin-bottom: calc(12px * var(--itinerary-scale));
+}
+
+.day-heading-override {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
 }

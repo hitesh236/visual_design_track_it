@@ -1,4 +1,4 @@
-git# Firebase Studio
+Payment Informationgit# Firebase Studio
 
 This is a NextJS starter in Firebase Studio.
 
