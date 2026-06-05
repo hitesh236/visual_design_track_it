@@ -1,110 +1,34 @@
+
 'use client';
 
-import { useEffect, createContext, useContext } from 'react';
+import React from 'react';
 import { useTheme } from '@/context/theme-context';
 
-// ─── Shell Context ───────────────────────────────────────────────
-
-type ShellContextValue = {
-  forcedMobile: boolean;
-};
-
-const ShellContext = createContext<ShellContextValue>({ forcedMobile: false });
-
-export function useShell() {
-  return useContext(ShellContext);
-}
-
-// ─── Google Fonts Loader ─────────────────────────────────────────
-
-function useGoogleFonts(headingFont: string, bodyFont: string) {
-  useEffect(() => {
-    const fonts = [...new Set([headingFont, bodyFont])];
-    const families = fonts
-      .map(f => f.replace(/ /g, '+') + ':wght@400;600;700')
-      .join('&family=');
-
-    const id = 'google-fonts-dynamic';
-    const existing = document.getElementById(id);
-    if (existing) existing.remove();
-
-    const link = document.createElement('link');
-    link.id = id;
-    link.rel = 'stylesheet';
-    link.href = `https://fonts.googleapis.com/css2?family=${families}&display=swap`;
-    document.head.appendChild(link);
-  }, [headingFont, bodyFont]);
-}
-
-// ─── Shell Component ─────────────────────────────────────────────
-
-type ItineraryShellProps = {
-  children: React.ReactNode;
-  forcedMobile?: boolean;
-};
-
-export function ItineraryShell({ children, forcedMobile = false }: ItineraryShellProps) {
+export function ItineraryShell({ children, forcedMobile = false }: { children: React.ReactNode; forcedMobile?: boolean }) {
   const { theme } = useTheme();
 
-  useGoogleFonts(theme.headingFont, theme.bodyFont);
-
-  // ── Typography Harmonizer ──
-  // Ensures all description text across all sections (Greeting, Day Notes, etc.)
-  // share the EXACT same font size and scale identically.
-  useEffect(() => {
-    const harmonizeTypography = () => {
-      const width = window.innerWidth;
-      let baseSize = 16; // Default Desktop
-      
-      if (forcedMobile || width < 480) {
-        baseSize = 14; // Small Mobile
-      } else if (width < 768) {
-        baseSize = 15; // Tablet
-      }
-
-      document.documentElement.style.setProperty('--itinerary-content-font-size', `${baseSize}px`);
-    };
-
-    harmonizeTypography();
-    window.addEventListener('resize', harmonizeTypography);
-    return () => window.removeEventListener('resize', harmonizeTypography);
-  }, [forcedMobile]);
-
   return (
-    <ShellContext.Provider value={{ forcedMobile }}>
-      <main
-        className="itinerary-shell"
-        data-forced-mobile={forcedMobile ? "true" : "false"}
+    <div 
+      className="itin-shell" 
+      data-forced-mobile={forcedMobile ? "true" : "false"}
+    >
+      <div 
+        className="itin-wrapper"
         style={{
-          backgroundColor: 'var(--color-bg)',
-          color:            'var(--color-text)',
-          fontFamily:       'var(--font-body)',
-          minHeight:        '100vh',
-          width:            '100%',
-          backgroundImage: `radial-gradient(var(--color-border) 1px, transparent 1px)`,
-          backgroundSize:  '24px 24px',
-          boxSizing:       'border-box',
-          overflowX:       'hidden',
+          paddingTop: forcedMobile ? '0' : 'var(--spacing-lg)',
+          paddingBottom: 'var(--spacing-section)'
         }}
       >
-        <div
-          className="itinerary-inner-wrapper"
-          style={{
-            maxWidth:        forcedMobile ? '100%' : '860px',
-            width:           '100%',
-            margin:          '0 auto',
-            padding:         forcedMobile ? '0' : '0 var(--spacing-md)',
-            backgroundColor: 'var(--color-bg)',
-            minHeight:       '100vh',
-            boxShadow:       forcedMobile ? 'none' : 'var(--shadow-elevated)',
-            boxSizing:       'border-box',
-            overflowX:       'hidden',
-            position:        'relative',
-          }}
-        >
-          {children}
-        </div>
-      </main>
-    </ShellContext.Provider>
+        {children}
+      </div>
+    </div>
   );
+}
+
+export function useShell() {
+  if (typeof document !== 'undefined') {
+    const shell = document.querySelector('.itin-shell');
+    return { forcedMobile: shell?.getAttribute('data-forced-mobile') === 'true' };
+  }
+  return { forcedMobile: false };
 }

@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&family=Merriweather:wght@400;700&family=Montserrat:wght@700&family=Nunito:wght@400;600&family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap');
 
 @tailwind base;
@@ -6,134 +7,119 @@
 
 @layer base {
   :root {
-    --background: 206 33% 95%;
-    --foreground: 210 50% 15%;
-    --border: 210 30% 85%;
-    --primary: 210 50% 40%;
     --itinerary-scale: 1.0;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: calc(16px * var(--itinerary-scale));
   }
 }
 
 @layer components {
-  /* ── Core Scalable Layout ── */
+  /* ── Core Layout ── */
   .itin-shell {
     @apply min-h-screen w-full flex flex-col items-center;
     background-color: var(--color-bg);
+    background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-attachment: fixed;
   }
 
   .itin-wrapper {
     @apply w-full flex flex-col min-h-screen relative;
-    max-width: 860px;
+    max-width: calc(860px * var(--itinerary-scale));
     background-color: var(--color-bg);
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    padding: 0 var(--spacing-md);
+    padding: 0 calc(var(--spacing-md) * var(--itinerary-scale));
   }
 
-  .itin-shell[data-forced-mobile="true"] .itin-wrapper {
-    @apply max-width-full p-0 shadow-none;
-  }
-
-  /* ── Scalable Components ── */
+  /* ── Scalable Cards ── */
   .itin-card {
-    @apply overflow-hidden transition-all duration-200;
+    @apply overflow-hidden transition-all duration-200 border;
     border-radius: var(--radius-card);
-    border: 1px solid var(--color-border);
+    border-color: var(--color-border);
     background-color: var(--color-surface);
     box-shadow: var(--shadow-card);
+    margin-bottom: calc(var(--spacing-md) * var(--itinerary-scale));
   }
 
   .itin-card:hover {
     box-shadow: var(--shadow-elevated);
   }
 
-  .location-box {
-    @apply w-full;
-    border-radius: 10px;
-    padding: calc(12px * var(--itinerary-scale));
-    background-color: var(--color-bg);
-    border: 1px solid var(--color-border);
-  }
-
   /* ── Notes System ── */
   .standard-note-bar {
     @apply block w-full border-t;
-    background-color: var(--color-bg);
-    padding: calc(8px * var(--itinerary-scale)) calc(16px * var(--itinerary-scale));
+    background-color: var(--color-note-bg);
+    padding: calc(10px * var(--itinerary-scale)) calc(16px * var(--itinerary-scale));
     border-color: var(--color-border);
   }
 
   .standard-note-bar strong {
     @apply font-bold uppercase;
     font-size: calc(9px * var(--itinerary-scale)) !important;
-    color: var(--color-primary);
+    color: var(--color-note-accent);
     margin-right: 8px;
   }
 
   .note-content-container {
-    font-size: calc(clamp(0.8rem, 1.5vw, 0.92rem) * var(--itinerary-scale)) !important;
+    font-size: clamp(0.8rem, 1.5vw, 0.92rem) !important;
     line-height: 1.6;
     color: var(--color-text);
   }
 
+  /* Unified small font for notes */
   .standard-note-bar .note-content-container,
   .standard-note-bar .note-content-container * {
     font-size: calc(10px * var(--itinerary-scale)) !important;
-    color: var(--color-text-muted) !important;
+    color: var(--color-note-text) !important;
   }
 
-  /* ── Horizontal Cards (Mini-Compact) ── */
-  .h-card-root {
-    @apply flex flex-row w-full overflow-hidden;
+  /* ── Transport Integration ── */
+  .location-box {
+    @apply w-full border rounded-lg;
+    padding: calc(14px * var(--itinerary-scale));
+    background-color: var(--color-bg);
+    border-color: var(--color-border);
   }
 
-  .h-card-img-wrapper {
-    @apply flex-shrink-0;
-    width: calc(220px * var(--itinerary-scale));
+  .vehicle-badge-group {
+    @apply flex flex-wrap gap-2 mt-4 pt-3 border-t;
+    border-color: rgba(0,0,0,0.05);
   }
 
-  .h-card-content {
-    @apply flex flex-col flex-1 min-w-0;
-    padding: var(--spacing-md);
+  /* ── Stats Bar (Fixed rendering bug) ── */
+  .itin-stats-bar {
+    @apply flex flex-wrap items-stretch;
+    background-color: var(--color-surface);
+    border-bottom-left-radius: var(--radius-card);
+    border-bottom-right-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: calc(12px * var(--itinerary-scale)) 0;
+    /* Use separate properties to avoid React diffing errors */
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: var(--color-border);
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: var(--color-border);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--color-border);
   }
-
-  @media (max-width: 639px) {
-    .h-card-root { @apply flex-col; }
-    .h-card-img-wrapper { @apply w-full; height: 180px; }
-  }
-
-  .itin-shell[data-forced-mobile="true"] .h-card-root { @apply flex-col; }
-  .itin-shell[data-forced-mobile="true"] .h-card-img-wrapper { @apply w-full; height: 180px; }
-
-  /* ── Timeline Elements ── */
-  .timeline-node {
-    @apply absolute rounded-full bg-white border-2 z-10;
-    width: 16px;
-    height: 16px;
-    border-color: var(--color-primary);
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
-  }
-
-  .timeline-line {
-    @apply absolute w-px h-full bg-gray-200 z-0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
-/* ── Typography Scale ── */
-body {
-  font-size: calc(16px * var(--itinerary-scale));
-  color: var(--color-text);
 }
 
 .greeting-html-content p {
   font-size: clamp(0.8rem, 1.5vw, 0.92rem) !important;
   margin-bottom: calc(12px * var(--itinerary-scale));
+  line-height: 1.7;
 }
 
 .day-heading-override {
   font-family: var(--font-heading);
   color: var(--color-primary);
+  font-weight: 700;
 }

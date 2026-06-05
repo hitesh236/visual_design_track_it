@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -6,16 +7,19 @@ import { ComponentRenderer } from '../component-renderer';
 
 export function CompactDayLayout({ day }: { day: DayData }) {
   return (
-    <div className="compact-day-card itin-card p-4 mb-4">
+    <div className="itin-card p-6 mb-6">
       <header className="flex items-center gap-3 border-b border-gray-100 pb-3 mb-4">
-        <span className="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest">
+        <span 
+          className="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest"
+          style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-text-on-primary)' }}
+        >
           Day {day.day_number}
         </span>
-        <h3 className="font-heading font-bold text-primary text-sm truncate">
+        <h3 className="font-heading font-bold text-primary text-base truncate">
           {day.title.replace(/^day\s+\d+[\s:·\-–—]*/i, '').trim()}
         </h3>
       </header>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <ComponentRenderer components={day.components} />
       </div>
     </div>

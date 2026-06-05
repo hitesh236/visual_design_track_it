@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -27,7 +28,7 @@ function TransportCardItem({ item }: { item: TransportItem }) {
   const displayName = item.name ?? item.cabModelName ?? 'Transport';
 
   return (
-    <div className="itin-card mb-4">
+    <div className="itin-card">
       <div className="p-4">
         {/* Header */}
         <div className="flex justify-between items-center flex-wrap gap-2 mb-4">
@@ -44,15 +45,15 @@ function TransportCardItem({ item }: { item: TransportItem }) {
           </div>
         </div>
 
-        {/* Unified Segment Box (Locations + Vehicles Inside) */}
+        {/* Integrated Location & Vehicle Box */}
         <div className="location-box">
-          <div className="grid grid-cols-[1fr,auto,1fr] items-center gap-4">
+          <div className="grid grid-cols-[1fr,auto,1fr] items-center gap-4 mb-4">
             <div className="text-left min-w-0">
               <div className="text-[9px] text-gray-500 font-bold uppercase mb-1">Pickup</div>
               <div className="text-xs font-bold truncate">{item.pickupLocation || 'TBD'}</div>
             </div>
             <div className="text-gray-300">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
             </div>
             <div className="text-right min-w-0">
               <div className="text-[9px] text-gray-500 font-bold uppercase mb-1">Drop</div>
@@ -60,23 +61,21 @@ function TransportCardItem({ item }: { item: TransportItem }) {
             </div>
           </div>
 
-          {/* Vehicle Breakdown Nested Inside Location Box */}
-          <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-black/5">
-             <div className="bg-white/60 px-2 py-1 rounded-md text-[10px] flex items-center gap-1.5 border border-black/5">
+          <div className="vehicle-badge-group">
+             <div className="bg-white/60 px-2 py-1 rounded-md text-[10px] flex items-center gap-1.5 border border-black/5 shadow-sm">
                <span className="font-bold text-primary">{vehicleCount}x</span>
-               <span className="font-medium">{item.cabModelName || 'Vehicle'}</span>
+               <span className="font-medium text-gray-700">{item.cabModelName || 'Vehicle'}</span>
              </div>
              {item.additionalVehicles?.map((v, idx) => (
-               <div key={idx} className="bg-white/60 px-2 py-1 rounded-md text-[10px] flex items-center gap-1.5 border border-black/5">
+               <div key={idx} className="bg-white/60 px-2 py-1 rounded-md text-[10px] flex items-center gap-1.5 border border-black/5 shadow-sm">
                  <span className="font-bold text-primary">{v.count}x</span>
-                 <span className="font-medium">{v.model || v.categoryName}</span>
+                 <span className="font-medium text-gray-700">{v.model || v.categoryName}</span>
                </div>
              ))}
           </div>
         </div>
       </div>
 
-      {/* Note Strip */}
       {item.notes && (
         <div className="standard-note-bar">
           <strong>NOTE:</strong>
@@ -87,10 +86,10 @@ function TransportCardItem({ item }: { item: TransportItem }) {
   );
 }
 
-export function TransportCard({ items }: TransportCardProps) {
+export function TransportCard({ items }: { items: TransportItem[] }) {
   if (!items.length) return null;
   return (
-    <div className="transport-group-root">
+    <div className="flex flex-col gap-4">
       {items.map((item, i) => (
         <TransportCardItem key={item.id ?? i} item={item} />
       ))}
