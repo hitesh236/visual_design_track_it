@@ -17,17 +17,22 @@ export function ActivityCard(props: ActivityCardProps) {
 
   if (displayMode === 'horizontal-card') {
     return (
-      <div className="itin-card h-card-root">
-        {showImages && firstImage && (
-          <div className="h-card-img-wrapper">
-            <img src={firstImage} alt={name} className="w-full h-full object-cover" />
-          </div>
-        )}
-        <div className="h-card-content">
-          <h3 className="font-heading font-bold text-base leading-tight mb-2">{name}</h3>
-          {showDescriptions && description && (
-            <div className="note-content-container line-clamp-3 text-xs" dangerouslySetInnerHTML={{ __html: description }} />
+      <div className="itin-card">
+        <div className="h-card-layout">
+          {showImages && firstImage && (
+            <div className="h-card-image-container">
+              <img src={firstImage} alt={name} className="w-full h-full object-cover" />
+            </div>
           )}
+          <div className="h-card-content-container">
+            <div className="flex justify-between items-start mb-2">
+              <h3 className="font-heading font-bold text-base leading-tight">{name}</h3>
+              <span className="badge-pill bg-green-100 text-green-700 ml-2">Activity</span>
+            </div>
+            {showDescriptions && description && (
+              <div className="note-content-container line-clamp-4 text-xs text-gray-600 flex-1" dangerouslySetInnerHTML={{ __html: description }} />
+            )}
+          </div>
         </div>
       </div>
     );
@@ -35,11 +40,18 @@ export function ActivityCard(props: ActivityCardProps) {
 
   return (
     <div className="itin-card">
-      {showImages && firstImage && <div className="h-[160px] w-full"><img src={firstImage} alt={name} className="w-full h-full object-cover" /></div>}
+      {showImages && firstImage && (
+        <div className="h-[160px] w-full overflow-hidden">
+          <img src={firstImage} alt={name} className="w-full h-full object-cover" />
+        </div>
+      )}
       <div className="p-4">
-        <h3 className="font-heading font-bold text-base mb-2">{name}</h3>
+        <div className="flex justify-between items-start mb-2">
+          <h3 className="font-heading font-bold text-base">{name}</h3>
+          <span className="badge-pill bg-green-100 text-green-700">Activity</span>
+        </div>
         {showDescriptions && description && (
-          <div className="note-content-container" dangerouslySetInnerHTML={{ __html: description }} />
+          <div className="note-content-container text-gray-700" dangerouslySetInnerHTML={{ __html: description }} />
         )}
       </div>
     </div>
