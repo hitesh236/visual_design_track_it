@@ -108,7 +108,7 @@ h1, h2, h3, h4 {
   border-radius: var(--radius-card);
 }
 
-/* Note sections - forced small font */
+/* ── Strictly Small Notes ── */
 .standard-note-bar,
 .standard-note-bar *,
 .standard-note-bar p,
@@ -118,7 +118,7 @@ h1, h2, h3, h4 {
 
 .standard-note-bar {
   background-color: #fef3c7;
-  padding: 8px 16px;
+  padding: calc(0.5rem * var(--itinerary-scale)) calc(1rem * var(--itinerary-scale));
   color: #92400e;
   width: 100%;
   display: block;
@@ -143,22 +143,36 @@ h1, h2, h3, h4 {
   box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
 }
 
-/* ── Horizontal (Mini-Compact) Layout ── */
+/* ── Horizontal (Mini-Compact) Stretching Strategy ── */
 .h-card-layout {
-  @apply flex flex-row;
-  align-items: stretch; /* Both image and content share the same height */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch; /* This forces children to have the same height */
+  width: 100%;
 }
 
 .h-card-image-container {
-  width: calc(240px * var(--itinerary-scale));
+  width: calc(220px * var(--itinerary-scale));
   flex-shrink: 0;
   position: relative;
   background-color: #f3f4f6;
+  overflow: hidden;
+}
+
+.h-card-image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .h-card-content-container {
-  @apply flex-1 flex flex-col;
+  flex: 1;
   padding: calc(1rem * var(--itinerary-scale));
+  display: flex;
+  flex-direction: column;
   min-width: 0;
 }
 
@@ -166,11 +180,15 @@ h1, h2, h3, h4 {
 .itinerary-shell[data-forced-mobile="true"] .h-card-layout,
 @media (max-width: 639px) {
   .h-card-layout {
-    @apply flex-col !important;
+    flex-direction: column !important;
   }
   .h-card-image-container {
     width: 100% !important;
-    height: calc(200px * var(--itinerary-scale)) !important;
+    height: 180px !important; /* Fallback height for mobile stacking */
+  }
+  .h-card-image-container img {
+    position: relative;
+    height: 180px;
   }
 }
 

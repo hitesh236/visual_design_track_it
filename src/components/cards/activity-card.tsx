@@ -17,11 +17,11 @@ export function ActivityCard(props: ActivityCardProps) {
 
   if (displayMode === 'horizontal-card') {
     return (
-      <div className="itin-card">
+      <div className="activity-card-root itin-card">
         <div className="h-card-layout">
           {showImages && firstImage && (
             <div className="h-card-image-container">
-              <img src={firstImage} alt={name} className="w-full h-full object-cover" />
+              <img src={firstImage} alt={name} />
             </div>
           )}
           <div className="h-card-content-container">
@@ -39,7 +39,7 @@ export function ActivityCard(props: ActivityCardProps) {
   }
 
   return (
-    <div className="itin-card">
+    <div className="activity-card-root itin-card">
       {showImages && firstImage && (
         <div className="h-[160px] w-full overflow-hidden">
           <img src={firstImage} alt={name} className="w-full h-full object-cover" />

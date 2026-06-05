@@ -24,11 +24,11 @@ export function HotelCard(props: HotelCardProps) {
 
   if (displayMode === 'horizontal-card') {
     return (
-      <div className="itin-card">
+      <div className="hotel-card-root itin-card">
         <div className="h-card-layout">
           {showImages && firstImage && (
             <div className="h-card-image-container">
-              <img src={firstImage} alt={name} className="w-full h-full object-cover" />
+              <img src={firstImage} alt={name} />
             </div>
           )}
           <div className="h-card-content-container">
@@ -76,7 +76,7 @@ export function HotelCard(props: HotelCardProps) {
   }
 
   return (
-    <div className="itin-card">
+    <div className="hotel-card-root itin-card">
       {showImages && firstImage && (
         <div className="h-[180px] w-full overflow-hidden">
           <img src={firstImage} alt={name} className="w-full h-full object-cover" />
